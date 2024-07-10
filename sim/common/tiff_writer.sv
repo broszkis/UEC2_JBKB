@@ -17,8 +17,8 @@
 `timescale 1 ns / 1 ps
 
 module tiff_writer #(
-    parameter XDIM = 16'd1056,
-    parameter YDIM = 16'd628,
+    parameter XDIM = 16'd1344,
+    parameter YDIM = 16'd806,
     parameter FILE_DIR = "../../results"
 ) (
     input logic       clk,

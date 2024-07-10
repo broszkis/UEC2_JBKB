@@ -30,9 +30,8 @@ module top_game_basys3 (
  * Local variables and signals
  */
 
-wire clk_in, clk_fb, clk_ss, clk_out, clk65MHz;
-wire locked;
-wire pclk;
+wire clk100MHz;
+wire clk65MHz;
 wire pclk_mirror;
 
 (* KEEP = "TRUE" *)
@@ -56,16 +55,16 @@ assign JA1 = pclk_mirror;
 // Mirror pclk on a pin for use by the testbench;
 // not functionally required for this design to work.
 
-clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz (
+clk_wiz_0 u_clk_wiz_0 (
     .clk_in1(clk),
-    .clk(clk65MHz),
+    .clk_out1(clk100MHz),
+    .clk_out2(clk65MHz),
     .locked()
-
 );
 
 ODDR pclk_oddr (
     .Q(pclk_mirror),
-    .C(clk),
+    .C(clk65MHz),
     .CE(1'b1),
     .D1(1'b1),
     .D2(1'b0),
@@ -79,7 +78,7 @@ ODDR pclk_oddr (
  */
 
 top_vga u_top_vga (
-    .clk,
+    .clk(clk65MHz),
     .rst(btnC),
     .r(vgaRed),
     .g(vgaGreen),
