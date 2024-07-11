@@ -26,79 +26,55 @@
  /**
   * Local variables and signals
   */
- 
- // Add your signals and variables here.
+
   logic [10:0] hcount_nxt;
   logic [10:0] vcount_nxt;
   logic hblnk_nxt;
   logic vblnk_nxt;
   logic hsync_nxt;
   logic vsync_nxt;
- 
- 
+
  /**
   * Internal logic
   */
- always_ff@(posedge clk) begin
-     if (rst) begin
-         hcount <= 11'b0;
-         vcount <= 11'b0;
-         hblnk <= 1'b0;
-         vblnk <= 1'b0;
-         hsync <= 1'b0;
-         vsync <= 1'b0;
-     end
-     else begin
-         hcount <= hcount_nxt;
-         vcount <= vcount_nxt;
-         hblnk <= hblnk_nxt;
-         vblnk <= vblnk_nxt;
-         hsync <= hsync_nxt;
-         vsync <= vsync_nxt;
-     end
- end
- always_comb begin
-     if (hcount == HBLANK_STOP - 1) begin
-         if (vcount == VBLANK_STOP - 1) begin
-             vcount_nxt=11'b0;
-         end
-         else begin
-             vcount_nxt = vcount + 1;
-         end
-         hcount_nxt=11'b0;
-     end
-     else begin
-         hcount_nxt = hcount + 1;
-         vcount_nxt = vcount;
-     end
+
+ always_ff @(posedge clk) begin
+    if (rst) begin 
+        hcount <= '0;
+        vcount <= '0;
+        hblnk <= 0;
+        hsync <= 0;
+        vblnk <= 0;
+        vsync <= 0;
+    end
+    else begin
+        hcount <= hcount_nxt;
+        vcount <= vcount_nxt;
+        hblnk <= hblnk_nxt;
+        hsync <= hsync_nxt;
+        vblnk <= vblnk_nxt;
+        vsync <= vsync_nxt;     
+    end
+end
+
+always_comb begin
+    if (hcount == 1343) begin
+            hcount_nxt = '0;
+            if (vcount == 805)
+                vcount_nxt = '0;
+            else
+                vcount_nxt = vcount + 1;
+    end
+    else begin
+        hcount_nxt = hcount + 1;
+        vcount_nxt = vcount;
+    end
+
+    hblnk_nxt = (hcount_nxt >= HBLANK_START && hcount_nxt <= HBLANK_STOP - 1);
+    hsync_nxt = (hcount_nxt >= HSYNC_START && hcount_nxt <= HSYNC_STOP - 1);
+    vblnk_nxt = (vcount_nxt >= VBLANK_START && vcount_nxt <= VBLANK_STOP - 1);
+    vsync_nxt = (vcount_nxt >= VSYNC_START && vcount_nxt <= VSYNC_STOP - 1);
+end
+
+endmodule
  
-     if (hcount_nxt >= HBLANK_START) begin
-         hblnk_nxt = 1'b1;
-     end
-     else begin
-         hblnk_nxt = 1'b0;
-     end
- 
-     if((hcount_nxt >= HSYNC_START) && (hcount_nxt <= HSYNC_STOP)) begin
-         hsync_nxt = 1'b1;
-     end
-     else begin
-         hsync_nxt = 1'b0;
-     end
-     if (vcount_nxt > VBLANK_START) begin
-         vblnk_nxt = 1'b1;
-     end
-     else begin
-         vblnk_nxt = 1'b0;
-     end
- 
-     if((vcount_nxt > VSYNC_START) && (vcount_nxt < VSYNC_STOP)) begin
-         vsync_nxt = 1'b1;
-     end
-     else begin
-         vsync_nxt = 1'b0;
-     end
- end    
- 
- 
- endmodule
