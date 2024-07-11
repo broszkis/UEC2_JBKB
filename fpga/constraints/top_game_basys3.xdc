@@ -5,8 +5,10 @@
 
 # Clock signal
 
-create_clock -period 10.000 [get_ports clk_in1]
-set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.100
+set_property PACKAGE_PIN W5 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+create_clock -period 10.000 [get_ports clk]
+set_input_jitter [get_clocks -of_objects [get_ports clk]] 0.100
 set_false_path -to [get_cells  -hier {*seq_reg*[0]} -filter {is_sequential}]
 set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]
 
@@ -125,8 +127,8 @@ set_property PACKAGE_PIN U18 [get_ports btnC]
 
 ##Pmod Header JA
 ##Sch name = JA1
-#set_property PACKAGE_PIN J1 [get_ports {JA[0]}]					
-	#set_property IOSTANDARD LVCMOS33 [get_ports {JA[0]}]
+set_property PACKAGE_PIN J1 [get_ports {JA1}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {JA1}]
 ##Sch name = JA2
 #set_property PACKAGE_PIN L2 [get_ports {JA[1]}]					
 	#set_property IOSTANDARD LVCMOS33 [get_ports {JA[1]}]

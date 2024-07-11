@@ -56,9 +56,9 @@ assign JA1 = pclk_mirror;
 // not functionally required for this design to work.
 
 clk_wiz_0 u_clk_wiz_0 (
-    .clk_in1(clk),
-    .clk_out1(clk100MHz),
-    .clk_out2(clk65MHz),
+    .clk,
+    .clk100MHz,
+    .clk65MHz,
     .locked()
 );
 

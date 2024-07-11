@@ -1,28 +1,9 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-07-10 12:40:22
+Created: 2024-07-11 10:55:48
 
 ----SYNTHESIS----
-WARNING: [Vivado 12-584] No ports matched 'clk_in1'. [fpga/constraints/top_game_basys3.xdc:8]
-CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports clk_in1]'. [fpga/constraints/top_game_basys3.xdc:8]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 
 ----IMPLEMENTATION----
-WARNING: [Vivado 12-584] No ports matched 'clk_in1'. [fpga/constraints/top_game_basys3.xdc:8]
-CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports clk_in1]'. [fpga/constraints/top_game_basys3.xdc:8]
-WARNING: [Vivado 12-584] No ports matched 'clk_in1'. [fpga/constraints/top_game_basys3.xdc:9]
-WARNING: [Vivado 12-1008] No clocks found for command 'get_clocks -of_objects [get_ports clk_in1]'. [fpga/constraints/top_game_basys3.xdc:9]
-CRITICAL WARNING: [Vivado 12-4739] set_input_jitter:No valid object(s) found for '-clock [get_clocks -of_objects [get_ports clk_in1]]'. [fpga/constraints/top_game_basys3.xdc:9]
-WARNING: [Place 46-29] place_design is not in timing mode. Skip physical synthesis in placer
-WARNING: [Route 35-447] Congestion is preventing the router from routing all nets. The router will prioritize the successful completion of routing all nets over timing optimizations.
-WARNING: [Power 33-232] No user defined clocks were found in the design! Power estimation will be inaccurate until this is corrected.
-WARNING: [Power 33-230] Invalid input clock frequency for u_clk_wiz_0/inst/clkout2_buf. Out of range!
-WARNING: [Power 33-230] Invalid input clock frequency for u_clk_wiz_0/inst/clkout2_buf. Out of range!
-WARNING: [Power 33-230] Invalid input clock frequency for u_clk_wiz_0/inst/clkout2_buf. Out of range!
-WARNING: [Power 33-230] Invalid input clock frequency for u_clk_wiz_0/inst/clkout2_buf. Out of range!
-ERROR: [DRC NSTD-1] Unspecified I/O Standard: 2 out of 17 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value. This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all I/O standards. This design will fail to generate a bitstream unless all logical ports have a user specified I/O standard value defined. To allow bitstream creation with unspecified I/O standard values (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks NSTD-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run. Problem ports: JA1, and clk.
-ERROR: [DRC UCIO-1] Unconstrained Logical Port: 2 out of 17 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: JA1, and clk.
 WARNING: [DRC CFGBVS-1] Missing CFGBVS and CONFIG_VOLTAGE Design Properties: Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
-ERROR: [Vivado 12-1345] Error(s) found during DRC. Bitgen not run.
-ERROR: [Common 17-39] 'write_bitstream' failed due to earlier errors.
