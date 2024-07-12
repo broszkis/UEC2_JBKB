@@ -38,7 +38,7 @@ localparam CLK_PERIOD = 10;     // 100 MHz
 
 logic clk, rst;
 wire pclk;
-wire vs, hs;
+wire vs;
 wire [3:0] r, g, b;
 
 
@@ -60,7 +60,7 @@ top_game_basys3 dut (
     .clk(clk),
     .btnC(rst),
     .Vsync(vs),
-    .Hsync(hs),
+    .Hsync(),
     .vgaRed(r),
     .vgaGreen(g),
     .vgaBlue(b),

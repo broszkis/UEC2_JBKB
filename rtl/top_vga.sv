@@ -35,9 +35,7 @@ wire vsync_tim, hsync_tim;
 wire vblnk_tim, hblnk_tim;
 
 // VGA signals from background
-wire [10:0] vcount_bg, hcount_bg;
 wire vsync_bg, hsync_bg;
-wire vblnk_bg, hblnk_bg;
 wire [11:0] rgb_bg;
 
 
@@ -76,12 +74,12 @@ draw_bg u_draw_bg (
     .hsync_in   (hsync_tim),
     .hblnk_in   (hblnk_tim),
 
-    .vcount_out (vcount_bg),
+    .vcount_out (),
     .vsync_out  (vsync_bg),
-    .vblnk_out  (vblnk_bg),
-    .hcount_out (hcount_bg),
+    .vblnk_out  (),
+    .hcount_out (),
     .hsync_out  (hsync_bg),
-    .hblnk_out  (hblnk_bg),
+    .hblnk_out  (),
 
     .rgb_out    (rgb_bg)
 );

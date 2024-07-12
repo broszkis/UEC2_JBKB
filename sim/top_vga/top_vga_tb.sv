@@ -37,7 +37,7 @@ localparam CLK_PERIOD = 15.385;     // 65 MHz
  */
 
 logic clk, rst;
-wire vs, hs;
+wire vs;
 wire [3:0] r, g, b;
 
 
@@ -59,7 +59,7 @@ top_vga dut (
     .clk(clk),
     .rst(rst),
     .vs(vs),
-    .hs(hs),
+    .hs(),
     .r(r),
     .g(g),
     .b(b)

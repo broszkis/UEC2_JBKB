@@ -30,7 +30,6 @@ module top_game_basys3 (
  * Local variables and signals
  */
 
-wire clk100MHz;
 wire clk65MHz;
 wire pclk_mirror;
 
@@ -57,7 +56,7 @@ assign JA1 = pclk_mirror;
 
 clk_wiz_0 u_clk_wiz_0 (
     .clk,
-    .clk100MHz,
+    .clk100MHz(),
     .clk65MHz,
     .locked()
 );
