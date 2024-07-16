@@ -34,6 +34,7 @@ module top_game_basys3 (
  */
 
 wire clk65MHz;
+wire clk100MHz;
 wire pclk_mirror;
 
 (* KEEP = "TRUE" *)
@@ -69,7 +70,14 @@ ODDR pclk_oddr (
  *  Project functional top module
  */
 
-top_vga u_top_vga (
+ clk_wiz_0 u_clk_Wiz_0 (
+    .clk,
+    .clk100MHz,
+    .clk65MHz,
+    .locked()
+ );
+
+ top_vga u_top_vga (
     .clk(clk65MHz),
     .rst(btnC),
     .r(vgaRed),
@@ -81,7 +89,7 @@ top_vga u_top_vga (
 
 
 top u_top (
-    .clk,
+    .clk(clk100MHz),
     .PS2Clk,
     .PS2Data,
     .tx(RsTx)
