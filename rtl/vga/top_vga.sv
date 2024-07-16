@@ -22,6 +22,7 @@ module top_vga (
     output logic [3:0] r,
     output logic [3:0] g,
     output logic [3:0] b
+
 );
 
 
@@ -38,6 +39,11 @@ wire vblnk_tim, hblnk_tim;
 wire vsync_bg, hsync_bg;
 wire [11:0] rgb_bg;
 
+
+logic rx_empty;
+logic ruart; 
+logic [3:0] hex0, hex1, hex2, hex3;
+logic [7:0] rdata;
 
 /**
  * Signals assignments

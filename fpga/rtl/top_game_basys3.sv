@@ -17,6 +17,9 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
+    inout wire PS2Clk,
+    inout wire PS2Data,
+    output wire RsTx,
     output wire Vsync,
     output wire Hsync,
     output wire [3:0] vgaRed,
@@ -51,16 +54,6 @@ assign JA1 = pclk_mirror;
  * FPGA submodules placement
  */
 
-// Mirror pclk on a pin for use by the testbench;
-// not functionally required for this design to work.
-
-clk_wiz_0 u_clk_wiz_0 (
-    .clk,
-    .clk100MHz(),
-    .clk65MHz,
-    .locked()
-);
-
 ODDR pclk_oddr (
     .Q(pclk_mirror),
     .C(clk65MHz),
@@ -86,4 +79,11 @@ top_vga u_top_vga (
     .vs(Vsync)
 );
 
+
+top u_top (
+    .clk,
+    .PS2Clk,
+    .PS2Data,
+    .tx(RsTx)
+);
 endmodule

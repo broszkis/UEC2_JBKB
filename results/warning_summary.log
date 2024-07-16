@@ -1,9 +1,35 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-07-12 12:27:15
+Created: 2024-07-16 11:49:02
 
 ----SYNTHESIS----
+WARNING: [Synth 8-567] referenced signal 'keycodev' should be on the sensitivity list [rtl/keyboard/top.v:55]
+WARNING: [Synth 8-3848] Net clk65MHz in module/entity top_game_basys3 does not have driver. [fpga/rtl/top_game_basys3.sv:36]
+WARNING: [Vivado 12-180] No cells matched '*seq_reg*[0]'. [fpga/constraints/top_game_basys3.xdc:12]
+CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-to [get_cells -hier {*seq_reg*[0]} -filter is_sequential]'. [fpga/constraints/top_game_basys3.xdc:12]
+WARNING: [Vivado 12-180] No cells matched '*adv*'. [fpga/constraints/top_game_basys3.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:13]
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:271]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:271]
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:272]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:272]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design top_game_basys3 has port vgaRed[3] driven by constant 0
+WARNING: [Synth 8-3917] design top_game_basys3 has port vgaRed[2] driven by constant 0
+WARNING: [Synth 8-3917] design top_game_basys3 has port vgaRed[1] driven by constant 0
+WARNING: [Synth 8-3917] design top_game_basys3 has port vgaRed[0] driven by constant 0
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 
 ----IMPLEMENTATION----
-CLEAR :)
+WARNING: [Vivado 12-180] No cells matched '*seq_reg*[0]'. [fpga/constraints/top_game_basys3.xdc:12]
+CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-to [get_cells -hier {*seq_reg*[0]} -filter is_sequential]'. [fpga/constraints/top_game_basys3.xdc:12]
+WARNING: [Vivado 12-180] No cells matched '*adv*'. [fpga/constraints/top_game_basys3.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:13]
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:271]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:271]
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:272]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:272]
+WARNING: [DRC RPBF-3] IO port buffering is incomplete: Device port PS2Clk expects both input and output buffering but the buffers are incomplete.
+WARNING: [DRC RPBF-3] IO port buffering is incomplete: Device port PS2Data expects both input and output buffering but the buffers are incomplete.
+WARNING: [DRC RPBF-3] IO port buffering is incomplete: Device port PS2Clk expects both input and output buffering but the buffers are incomplete.
+WARNING: [DRC RPBF-3] IO port buffering is incomplete: Device port PS2Data expects both input and output buffering but the buffers are incomplete.
