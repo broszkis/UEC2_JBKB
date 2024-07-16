@@ -69,35 +69,38 @@
      if (vblnk_in || hblnk_in) begin             // Blanking region:
          rgb_nxt = 12'h0_0_0;                    // - make it it black.
      end else begin                              // Active region:
-         if (vcount_in == 0)                     // - top edge:
-             rgb_nxt = 12'h0_0_f;                // - - make a yellow line.
+         if (vcount_in == NULL)                     // - top edge:
+             rgb_nxt = 12'h0_0_f;                // - - make a blue line.
+         else if (vcount_in == NULL + 5 && hcount_in > NULL +5 && hcount_in < HOR_PIXELS - 5) // -- second blue top line.   
+             rgb_nxt = 12'h0_0_f; 
          else if (vcount_in == VER_PIXELS - 1)   // - bottom edge:
-             rgb_nxt = 12'h0_0_f;                // - - make a red line.
-         else if (hcount_in == 0)                // - left edge:
-             rgb_nxt = 12'h0_0_f;                // - - make a green line.
+             rgb_nxt = 12'h0_0_f;                // - - make a blue line.
+         else if (vcount_in == VER_PIXELS - 5 && hcount_in > NULL +5 && hcount_in < HOR_PIXELS - 5) // -- second blue bottom line.   
+             rgb_nxt = 12'h0_0_f; 
+         else if (hcount_in == NULL)                // - left edge:
+             rgb_nxt = 12'h0_0_f;                // - - make a blue line.
+         else if (hcount_in == NULL + 5 && vcount_in > NULL +5 && vcount_in < VER_PIXELS - 5) // -- second blue left line.   
+             rgb_nxt = 12'h0_0_f;                
          else if (hcount_in == HOR_PIXELS - 1)   // - right edge:
              rgb_nxt = 12'h0_0_f;                // - - make a blue line.
-         else if (hcount_in > 246 && hcount_in < 266 && vcount_in > 177 && vcount_in < 207)
-             rgb_nxt = 12'h0_f_f;
-             //rgb_nxt = 12'h0_0_f;                // - - make a blue line.
-         else if (hcount_in > 246 && hcount_in < 266 && vcount_in > 369 && vcount_in < 399)
-             rgb_nxt = 12'h0_f_f;
-         else if (hcount_in > 246 && hcount_in < 266 && vcount_in > 369 && vcount_in < 399)
-             rgb_nxt = 12'h0_f_f;
-         else if (hcount_in > 246 && hcount_in < 266 && vcount_in > 561 && vcount_in < 591)
-             rgb_nxt = 12'h0_f_f;            
-         else if (hcount_in > 245 && hcount_in < 260 && vcount_in > 300 && vcount_in < 330)
-                 rgb_nxt = 12'h0_f_f;
-         else if (hcount_in > 245 && hcount_in < 260 && vcount_in > 300 && vcount_in < 330)
-                 rgb_nxt = 12'h0_f_f;
-         else if (hcount_in > 245 && hcount_in < 260 && vcount_in > 300 && vcount_in < 330)
-                 rgb_nxt = 12'h0_f_f;
-         else if (hcount_in > 245 && hcount_in < 260 && vcount_in > 300 && vcount_in < 330)
-                 rgb_nxt = 12'h0_f_f;
-         else if (hcount_in > 245 && hcount_in < 260 && vcount_in > 300 && vcount_in < 330)
-                 rgb_nxt = 12'h0_f_f;
+         else if (hcount_in == HOR_PIXELS - 5 && vcount_in > NULL +5 && vcount_in < VER_PIXELS - 5) // -- second blue right line.   
+             rgb_nxt = 12'h0_0_f;
+         else if (hcount_in > NULL + 128 && hcount_in < NULL + 133  && vcount_in > NULL + 66 && vcount_in < NULL + 126) // --first wall 
+             rgb_nxt = 12'h0_0_f;
+         else if (hcount_in > NULL + 460 && hcount_in < NULL + 465  && vcount_in > NULL + 348 && vcount_in < NULL + 420) // --middle obstacle left
+             rgb_nxt = 12'h0_0_f;
+         else if (hcount_in > NULL + 560 && hcount_in < NULL + 565  && vcount_in > NULL + 348 && vcount_in < NULL + 420) // --middle obstacle right
+             rgb_nxt = 12'h0_0_f;
+         else if (hcount_in > NULL + 460 && hcount_in < NULL + 565  && vcount_in > NULL + 348 && vcount_in < NULL + 353) // --middle obstacle
+             rgb_nxt = 12'h0_0_f;
+         else if (hcount_in > NULL + 460 && hcount_in < NULL + 565  && vcount_in > NULL + 415 && vcount_in < NULL + 420) // --middle obstacle
+             rgb_nxt = 12'h0_0_f;
+         else if (hcount_in == 512  && vcount_in == 384)
+            rgb_nxt =  12'h0_f_f;
+         else if (hcount_in > 900 && hcount_in < 930  && vcount_in > 400 && vcount_in < 430)
+            rgb_nxt =  12'h0_f_f;
          else                                    // The rest of active display pixels:
-             rgb_nxt = 12'h0_0_f;                // - fill with gray.
+             rgb_nxt = 12'h0_0_0;                // - fill with black.
      end
  end
  
