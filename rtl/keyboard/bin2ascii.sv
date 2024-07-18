@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: Wisla Krakow
-// Engineer: Xavi Hernandez
+// Company: 
+// Engineer: 
 // 
 // Create Date: 07/27/2016 04:39:01 PM
 // Design Name: 
@@ -22,10 +22,11 @@
 
 module bin2ascii(
     input [15:0] I,
-    output reg [31:0] O
+    output reg [31:0] O=0
     );
+    parameter NBYTES=2;
     genvar i;
-    generate for (i=0; i<4; i=i+1)
+    generate for (i=0; i<NBYTES*2; i=i+1)
         always@(I)
         if (I[4*i+3:4*i] >= 4'h0 && I[4*i+3:4*i] <= 4'h9)
             O[8*i+7:8*i] = 8'd48 + I[4*i+3:4*i];

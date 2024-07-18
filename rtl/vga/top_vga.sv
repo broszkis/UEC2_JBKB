@@ -17,6 +17,7 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
+    input  logic rectangle,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -87,7 +88,8 @@ draw_bg u_draw_bg (
     .hsync_out  (hsync_bg),
     .hblnk_out  (),
 
-    .rgb_out    (rgb_bg)
+    .rgb_out    (rgb_bg),
+    .rectangle
 );
 
 endmodule

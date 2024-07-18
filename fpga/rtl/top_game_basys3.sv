@@ -17,8 +17,8 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
-    inout wire PS2Clk,
-    inout wire PS2Data,
+    input wire PS2Clk,
+    input wire PS2Data,
     output wire RsTx,
     output wire Vsync,
     output wire Hsync,
@@ -36,6 +36,7 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk100MHz;
 wire pclk_mirror;
+wire spawn;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -65,7 +66,6 @@ ODDR pclk_oddr (
     .S(1'b0)
 );
 
-
 /**
  *  Project functional top module
  */
@@ -84,7 +84,8 @@ ODDR pclk_oddr (
     .g(vgaGreen),
     .b(vgaBlue),
     .hs(Hsync),
-    .vs(Vsync)
+    .vs(Vsync),
+    .rectangle(spawn)
 );
 
 
@@ -92,6 +93,13 @@ top u_top (
     .clk(clk100MHz),
     .PS2Clk,
     .PS2Data,
-    .tx(RsTx)
+    .tx
+);
+
+spawn u_spawn (
+    .clk(clk100MHz),
+    .rst(btnC),
+    .data(tx),
+    .rectangle(spawn)
 );
 endmodule

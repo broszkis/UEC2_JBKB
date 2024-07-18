@@ -28,10 +28,10 @@ module uart_tx(
     output      ready 
     );
     parameter CD_MAX=10416, CD_WIDTH=16;
-    reg [CD_WIDTH-1:0] cd_count=0;
-    reg [3:0] count=0;
-    reg running=0;
-    reg [10:0] shift=11'h7ff;
+    logic [CD_WIDTH-1:0] cd_count=0;
+    logic [3:0] count=0;
+    logic running=0;
+    logic [10:0] shift=11'h7ff;
     always@(posedge clk) begin
         if (running == 1'b0) begin
             shift <= {2'b11, tbus, 1'b0};

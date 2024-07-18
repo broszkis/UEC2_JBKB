@@ -36,19 +36,19 @@ set sv_files {
     ../rtl/vga/top_vga.sv
     ../rtl/vga/vga_pkg.sv
     ../rtl/vga/vga_timing.sv
-
+    ../rtl/game_logic/spawn.sv
+    ../rtl/keyboard/bin2ascii.sv
+    ../rtl/keyboard/debouncer.sv
+    ../rtl/keyboard/top.sv
+    ../rtl/keyboard/uart_buf_con.sv
+    ../rtl/keyboard/uart_tx.sv
+    ../rtl/keyboard/PS2Receiver.sv
 }
 
 # Specify Verilog design files location         -- EDIT
 set verilog_files {
     rtl/clk_wiz_0_clk_wiz.v
     rtl/clk_wiz_0.v
-    ../rtl/keyboard/bin2ascii.v
-    ../rtl/keyboard/debouncer.v
-    ../rtl/keyboard/PS2Receiver.v
-    ../rtl/keyboard/top.v
-    ../rtl/keyboard/uart_buf_con.v
-    ../rtl/keyboard/uart_tx.v
  }
 
 # Specify VHDL design files location            -- EDIT

@@ -13,6 +13,7 @@
  module draw_bg (
      input  logic clk,
      input  logic rst,
+     input  logic rectangle,
  
      input  logic [10:0] vcount_in,
      input  logic        vsync_in,
@@ -97,7 +98,7 @@
              rgb_nxt = 12'h0_0_f;
          else if (hcount_in == 512  && vcount_in == 384)
             rgb_nxt =  12'h0_f_f;
-         else if (hcount_in > 900 && hcount_in < 930  && vcount_in > 400 && vcount_in < 430)
+         else if (hcount_in > 900 && hcount_in < 930  && vcount_in > 400 && vcount_in < 430 && rectangle == 1)
             rgb_nxt =  12'h0_f_f;
          else                                    // The rest of active display pixels:
              rgb_nxt = 12'h0_0_0;                // - fill with black.
