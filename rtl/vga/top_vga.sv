@@ -17,12 +17,14 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
-    input  logic rectangle,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
     output logic [3:0] g,
-    output logic [3:0] b
+    output logic [3:0] b,
+    inout logic PS2Clk,
+    inout logic PS2Data,
+    input logic clk100MHz
 
 );
 
@@ -32,64 +34,89 @@ module top_vga (
  */
 
 // VGA signals from timing
-wire [10:0] vcount_tim, hcount_tim;
-wire vsync_tim, hsync_tim;
-wire vblnk_tim, hblnk_tim;
+ vga_if vga_timing();
 
-// VGA signals from background
-wire vsync_bg, hsync_bg;
-wire [11:0] rgb_bg;
+ // VGA signals from background
+ vga_if vga_bg();
+ 
+ // VGA signals from rectangle
+ vga_if vga_rect();
+ 
+ // VGA signals from mouse
+ vga_if vga_mouse();
 
+ wire [11:0] xpos;
+ wire [11:0] ypos;
+ wire [11:0] xposnxt;
+ wire [11:0] yposnxt;
+ wire [11:0] xposnxt1;
+ wire [11:0] yposnxt1;
+ wire [11:0] rgb_wire;
+ wire [11:0] address_wire;
 
-logic rx_empty;
-logic ruart; 
-logic [3:0] hex0, hex1, hex2, hex3;
-logic [7:0] rdata;
+//logic rx_empty;
+//logic ruart; 
+//logic [3:0] hex0, hex1, hex2, hex3;
+//logic [7:0] rdata;
 
 /**
  * Signals assignments
  */
 
-assign vs = vsync_bg;
-assign hs = hsync_bg;
-assign {r,g,b} = rgb_bg;
-
+ assign vs = vga_bg.vsync;
+ assign hs = vga_bg.hsync;
+ assign {r,g,b} = vga_bg.rgb;
+ 
 
 /**
  * Submodules instances
  */
 
-vga_timing u_vga_timing (
+ vga_timing u_vga_timing (
     .clk,
     .rst,
-    .vcount (vcount_tim),
-    .vsync  (vsync_tim),
-    .vblnk  (vblnk_tim),
-    .hcount (hcount_tim),
-    .hsync  (hsync_tim),
-    .hblnk  (hblnk_tim)
+    .vga_out (vga_timing)
 );
+
 
 draw_bg u_draw_bg (
     .clk,
     .rst,
-
-    .vcount_in  (vcount_tim),
-    .vsync_in   (vsync_tim),
-    .vblnk_in   (vblnk_tim),
-    .hcount_in  (hcount_tim),
-    .hsync_in   (hsync_tim),
-    .hblnk_in   (hblnk_tim),
-
-    .vcount_out (),
-    .vsync_out  (vsync_bg),
-    .vblnk_out  (),
-    .hcount_out (),
-    .hsync_out  (hsync_bg),
-    .hblnk_out  (),
-
-    .rgb_out    (rgb_bg),
-    .rectangle
+    .vga_outbg( vga_bg ),
+    .vga_inbg( vga_timing )
 );
 
+draw_rect u_draw_rect (
+    .clk,
+    .rst,
+    .vga_in(vga_bg),
+    .vga_out(vga_rect),
+    .xpos(xpos),
+    .ypos(ypos),
+    .rgb_pixel(rgb_wire),
+    .pixel_addr(address_wire)
+);
+
+wire left;
+
+MouseCtl u_MouseCtl (
+    .clk(clk100MHz),
+    .rst,
+    .left(left),
+    .ps2_data(PS2Data),
+    .ps2_clk(PS2Clk),
+
+    .xpos(xpos),
+    .ypos(ypos),
+
+    .middle(),
+    .new_event(),
+    .right(),
+    .setmax_x(),
+    .setmax_y(),
+    .setx(),
+    .sety(),
+    .value(),
+    .zpos()
+);
 endmodule

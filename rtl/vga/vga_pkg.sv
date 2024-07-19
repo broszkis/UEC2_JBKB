@@ -21,6 +21,8 @@ localparam  VBLANK_START = 768;
 localparam  VBLANK_STOP = 806;
 localparam  VSYNC_START = 771;
 localparam  VSYNC_STOP = 777;
+localparam WIDTH = 48;
+localparam LENGHT = 63;
 
 // Add VGA timing parameters here and refer to them in other modules.
 

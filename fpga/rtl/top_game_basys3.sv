@@ -17,9 +17,8 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
-    input wire PS2Clk,
-    input wire PS2Data,
-    output wire RsTx,
+    inout wire PS2Clk,
+    inout wire PS2Data,
     output wire Vsync,
     output wire Hsync,
     output wire [3:0] vgaRed,
@@ -36,7 +35,7 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk100MHz;
 wire pclk_mirror;
-wire spawn;
+wire uart_spawn;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -50,7 +49,6 @@ logic [7:0] safe_start = 0;
  */
 
 assign JA1 = pclk_mirror;
-
 
 /**
  * FPGA submodules placement
@@ -85,21 +83,9 @@ ODDR pclk_oddr (
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
-    .rectangle(spawn)
-);
-
-
-top u_top (
-    .clk(clk100MHz),
     .PS2Clk,
-    .PS2Data,
-    .tx
+    .PS2Data
 );
 
-spawn u_spawn (
-    .clk(clk100MHz),
-    .rst(btnC),
-    .data(tx),
-    .rectangle(spawn)
-);
+
 endmodule

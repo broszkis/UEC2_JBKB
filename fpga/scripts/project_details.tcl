@@ -35,14 +35,10 @@ set sv_files {
     ../rtl/vga/draw_bg.sv
     ../rtl/vga/top_vga.sv
     ../rtl/vga/vga_pkg.sv
+    ../rtl/vga/vga_if.sv
     ../rtl/vga/vga_timing.sv
     ../rtl/game_logic/spawn.sv
-    ../rtl/keyboard/bin2ascii.sv
-    ../rtl/keyboard/debouncer.sv
-    ../rtl/keyboard/top.sv
-    ../rtl/keyboard/uart_buf_con.sv
-    ../rtl/keyboard/uart_tx.sv
-    ../rtl/keyboard/PS2Receiver.sv
+    ../rtl/keyboard_jednak_mouse/draw_rect.sv
 }
 
 # Specify Verilog design files location         -- EDIT
@@ -52,9 +48,11 @@ set verilog_files {
  }
 
 # Specify VHDL design files location            -- EDIT
-# set vhdl_files {
-#    path/to/file.vhd
-# }
+ set vhdl_files {
+    ../rtl/keyboard_jednak_mouse/MouseCtl.vhd
+    ../rtl/keyboard_jednak_mouse/MouseDisplay.vhd
+    ../rtl/keyboard_jednak_mouse/Ps2Interface.vhd
+ }
 
 # Specify files for a memory initialization     -- EDIT
 # set mem_files {

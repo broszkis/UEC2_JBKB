@@ -1,36 +1,109 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-07-18 11:27:15
+Created: 2024-07-19 11:53:32
 
 ----SYNTHESIS----
-WARNING: [Synth 8-87] always_comb on 'datacur_reg' did not result in combinational logic [rtl/keyboard/PS2Receiver.sv:57]
-WARNING: [Synth 8-87] always_comb on 'flag_reg' did not result in combinational logic [rtl/keyboard/PS2Receiver.sv:65]
-WARNING: [Synth 8-87] always_comb on 'cnt_reg' did not result in combinational logic [rtl/keyboard/PS2Receiver.sv:55]
-WARNING: [Synth 8-689] width (32) of port connection 'tbuf' does not match port width (3) of module 'uart_buf_con' [rtl/keyboard/top.sv:85]
-WARNING: [Synth 8-87] always_comb on 'rectangle_nxt_reg' did not result in combinational logic [rtl/game_logic/spawn.sv:21]
-WARNING: [Synth 8-3848] Net RsTx in module/entity top_game_basys3 does not have driver. [fpga/rtl/top_game_basys3.sv:22]
-WARNING: [Synth 8-7129] Port RsTx in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-327] inferring latch for variable 'flag_reg' [rtl/keyboard/PS2Receiver.sv:65]
-WARNING: [Synth 8-327] inferring latch for variable 'datacur_reg' [rtl/keyboard/PS2Receiver.sv:57]
-WARNING: [Synth 8-327] inferring latch for variable 'cnt_reg' [rtl/keyboard/PS2Receiver.sv:55]
-WARNING: [Synth 8-327] inferring latch for variable 'rectangle_nxt_reg' [rtl/game_logic/spawn.sv:21]
+WARNING: [Synth 8-3848] Net vga_out\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:6]
+WARNING: [Synth 8-87] always_comb on 'pixel_addr_nxt_reg' did not result in combinational logic [rtl/keyboard_jednak_mouse/draw_rect.sv:47]
+WARNING: [Synth 8-6014] Unused sequential element set_x.inc_reg was removed.  [rtl/keyboard_jednak_mouse/MouseCtl.vhd:450]
+WARNING: [Synth 8-6014] Unused sequential element set_x.x_inter_reg was removed.  [rtl/keyboard_jednak_mouse/MouseCtl.vhd:456]
+WARNING: [Synth 8-6014] Unused sequential element set_y.inc_reg was removed.  [rtl/keyboard_jednak_mouse/MouseCtl.vhd:514]
+WARNING: [Synth 8-6014] Unused sequential element set_y.y_inter_reg was removed.  [rtl/keyboard_jednak_mouse/MouseCtl.vhd:520]
+WARNING: [Synth 8-3848] Net rgb_wire in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:54]
+WARNING: [Synth 8-7071] port 'clk100MHz' of module 'top_vga' is unconnected for instance 'u_top_vga' [fpga/rtl/top_game_basys3.sv:78]
+WARNING: [Synth 8-7023] instance 'u_top_vga' of module 'top_vga' has 10 connections declared, but only 9 given [fpga/rtl/top_game_basys3.sv:78]
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[8] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[7] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[6] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[5] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[4] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[11] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[10] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[9] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[8] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[7] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[6] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[5] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[4] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[3] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[2] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[1] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_out\.rgb[0] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-327] inferring latch for variable 'pixel_addr_nxt_reg' [rtl/keyboard_jednak_mouse/draw_rect.sv:47]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port RsTx in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/flag_reg) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[7]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[6]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[5]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[4]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[3]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[2]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[1]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/datacur_reg[0]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/cnt_reg[3]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/cnt_reg[2]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/cnt_reg[1]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_top/uut/cnt_reg[0]) is unused and will be removed from module top_game_basys3.
-WARNING: [Synth 8-3332] Sequential element (u_spawn/rectangle_nxt_reg) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[11]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[10]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[9]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[8]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[7]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[6]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[5]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[4]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[3]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[2]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[1]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_draw_rect/pixel_addr_nxt_reg[0]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[16]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[15]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[14]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[13]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[12]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[11]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[10]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[9]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[8]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[7]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[6]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[5]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[4]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[3]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[2]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[1]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[36]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[35]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[34]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[33]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[32]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[31]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[30]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[29]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[28]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[27]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[26]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[25]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[24]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[23]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[22]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[21]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[20]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[19]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[18]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[17]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[16]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[15]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[14]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[13]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[12]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[11]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[10]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[9]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[8]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[7]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[6]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[5]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[4]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[3]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[2]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[1]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_vga/u_MouseCtl/FSM_onehot_state_reg[0]) is unused and will be removed from module top_game_basys3.
 
 ----IMPLEMENTATION----
-WARNING: [Route 35-328] Router estimated timing not met.
-CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+CLEAR :)
