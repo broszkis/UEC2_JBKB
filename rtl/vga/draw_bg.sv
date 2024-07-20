@@ -81,6 +81,30 @@ end
              rgb_nxt = 12'h0_0_f;
          else if (vga_inbg.hcount > NULL + 460 && vga_inbg.hcount < NULL + 565  && vga_inbg.vcount > NULL + 415 && vga_inbg.vcount < NULL + 420) // --middle obstacle
              rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 65  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) // -- left top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 60) // -- left top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 95 && vga_inbg.vcount < NULL + 100) // -- left top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 65  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) // -- left top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 60) // -- right top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 95 && vga_inbg.vcount < NULL + 100) // -- right top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 864  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) // -- right top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 959 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) // -- right top corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 708 && vga_inbg.vcount < NULL + 713) // -- left bottom corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 673) // -- left bottom corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 65  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 713) // -- left bottom corner
+             rgb_nxt = 12'h0_0_f;
+         else if (vga_inbg.hcount > NULL + 160 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 713) // -- left bottom corner
+             rgb_nxt = 12'h0_0_f;
          else if (vga_inbg.hcount == 512  && vga_inbg.vcount == 384)
             rgb_nxt =  12'h0_f_f;
          else if (vga_inbg.hcount > 900 && vga_inbg.hcount < 930  && vga_inbg.vcount > 400 && vga_inbg.vcount < 430)
