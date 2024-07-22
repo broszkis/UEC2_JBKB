@@ -79,6 +79,7 @@ module top_vga (
 );
 
 
+
 draw_bg u_draw_bg (
     .clk,
     .rst,
@@ -86,18 +87,16 @@ draw_bg u_draw_bg (
     .vga_inbg( vga_timing )
 );
 
-draw_rect u_draw_rect (
-    .clk,
-    .rst,
-    .vga_in(vga_bg),
-    .vga_out(vga_rect),
-    .xpos(xpos),
-    .ypos(ypos),
-    .rgb_pixel(rgb_wire),
-    .pixel_addr(address_wire)
-);
-
 wire left;
+logic middle;
+logic new_event;
+logic right;
+logic setmax_x;
+logic setmax_y;
+logic setx;
+logic sety;
+logic value;
+logic zpos;
 
 MouseCtl u_MouseCtl (
     .clk(clk100MHz),
@@ -108,15 +107,16 @@ MouseCtl u_MouseCtl (
 
     .xpos(xpos),
     .ypos(ypos),
-
-    .middle(),
-    .new_event(),
-    .right(),
-    .setmax_x(),
-    .setmax_y(),
-    .setx(),
-    .sety(),
-    .value(),
-    .zpos()
+    .middle,
+    .new_event,
+    .right,
+    .setmax_x,
+    .setmax_y,
+    .setx,
+    .sety,
+    .value,
+    .zpos
 );
+
+
 endmodule

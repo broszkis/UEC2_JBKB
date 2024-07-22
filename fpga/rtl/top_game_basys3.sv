@@ -75,8 +75,16 @@ ODDR pclk_oddr (
     .locked()
  );
 
+ //clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
+ //   .clk,
+ //   .clk100MHz,
+ //   .clk65MHz,
+ //   .locked()
+ //);
+
  top_vga u_top_vga (
     .clk(clk65MHz),
+    .clk100MHz,
     .rst(btnC),
     .r(vgaRed),
     .g(vgaGreen),

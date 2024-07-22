@@ -11,4 +11,9 @@
 
 sv work ../../rtl/vga/vga_pkg.sv \
         ../../rtl/vga/vga_timing.sv \
+        ../../rtl/vga/draw_.sv \
         vga_timing_tb.sv
+
+vhdl work       ../../rtl/mouse/MouseDisplay.vhd \
+                ../../rtl/mouse/MouseCtl.vhd \
+                ../../rtl/mouse/Ps2Interface.vhd 
