@@ -24,7 +24,8 @@ module top_game_basys3 (
     output wire [3:0] vgaRed,
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
-    output wire JA1
+    output wire JA1,
+    input wire RsTx
 );
 
 
