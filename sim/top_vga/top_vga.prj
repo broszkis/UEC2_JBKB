@@ -16,3 +16,5 @@ sv work ../../rtl/vga/vga_pkg.sv \
         ../../rtl/vga/vga_if.sv \
         ../common/tiff_writer.sv \
         top_vga_tb.sv
+
+vhdl work       

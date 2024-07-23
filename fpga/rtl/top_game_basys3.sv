@@ -35,7 +35,7 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk100MHz;
 wire pclk_mirror;
-wire uart_spawn;
+wire RsRx;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -68,19 +68,19 @@ ODDR pclk_oddr (
  *  Project functional top module
  */
 
- clk_wiz_0 u_clk_Wiz_0 (
+ clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
     .clk,
     .clk100MHz,
     .clk65MHz,
     .locked()
  );
 
- //clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
- //   .clk,
- //   .clk100MHz,
- //   .clk65MHz,
- //   .locked()
- //);
+ top_keyboard u_top_keyboard(
+    .clk(clk65MHz),
+    .PS2Clk(PS2Clk),
+    .PS2Data(PS2Data),
+    .tx(RsRx)
+ );
 
  top_vga u_top_vga (
     .clk(clk65MHz),

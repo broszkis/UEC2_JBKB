@@ -1,19 +1,17 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-07-22 20:48:59
+Created: 2024-07-23 13:49:17
 
 ----SYNTHESIS----
+WARNING: [Synth 8-2644] root scope declaration is not allowed in verilog 95/2K mode [rtl/keyboard/bin2ascii.v:22]
+WARNING: [Synth 8-567] referenced signal 'keycodev' should be on the sensitivity list [rtl/keyboard/top_keyboard.v:55]
 WARNING: [Synth 8-3848] Net vga_out\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:6]
-WARNING: [Synth 8-6014] Unused sequential element set_x.inc_reg was removed.  [rtl/mouse/MouseCtl.vhd:450]
-WARNING: [Synth 8-6014] Unused sequential element set_x.x_inter_reg was removed.  [rtl/mouse/MouseCtl.vhd:456]
-WARNING: [Synth 8-6014] Unused sequential element set_y.inc_reg was removed.  [rtl/mouse/MouseCtl.vhd:514]
-WARNING: [Synth 8-6014] Unused sequential element set_y.y_inter_reg was removed.  [rtl/mouse/MouseCtl.vhd:520]
-WARNING: [Synth 8-689] width (1) of port connection 'zpos' does not match port width (4) of module 'MouseCtl' [rtl/vga/top_vga.sv:118]
-WARNING: [Synth 8-3848] Net value in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:98]
-WARNING: [Synth 8-3848] Net setx in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:96]
-WARNING: [Synth 8-3848] Net sety in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:97]
-WARNING: [Synth 8-3848] Net setmax_x in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:94]
-WARNING: [Synth 8-3848] Net setmax_y in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:95]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [rtl/vga/top_vga.sv:69]
+WARNING: [Synth 8-3848] Net rectangle_nxt in module/entity spawn does not have driver. [rtl/game_logic/spawn.sv:8]
+WARNING: [Synth 8-3848] Net vga_rect\.vsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:3]
+WARNING: [Synth 8-3848] Net vga_rect\.hsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:6]
+WARNING: [Synth 8-3848] Net vga_rect\.rgb in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:9]
+WARNING: [Synth 8-3848] Net RsRx in module/entity top_vga does not have driver. [rtl/vga/top_vga.sv:44]
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
@@ -26,6 +24,7 @@ WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module draw_bg is either unconn
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rx in module spawn is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[11] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[10] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[9] in module vga_timing is either unconnected or has no load
@@ -38,31 +37,46 @@ WARNING: [Synth 8-7129] Port vga_out\.rgb[3] in module vga_timing is either unco
 WARNING: [Synth 8-7129] Port vga_out\.rgb[2] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[1] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[0] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vs in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hs in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port r[3] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port r[2] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port r[1] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port r[0] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port g[3] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port g[2] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port g[1] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port g[0] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port b[3] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port b[2] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port b[1] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port b[0] in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PS2Clk in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PS2Data in module top_vga is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk100MHz in module top_vga is either unconnected or has no load
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:271]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:271]
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:272]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:272]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[8] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[7] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[6] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[5] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[4] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[11] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[10] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[9] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[8] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[7] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[6] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[5] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[4] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[3] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[2] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[1] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[0] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Vsync in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port Hsync in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaRed[3] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaRed[2] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaRed[1] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaRed[0] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaGreen[3] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaGreen[2] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaGreen[1] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaGreen[0] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaBlue[3] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaBlue[2] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaBlue[1] in module top_game_basys3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vgaBlue[0] in module top_game_basys3 is either unconnected or has no load
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 
 ----IMPLEMENTATION----
-No implementation log file found!
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:271]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:271]
+WARNING: [Vivado 12-584] No ports matched 'RsRx'. [fpga/constraints/top_game_basys3.xdc:272]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [fpga/constraints/top_game_basys3.xdc:272]
