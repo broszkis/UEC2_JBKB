@@ -18,13 +18,12 @@ module top_vga (
     input  logic clk,
     input  logic clk100MHz, 
     input  logic rst,
+    input logic RsTx,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
     output logic [3:0] g,
-    output logic [3:0] b,
-    inout logic PS2Clk,
-    inout logic PS2Data
+    output logic [3:0] b
 );
 
 
@@ -38,10 +37,7 @@ module top_vga (
  // VGA signals from background
  vga_if vga_bg();
  
- // VGA signals from rectangle
- vga_if vga_rect();
  wire rectangle;
- wire RsRx;
  wire [11:0] xpos;
  wire [11:0] ypos;
  wire [11:0] xpos_nxt;
@@ -51,9 +47,9 @@ module top_vga (
  * Signals assignments
  */
 
- assign vs = vga_rect.vsync;
- assign hs = vga_rect.hsync;
- assign {r,g,b} = vga_rect.rgb;
+ assign vs = vga_bg.vsync;
+ assign hs = vga_bg.hsync;
+ assign {r,g,b} = vga_bg.rgb;
  
 
 /**
@@ -66,19 +62,20 @@ module top_vga (
     .vga_out (vga_timing)
 );
 
-spawn u_spawn(
-    .clk,
-    .rectangle(),
-    .rst,
-    .rx(RsRx)
-);
-
 draw_bg u_draw_bg (
     .clk,
     .rst,
     .vga_outbg( vga_bg ),
-    .vga_inbg( vga_timing )
+    .vga_inbg( vga_timing ),
+    .rectangle_nxt(rectangle)
 );
 
+
+spawn u_spawn(
+    .clk,
+    .rectangle,
+    .rst,
+    .rx(RsTx)
+);
 
 endmodule

@@ -19,10 +19,9 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-parameter NBYTES=2;
 module bin2ascii(
-    input [NBYTES*8-1:0] I,
-    output reg [NBYTES*16-1:0] O=0
+    input [15:0] I,
+    output reg [31:0] O=0
     );
     parameter NBYTES=2;
     genvar i;

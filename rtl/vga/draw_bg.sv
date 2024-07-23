@@ -173,7 +173,7 @@ end
          else if (vga_inbg.hcount == 512  && vga_inbg.vcount == 384)
             rgb_nxt =  12'h0_f_f;
              // postac xd
-         else if (vga_inbg.hcount > 900 && vga_inbg.hcount < 930  && vga_inbg.vcount > 400 && vga_inbg.vcount < 430 && rectangle_nxt ==1)
+         else if (vga_inbg.hcount > 497 && vga_inbg.hcount < 527  && vga_inbg.vcount > 369 && vga_inbg.vcount < 399 && rectangle_nxt == 1)
             rgb_nxt =  12'h0_f_f;
          else                                    // The rest of active display pixels:
              rgb_nxt = 12'h0_0_0;                // - fill with black.

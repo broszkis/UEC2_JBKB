@@ -17,8 +17,11 @@ always_ff@ (posedge clk) begin
 end
 
 always_comb begin 
-    if (rx == 97)
+    if (rx == 97) begin
         rectangle_nxt = 1;
 end
-
+else begin
+    rectangle_nxt = 0;
+    end
+end
 endmodule
