@@ -1,12 +1,18 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-07-23 16:08:54
+Created: 2024-07-24 11:48:38
 
 ----SYNTHESIS----
-WARNING: [Synth 8-567] referenced signal 'keycodev' should be on the sensitivity list [rtl/keyboard/top_keyboard.v:55]
+WARNING: [Synth 8-567] referenced signal 'keycodev' should be on the sensitivity list [rtl/keyboard/top_keyboard.v:57]
 WARNING: [Synth 8-3848] Net vga_out\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:6]
-WARNING: [Synth 8-7129] Port rst in module spawn is either unconnected or has no load
-WARNING: [Synth 8-7129] Port rx in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[7] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[6] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[5] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[4] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[3] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[2] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[1] in module spawn is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[0] in module spawn is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
@@ -33,6 +39,8 @@ WARNING: [Synth 8-7129] Port vga_out\.rgb[1] in module vga_timing is either unco
 WARNING: [Synth 8-7129] Port vga_out\.rgb[0] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port clk100MHz in module top_vga is either unconnected or has no load
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3332] Sequential element (u_top_keyboard/get_rx/FSM_sequential_state_reg_reg[1]) is unused and will be removed from module top_game_basys3.
+WARNING: [Synth 8-3332] Sequential element (u_top_keyboard/get_rx/FSM_sequential_state_reg_reg[0]) is unused and will be removed from module top_game_basys3.
 
 ----IMPLEMENTATION----
 WARNING: [DRC RPBF-3] IO port buffering is incomplete: Device port PS2Clk expects both input and output buffering but the buffers are incomplete.

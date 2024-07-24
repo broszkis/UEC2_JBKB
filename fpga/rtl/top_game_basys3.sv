@@ -25,6 +25,7 @@ module top_game_basys3 (
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
     output wire JA1,
+    input wire RsRx,
     output logic RsTx
 );
 
@@ -36,6 +37,7 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk100MHz;
 wire pclk_mirror;
+wire [7:0] data;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -81,20 +83,30 @@ ODDR pclk_oddr (
     .clk(clk65MHz),
     .PS2Clk(PS2Clk),
     .PS2Data(PS2Data),
+    .dout(data),
+    .rx(RsRx),
     .tx(RsTx)
  );
 
+ uart_rx u_uart_rx (
+    .clk,
+    .dout(data),
+    .reset(btnC),
+    .rx,
+    .rx_done_tick(),
+    .s_tick()
+ );
 
  top_vga u_top_vga (
     .clk(clk65MHz),
-    .clk100MHz,
+    .clk100MHz(clk100MHz),
     .rst(btnC),
     .r(vgaRed),
     .g(vgaGreen),
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
-    .RsTx(RsTx)
+    .din(data)
 );
 
 

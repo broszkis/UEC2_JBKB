@@ -1,7 +1,7 @@
 module spawn (
     input logic clk,
     input logic rst,
-    input logic rx,
+    input logic [7:0] data,
     output logic rectangle
 );
 
@@ -17,11 +17,11 @@ always_ff@ (posedge clk) begin
 end
 
 always_comb begin 
-    if (rx == 97) begin
+//    if (data ) begin
         rectangle_nxt = 1;
-end
-else begin
-    rectangle_nxt = 0;
-    end
+//end
+//else begin
+//    rectangle_nxt = 0;
+//    end
 end
 endmodule

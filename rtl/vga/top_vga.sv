@@ -18,7 +18,7 @@ module top_vga (
     input  logic clk,
     input  logic clk100MHz, 
     input  logic rst,
-    input logic RsTx,
+    input logic [7:0] din,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -75,7 +75,7 @@ spawn u_spawn(
     .clk,
     .rectangle,
     .rst,
-    .rx(RsTx)
+    .data(din)
 );
 
 endmodule

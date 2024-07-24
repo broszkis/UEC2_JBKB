@@ -22,9 +22,10 @@
 
 module top_keyboard(
     input         clk,
-    input         PS2Data,
-    input         PS2Clk,
-    output        tx
+    inout         PS2Data,
+    inout         PS2Clk,
+    output        tx,
+    output [7:0] dout
 );
     wire        tready;
     wire        ready;
@@ -93,8 +94,8 @@ module top_keyboard(
         .clk    (clk),
         .start  (tstart),
         .tbus   (tbus),
-        .tx     (tx),
+        .tx,
         .ready  (tready)
     );
-    
+
 endmodule

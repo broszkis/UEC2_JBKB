@@ -38,6 +38,7 @@ set sv_files {
     ../rtl/vga/vga_if.sv
     ../rtl/vga/vga_timing.sv
     ../rtl/game_logic/spawn.sv
+    
 }
 
 # Specify Verilog design files location         -- EDIT
@@ -50,6 +51,7 @@ set verilog_files {
     ../rtl/keyboard/top_keyboard.v
     ../rtl/keyboard/uart_buf_con.v
     ../rtl/keyboard/uart_tx.v
+    ../rtl/keyboard/uart_rx.v
  }
 
 # Specify VHDL design files location            -- EDIT
