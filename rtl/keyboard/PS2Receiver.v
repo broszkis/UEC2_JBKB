@@ -24,7 +24,7 @@ module PS2Receiver(
     input clk,
     input kclk,
     input kdata,
-    output reg [15:0] keycode=0,
+    output reg [15:0] keycode,
     output reg oflag
     );
     
@@ -53,17 +53,17 @@ debouncer #(
     
 always@(negedge(kclkf))begin
     case(cnt)
-    0:;//Start bit
-    1:datacur[0]<=kdataf;
-    2:datacur[1]<=kdataf;
-    3:datacur[2]<=kdataf;
-    4:datacur[3]<=kdataf;
-    5:datacur[4]<=kdataf;
-    6:datacur[5]<=kdataf;
-    7:datacur[6]<=kdataf;
-    8:datacur[7]<=kdataf;
-    9:flag<=1'b1;
-    10:flag<=1'b0;
+    4'd0:;//Start bit
+    4'd1:datacur[0]<=kdataf;
+    4'd2:datacur[1]<=kdataf;
+    4'd3:datacur[2]<=kdataf;
+    4'd4:datacur[3]<=kdataf;
+    4'd5:datacur[4]<=kdataf;
+    4'd6:datacur[5]<=kdataf;
+    4'd7:datacur[6]<=kdataf;
+    4'd8:datacur[7]<=kdataf;
+    4'd9:flag<=1'b1;
+    4'd10:flag<=1'b0;
     
     endcase
         if(cnt<=9) cnt<=cnt+1;

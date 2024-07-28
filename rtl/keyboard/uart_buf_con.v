@@ -26,9 +26,9 @@ module uart_buf_con(
     input      [31:0] tbuf,
     input             start,
     output            ready,
-    output reg        tstart=0,
+    output reg        tstart,
     input             tready,
-    output reg [ 7:0] tbus=0
+    output reg [ 7:0] tbus
     );
     reg [2:0] sel=0;
     reg [31:0] pbuf=0;
@@ -59,13 +59,13 @@ module uart_buf_con(
     assign ready = ~running;
     always@(sel, pbuf)
         case (sel)
-        1: tbus <= 8'd13;
-        2: tbus <= 8'd10;
-        3: tbus <= pbuf[7:0];
-        4: tbus <= pbuf[15:8];
-        5: tbus <= 8'd32;
-        6: tbus <= pbuf[23:16];
-        7: tbus <= pbuf[31:24];
-        default: tbus <= 8'd0;
+        3'd1: tbus = 8'd13;
+        3'd2: tbus = 8'd10;
+        3'd3: tbus = pbuf[7:0];
+        3'd4: tbus = pbuf[15:8];
+        3'd5: tbus = 8'd32;
+        3'd6: tbus = pbuf[23:16];
+        3'd7: tbus = pbuf[31:24];
+        default: tbus = 8'd0;
         endcase
 endmodule

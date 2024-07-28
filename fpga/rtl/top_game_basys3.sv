@@ -17,15 +17,14 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
-    inout wire PS2Clk,
-    inout wire PS2Data,
+    input wire PS2Clk,
+    input wire PS2Data,
     output wire Vsync,
     output wire Hsync,
     output wire [3:0] vgaRed,
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
     output wire JA1,
-    input wire RsRx,
     output logic RsTx
 );
 
@@ -83,18 +82,7 @@ ODDR pclk_oddr (
     .clk(clk65MHz),
     .PS2Clk(PS2Clk),
     .PS2Data(PS2Data),
-    .dout(data),
-    .rx(RsRx),
     .tx(RsTx)
- );
-
- uart_rx u_uart_rx (
-    .clk,
-    .dout(data),
-    .reset(btnC),
-    .rx,
-    .rx_done_tick(),
-    .s_tick()
  );
 
  top_vga u_top_vga (
@@ -108,6 +96,5 @@ ODDR pclk_oddr (
     .vs(Vsync),
     .din(data)
 );
-
 
 endmodule

@@ -22,13 +22,12 @@
 
 module top_keyboard(
     input         clk,
-    inout         PS2Data,
-    inout         PS2Clk,
-    output        tx,
-    output [7:0] dout
+    input         PS2Data,
+    input         PS2Clk,
+    output        tx
 );
     wire        tready;
-    wire        ready;
+    //wire        ready;
     wire        tstart;
     reg         start=0;
     reg         CLK50MHZ=0;
@@ -53,16 +52,16 @@ module top_keyboard(
     );
     
     
-    always@(keycode)
+    always@(keycode, keycodev)
         if (keycode[7:0] == 8'hf0) begin
-            cn <= 1'b0;
-            bcount <= 3'd0;
+            cn = 1'b0;
+            bcount = 3'd0;
         end else if (keycode[15:8] == 8'hf0) begin
-            cn <= keycode != keycodev;
-            bcount <= 3'd5;
+            cn = keycode != keycodev;
+            bcount = 3'd5;
         end else begin
-            cn <= keycode[7:0] != keycodev[7:0] || keycodev[15:8] == 8'hf0;
-            bcount <= 3'd2;
+            cn = keycode[7:0] != keycodev[7:0] || keycodev[15:8] == 8'hf0;
+            bcount = 3'd2;
         end
     
     always@(posedge clk)
@@ -72,7 +71,7 @@ module top_keyboard(
         end else
             start <= 1'b0;
             
-     bin2ascii #(
+    bin2ascii #(
         .NBYTES(2)
     ) conv (
         .I(keycodev),
@@ -84,7 +83,7 @@ module top_keyboard(
         .bcount (bcount),
         .tbuf   (tbuf  ),  
         .start  (start ), 
-        .ready  (ready ), 
+        .ready  (), 
         .tstart (tstart),
         .tready (tready),
         .tbus   (tbus  )
@@ -94,8 +93,8 @@ module top_keyboard(
         .clk    (clk),
         .start  (tstart),
         .tbus   (tbus),
-        .tx,
+        .tx     (tx),
         .ready  (tready)
     );
-
+    
 endmodule

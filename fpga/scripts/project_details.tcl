@@ -51,7 +51,6 @@ set verilog_files {
     ../rtl/keyboard/top_keyboard.v
     ../rtl/keyboard/uart_buf_con.v
     ../rtl/keyboard/uart_tx.v
-    ../rtl/keyboard/uart_rx.v
  }
 
 # Specify VHDL design files location            -- EDIT
