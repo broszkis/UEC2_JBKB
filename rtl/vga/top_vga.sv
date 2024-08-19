@@ -62,20 +62,48 @@ module top_vga (
     .vga_out (vga_timing)
 );
 
-draw_bg u_draw_bg (
+/**draw_bg u_draw_bg (
     .clk,
     .rst,
     .vga_outbg( vga_bg ),
     .vga_inbg( vga_timing ),
     .rectangle_nxt(rectangle)
+);**/
+
+main_menu u_main_menu (
+    .clk,
+    .rst,
+    .vga_inbg (vga_timing),
+    .vga_outbg (vga_bg)
 );
 
+draw_mouse u_draw_mouse(
+.clk (clk),
+.rst,
+.xpos(xposnxt),
+.ypos(yposnxt),
+.vga_in (vga_rect),
+.vga_out (vga_mouse)
+);
 
-spawn u_spawn(
+wire left;
+
+MouseCtl u_MouseCtl (
+    .clk(clk100MHz),
+    .rst,
+    .left(left),
+    .ps2_data(PS2Data),
+    .ps2_clk(PS2Clk),
+
+    .xpos(xpos),
+    .ypos(ypos)
+);
+/**spawn u_spawn(
     .clk,
     .rectangle,
     .rst,
     .data(din)
-);
+);**/
+
 
 endmodule

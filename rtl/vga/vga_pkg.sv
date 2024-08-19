@@ -23,6 +23,9 @@ localparam  VSYNC_START = 771;
 localparam  VSYNC_STOP = 777;
 localparam WIDTH = 48;
 localparam LENGHT = 63;
+localparam BLUE = 12'h0_0_f;
+localparam YELLOW = 12'hf_f_0;//chyba
+localparam BLACK = 12'h0_0_0;
 
 // Add VGA timing parameters here and refer to them in other modules.
 
