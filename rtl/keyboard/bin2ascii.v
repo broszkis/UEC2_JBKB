@@ -21,10 +21,10 @@
 
 
 module bin2ascii(
-    input[15:0] I,
-    output reg [31:0] O
+    input [15:0] I,
+    output reg [31:0] O=0
     );
-    parameter NBYTES=2;
+    parameter NBYTES = 2;
     genvar i;
     generate for (i=0; i<NBYTES*2; i=i+1)
         always@(I)

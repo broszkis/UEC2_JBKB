@@ -16,9 +16,8 @@
 
 module top_vga (
     input  logic clk,
-    input  logic clk100MHz, 
     input  logic rst,
-    input logic [7:0] din,
+    input  logic key_pressed,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -36,6 +35,9 @@ module top_vga (
 
  // VGA signals from background
  vga_if vga_bg();
+
+  // VGA signals from drawing rectangle
+ vga_if vga_rect();
  
  wire rectangle;
  wire [11:0] xpos;
@@ -47,9 +49,9 @@ module top_vga (
  * Signals assignments
  */
 
- assign vs = vga_bg.vsync;
- assign hs = vga_bg.hsync;
- assign {r,g,b} = vga_bg.rgb;
+ assign vs = vga_rect.vsync;
+ assign hs = vga_rect.hsync;
+ assign {r,g,b} = vga_rect.rgb;
  
 
 /**
@@ -62,48 +64,28 @@ module top_vga (
     .vga_out (vga_timing)
 );
 
-/**draw_bg u_draw_bg (
+draw_bg u_draw_bg (
     .clk,
     .rst,
-    .vga_outbg( vga_bg ),
-    .vga_inbg( vga_timing ),
-    .rectangle_nxt(rectangle)
-);**/
+    .vga_outbg(vga_bg),
+    .vga_inbg(vga_timing)
+);
 
+draw_rect u_draw_rect (
+    .clk,
+    .rst,
+    .rect_in(vga_bg),
+    .rect_out(vga_rect),
+    .key_pressed
+);
+
+/*
 main_menu u_main_menu (
     .clk,
     .rst,
     .vga_inbg (vga_timing),
     .vga_outbg (vga_bg)
 );
-
-draw_mouse u_draw_mouse(
-.clk (clk),
-.rst,
-.xpos(xposnxt),
-.ypos(yposnxt),
-.vga_in (vga_rect),
-.vga_out (vga_mouse)
-);
-
-wire left;
-
-MouseCtl u_MouseCtl (
-    .clk(clk100MHz),
-    .rst,
-    .left(left),
-    .ps2_data(PS2Data),
-    .ps2_clk(PS2Clk),
-
-    .xpos(xpos),
-    .ypos(ypos)
-);
-/**spawn u_spawn(
-    .clk,
-    .rectangle,
-    .rst,
-    .data(din)
-);**/
-
+*/
 
 endmodule

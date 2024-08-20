@@ -33,12 +33,14 @@ set xdc_files {
 set sv_files {
     rtl/top_game_basys3.sv
     ../rtl/vga/draw_bg.sv
+    ../rtl/vga/draw_rect.sv
     ../rtl/vga/top_vga.sv
     ../rtl/vga/vga_pkg.sv
     ../rtl/vga/vga_if.sv
     ../rtl/vga/vga_timing.sv
     ../rtl/vga/main_menu.sv
     ../rtl/game_logic/spawn.sv
+    ../rtl/keyboard/controls.sv
  
     
 }
@@ -51,8 +53,6 @@ set verilog_files {
     ../rtl/keyboard/debouncer.v
     ../rtl/keyboard/PS2Receiver.v
     ../rtl/keyboard/top_keyboard.v
-    ../rtl/keyboard/uart_buf_con.v
-    ../rtl/keyboard/uart_tx.v
  }
 
 # Specify VHDL design files location            -- EDIT

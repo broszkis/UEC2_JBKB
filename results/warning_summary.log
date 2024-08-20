@@ -1,29 +1,21 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-10 17:10:10
+Created: 2024-08-21 01:50:43
 
 ----SYNTHESIS----
 WARNING: [Synth 8-3848] Net vga_out\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:6]
-WARNING: [Synth 8-3848] Net vga_bg\.vsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:3]
-WARNING: [Synth 8-3848] Net vga_bg\.hsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:6]
-WARNING: [Synth 8-3848] Net vga_bg\.rgb in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:9]
-WARNING: [Synth 8-3848] Net vga_bg\.vcount in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:2]
-WARNING: [Synth 8-3848] Net vga_bg\.vblnk in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:4]
-WARNING: [Synth 8-3848] Net vga_bg\.hcount in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:5]
-WARNING: [Synth 8-3848] Net vga_bg\.hblnk in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:7]
-WARNING: [Synth 8-3848] Net data in module/entity top_game_basys3 does not have driver. [fpga/rtl/top_game_basys3.sv:39]
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[8] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[7] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[6] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[5] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[4] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module main_menu is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[8] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[7] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[6] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[5] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[4] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[11] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[10] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[9] in module vga_timing is either unconnected or has no load
@@ -36,20 +28,10 @@ WARNING: [Synth 8-7129] Port vga_out\.rgb[3] in module vga_timing is either unco
 WARNING: [Synth 8-7129] Port vga_out\.rgb[2] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[1] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_out\.rgb[0] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port clk100MHz in module top_vga is either unconnected or has no load
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port vgaRed[3] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaRed[2] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaRed[1] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaRed[0] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaGreen[3] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaGreen[2] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaGreen[1] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaGreen[0] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaBlue[3] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaBlue[2] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaBlue[1] in module top_game_basys3 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vgaBlue[0] in module top_game_basys3 is either unconnected or has no load
 
 ----IMPLEMENTATION----
-CLEAR :)
+WARNING: [Route 35-328] Router estimated timing not met.
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
+WARNING: [Device 21-2174] Failed to initialize Virtual grid.

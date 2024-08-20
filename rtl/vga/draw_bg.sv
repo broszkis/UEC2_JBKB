@@ -13,7 +13,6 @@
  module draw_bg (
     input  logic clk,
     input  logic rst,
-    input logic rectangle_nxt,
     vga_if.in vga_inbg,
     vga_if.out vga_outbg
 );
@@ -173,8 +172,6 @@ end
          else if (vga_inbg.hcount == 512  && vga_inbg.vcount == 384)
             rgb_nxt =  12'h0_f_f;
              // postac xd
-         else if (vga_inbg.hcount > 497 && vga_inbg.hcount < 527  && vga_inbg.vcount > 369 && vga_inbg.vcount < 399 && rectangle_nxt == 1)
-            rgb_nxt =  12'h0_f_f;
          else                                    // The rest of active display pixels:
              rgb_nxt = 12'h0_0_0;                // - fill with black.
      end
