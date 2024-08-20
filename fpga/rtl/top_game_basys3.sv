@@ -87,14 +87,12 @@ ODDR pclk_oddr (
 
  top_vga u_top_vga (
     .clk(clk65MHz),
-    .clk100MHz(clk100MHz),
     .rst(btnC),
     .r(vgaRed),
     .g(vgaGreen),
     .b(vgaBlue),
     .hs(Hsync),
-    .vs(Vsync),
-    .din(data)
+    .vs(Vsync)
 );
 
 endmodule

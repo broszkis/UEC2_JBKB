@@ -18,7 +18,7 @@
   *  Local parameters
   */
  
- localparam CLK_PERIOD = 15.385s;     // 65 MHz
+ localparam CLK_PERIOD = 15.385;     // 65 MHz
  
  
  /**
@@ -27,11 +27,8 @@
  
  logic clk;
  logic rst;
- 
- wire [10:0] vcount, hcount;
- wire        vsync,  hsync;
- wire        vblnk,  hblnk;
- 
+
+ vga_if wire_tim();
  
  /**
   * Clock generation
@@ -63,12 +60,7 @@
  vga_timing dut(
      .clk,
      .rst,
-     .vcount,
-     .vsync,
-     .vblnk,
-     .hcount,
-     .hsync,
-     .hblnk
+     .tim_out(wire_tim)
  );
  
  /**
@@ -76,7 +68,7 @@
   */
  task afterreset();
      begin
-         assert (hcount == 0 && vcount == 0);
+         assert (wire_tim.hcount == 0 && wire_tim.vcount == 0);
      end
  endtask
   // Here you can declare tasks with immediate assertions (assert).
@@ -85,12 +77,12 @@
  /**
   * Assertions
   */
- assert property (@(posedge clk) (rst == 1 |-> ##1(hcount >= 0 && hcount <= HBLANK_STOP)));
- assert property (@(posedge clk) (rst == 1 |-> ##1(vcount >= 0 && vcount <= VBLANK_STOP)));
- assert property (@(posedge clk) (rst == 1 |-> ##1((hblnk == 1 && hcount >= HBLANK_START && hcount <= HBLANK_STOP) || (hblnk == 0 && hcount >= 0 && hcount <= HBLANK_START))));
- assert property (@(posedge clk) (rst == 1 |-> ##1((hsync == 1 && hcount >= HSYNC_START && hsync <= HSYNC_STOP) || (hsync == 0 && (hcount >= 0 && hcount <= HSYNC_START) || (hcount >= HSYNC_STOP && hcount <= HBLANK_STOP)))));
- assert property (@(posedge clk) (rst == 1 |-> ##1((vblnk == 1 && hcount >= VBLANK_START && vcount <= VBLANK_STOP) || (vblnk == 0 && vcount >= 0 && vcount <= VBLANK_START))));
- assert property (@(posedge clk) (rst == 1 |-> ##1((vsync == 1 && vcount >= VSYNC_START && vsync <= VSYNC_STOP) || (vsync == 0 && (vcount >= 0 && vcount <= VSYNC_START) || (vcount >= VSYNC_STOP && vcount <= VBLANK_STOP)))));
+ assert property (@(posedge clk) (rst == 1 |-> ##1(wire_tim.hcount >= 0 && wire_tim.hcount <= HBLANK_STOP)));
+ assert property (@(posedge clk) (rst == 1 |-> ##1(wire_tim.vcount >= 0 && wire_tim.vcount <= VBLANK_STOP)));
+ assert property (@(posedge clk) (rst == 1 |-> ##1((wire_tim.hblnk == 1 && wire_tim.hcount >= HBLANK_START && wire_tim.hcount <= HBLANK_STOP) || (wire_tim.hblnk == 0 && wire_tim.hcount >= 0 && wire_tim.hcount <= HBLANK_START))));
+ assert property (@(posedge clk) (rst == 1 |-> ##1((wire_tim.hsync == 1 && wire_tim.hcount >= HSYNC_START && wire_tim.hsync <= HSYNC_STOP) || (wire_tim.hsync == 0 && (wire_tim.hcount >= 0 && wire_tim.hcount <= HSYNC_START) || (wire_tim.hcount >= HSYNC_STOP && wire_tim.hcount <= HBLANK_STOP)))));
+ assert property (@(posedge clk) (rst == 1 |-> ##1((wire_tim.vblnk == 1 && wire_tim.hcount >= VBLANK_START && wire_tim.vcount <= VBLANK_STOP) || (wire_tim.vblnk == 0 && wire_tim.vcount >= 0 && wire_tim.vcount <= VBLANK_START))));
+ assert property (@(posedge clk) (rst == 1 |-> ##1((wire_tim.vsync == 1 && wire_tim.vcount >= VSYNC_START && wire_tim.vsync <= VSYNC_STOP) || (wire_tim.vsync == 0 && (wire_tim.vcount >= 0 && wire_tim.vcount <= VSYNC_START) || (wire_tim.vcount >= VSYNC_STOP && wire_tim.vcount <= VBLANK_STOP)))));
  // Here you can declare concurrent assertions (assert property).
  
  
@@ -102,9 +94,9 @@
      @(posedge rst);
      @(negedge rst);
  
-     wait (vsync == 1'b0);
-     @(negedge vsync)
-     @(negedge vsync)
+     wait (wire_tim.vsync == 1'b0);
+     @(negedge wire_tim.vsync)
+     @(negedge wire_tim.vsync)
  
      $finish;
  end

@@ -16,9 +16,7 @@
 
 module top_vga (
     input  logic clk,
-    input  logic clk100MHz, 
     input  logic rst,
-    input logic [7:0] din,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -26,56 +24,46 @@ module top_vga (
     output logic [3:0] b
 );
 
-
 /**
- * Local variables and signals
+ * VGA interface wiring
  */
 
-// VGA signals from timing
- vga_if vga_timing();
-
- // VGA signals from background
- vga_if vga_bg();
- 
- wire rectangle;
- wire [11:0] xpos;
- wire [11:0] ypos;
- wire [11:0] xpos_nxt;
- wire [11:0] ypos_nxt;
+vga_if wire_tim();
+vga_if wire_bg();
+vga_if wire_rect();
 
 /**
  * Signals assignments
  */
 
- assign vs = vga_bg.vsync;
- assign hs = vga_bg.hsync;
- assign {r,g,b} = vga_bg.rgb;
- 
+ assign vs = wire_bg.vsync;
+ assign hs = wire_bg.hsync;
+ assign {r,g,b} = wire_bg.rgb;
+
 
 /**
  * Submodules instances
  */
 
- vga_timing u_vga_timing (
+vga_timing u_vga_timing (
     .clk,
     .rst,
-    .vga_out (vga_timing)
+    .tim_out(wire_tim)
 );
 
 draw_bg u_draw_bg (
     .clk,
     .rst,
-    .vga_outbg( vga_bg ),
-    .vga_inbg( vga_timing ),
-    .rectangle_nxt(rectangle)
+    .bg_in(wire_tim),
+    .bg_out(wire_bg)
 );
 
-
-spawn u_spawn(
+/*
+draw_rect u_draw_rect (
     .clk,
-    .rectangle,
     .rst,
-    .data(din)
+    .rect_in(wire_bg),
+    .rect_out(wire_rect)
 );
-
+*/
 endmodule

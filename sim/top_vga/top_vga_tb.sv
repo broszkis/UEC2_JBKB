@@ -56,8 +56,8 @@ end
  */
 
 top_vga dut (
-    .clk(clk),
-    .rst(rst),
+    .clk,
+    .rst,
     .vs(vs),
     .hs(),
     .r(r),
