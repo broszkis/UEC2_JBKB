@@ -40,6 +40,7 @@ set sv_files {
     ../rtl/vga/vga_timing.sv
     ../rtl/vga/main_menu.sv
     ../rtl/game_logic/spawn.sv
+    ../rtl/game_logic/random_generate.sv
     ../rtl/keyboard/controls.sv
  
     

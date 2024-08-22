@@ -38,8 +38,8 @@ module top_vga (
 
   // VGA signals from drawing rectangle
  vga_if vga_rect();
- 
- wire rectangle;
+ logic [14:0][31:0]position_x;
+ logic [14:0][31:0]position_y;
  wire [11:0] xpos;
  wire [11:0] ypos;
  wire [11:0] xpos_nxt;
@@ -87,5 +87,11 @@ main_menu u_main_menu (
     .vga_outbg (vga_bg)
 );
 */
+random_generate u_random_generate(
+    .clk,
+    .position_x,
+    .position_y,
+    .rst
+);
 
 endmodule
