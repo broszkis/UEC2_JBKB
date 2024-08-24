@@ -36,7 +36,7 @@ wire clk65MHz;
 wire clk91MHz;
 wire pclk_mirror;
 wire [15:0] keycode;
-wire move_up;
+wire move_up, move_down, move_right, move_left;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -89,10 +89,10 @@ controls u_controls(
     .clk(clk91MHz),
     .rst(btnC),
     .keycode,
-    .move_up(move_up),
-    .move_down(),
-    .move_right(),
-    .move_left()
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left
 );
 
 top_vga u_top_vga(
@@ -103,7 +103,10 @@ top_vga u_top_vga(
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
-    .key_pressed(move_up)
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left
 );
 
 endmodule

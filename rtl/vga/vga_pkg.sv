@@ -31,6 +31,7 @@ localparam RECT_X = 60;
 localparam RECT_Y = 60;
 localparam RECT_HEIGHT = 30;
 localparam RECT_WIDTH = 30;
+localparam PLAYER_SIZE = 15;
 
 // Add VGA timing parameters here and refer to them in other modules.
 

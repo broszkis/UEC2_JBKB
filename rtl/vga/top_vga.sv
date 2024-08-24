@@ -17,7 +17,7 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
-    input  logic key_pressed,
+    input  logic move_up, move_down, move_right, move_left,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -76,7 +76,10 @@ draw_rect u_draw_rect (
     .rst,
     .rect_in(vga_bg),
     .rect_out(vga_rect),
-    .key_pressed
+    .move_up, 
+    .move_down, 
+    .move_right, 
+    .move_left
 );
 
 /*
