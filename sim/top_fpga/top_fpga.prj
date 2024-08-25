@@ -10,8 +10,11 @@
 
 
 sv work ../../rtl/vga/vga_pkg.sv \
+        ../../rtl/vga/vga_if.sv \
         ../../rtl/vga/vga_timing.sv \
         ../../rtl/vga/draw_bg.sv \
+        ../../rtl/vga/main_menu.sv \
+        ../../rtl/game_logic/spawn.sv \
         ../../rtl/vga/top_vga.sv \
         ../../fpga/rtl/top_game_basys3.sv \
         ../common/tiff_writer.sv \
@@ -20,4 +23,10 @@ sv work ../../rtl/vga/vga_pkg.sv \
 # compile glbl module - required for IP simulation
 verilog work    ../common/glbl.v \
                 ../../fpga/rtl/clk_wiz_0_clk_wiz.v \
-                ../../fpga/rtl/clk_wiz_0.v 
+                ../../fpga/rtl/clk_wiz_0.v \
+                ../../rtl/keyboard/bin2ascii.v \
+                ../../rtl/keyboard/debouncer.v \
+                ../../rtl/keyboard/PS2Receiver.v \
+                ../../rtl/keyboard/top_keyboard.v \
+                ../../rtl/keyboard/uart_buf_con.v \
+                ../../rtl/keyboard/uart_tx.v

@@ -1,5 +1,6 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
+<<<<<<< HEAD
 Created: 2024-08-18 22:07:38
 
 ----SYNTHESIS----
@@ -29,8 +30,15 @@ WARNING: [Synth 8-7129] Port tim_out\.rgb[3] in module vga_timing is either unco
 WARNING: [Synth 8-7129] Port tim_out\.rgb[2] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port tim_out\.rgb[1] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port tim_out\.rgb[0] in module vga_timing is either unconnected or has no load
+=======
+Created: 2024-08-25 05:27:44
+
+----SYNTHESIS----
+>>>>>>> bf5e9b6510cdd95151311c199ac7331dabc0d0bf
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 
 ----IMPLEMENTATION----
+WARNING: [Route 35-328] Router estimated timing not met.
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
 WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
 WARNING: [Device 21-2174] Failed to initialize Virtual grid.
