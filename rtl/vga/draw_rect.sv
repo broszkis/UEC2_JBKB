@@ -15,12 +15,20 @@ import vga_pkg::*;
 logic [11:0] rgb_nxt;
 logic [10:0] xpos, ypos, xpos_nxt, ypos_nxt;
 logic [19:0] counter;
+wire collision_up, collision_down, collision_right, collision_left;
 
-initial begin 
-    xpos = '0;
-    ypos = '0;
-end
+/*
+ * Submodules
+*/
 
+collision u_collision (
+    .xpos,
+    .ypos,
+    .collision_up,
+    .collision_down,
+    .collision_right,
+    .collision_left
+);
 
 /**
  * Internal logic
@@ -63,29 +71,27 @@ always_ff @(posedge clk) begin
 end
 
 always_comb begin
-    if (counter == '0) begin
-        if (move_up) begin
-            xpos_nxt = xpos;
-            ypos_nxt = ypos - 1;
+    if (counter == 0) begin
+
+        xpos_nxt = xpos;
+        ypos_nxt = ypos;
+
+        if (move_up && !collision_up) begin
+            ypos_nxt = (ypos > PLAYER_SIZE) ? (ypos - 1) : ypos;
         end
-        else if (move_down) begin
-            xpos_nxt = xpos;
-            ypos_nxt = ypos + 1;
+
+        else if (move_down && !collision_down) begin
+            ypos_nxt = (ypos + 1 < SCREEN_HEIGHT - PLAYER_SIZE) ? (ypos + 1) : ypos;
         end
-        else if (move_right) begin
-            xpos_nxt = xpos + 1;
-            ypos_nxt = ypos;
+
+        else if (move_right && !collision_right) begin
+            xpos_nxt = (xpos + 1 < SCREEN_WIDTH - PLAYER_SIZE) ? (xpos + 1) : xpos;
         end
-        else if (move_left) begin
-            xpos_nxt = xpos - 1;
-            ypos_nxt = ypos;
+
+        else if (move_left && !collision_left) begin
+            xpos_nxt = (xpos > PLAYER_SIZE) ? (xpos - 1) : xpos;
         end
-        else begin
-            xpos_nxt = xpos;
-            ypos_nxt = ypos;
-        end
-    end
-    else begin
+    end else begin
         xpos_nxt = xpos;
         ypos_nxt = ypos;
     end

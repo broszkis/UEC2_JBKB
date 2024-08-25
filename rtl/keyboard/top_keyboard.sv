@@ -21,10 +21,10 @@
 
 
 module top_keyboard(
-    input         clk,
-    input         PS2Data,
-    input         PS2Clk,
-    output [15:0] keycode
+    input logic clk,
+    input logic PS2Data,
+    input logic PS2Clk,
+    output logic [15:0] keycode
 );
     
     PS2Receiver uut (
