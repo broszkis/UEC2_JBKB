@@ -3,7 +3,7 @@
 module vga_timing (
     input  logic clk,
     input  logic rst,
-    vga_if.out vga_out
+    vga_tim.out vga_out
 );
 
 import vga_pkg::*;

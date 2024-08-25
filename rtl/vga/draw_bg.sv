@@ -13,7 +13,7 @@
  module draw_bg (
     input  logic clk,
     input  logic rst,
-    vga_if.in vga_inbg,
+    vga_tim.in vga_inbg,
     vga_if.out vga_outbg
 );
  import vga_pkg::*;
@@ -57,121 +57,117 @@ end
      end else begin                              // Active region:
          if (vga_inbg.vcount == NULL)                     // - top edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.vcount == NULL + 5 && vga_inbg.hcount > NULL +5 && vga_inbg.hcount < HOR_PIXELS - 5) // -- second blue top line.
+         else if (vga_inbg.vcount ==  5 && vga_inbg.hcount > 5 && vga_inbg.hcount < HOR_PIXELS - 5) // -- second blue top line.
              rgb_nxt = BLUE;
          else if (vga_inbg.vcount == VER_PIXELS - 1)   // - bottom edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.vcount == VER_PIXELS - 5 && vga_inbg.hcount > NULL +5 && vga_inbg.hcount < HOR_PIXELS - 5) // -- second blue bottom line.
+         else if (vga_inbg.vcount == VER_PIXELS - 5 && vga_inbg.hcount > 5 && vga_inbg.hcount < HOR_PIXELS - 5) // -- second blue bottom line.
              rgb_nxt = BLUE;
          else if (vga_inbg.hcount == NULL)                // - left edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.hcount == NULL + 5 && vga_inbg.vcount > NULL +5 && vga_inbg.vcount < VER_PIXELS - 5) // -- second blue left line.
+         else if (vga_inbg.hcount ==  5 && vga_inbg.vcount > 5 && vga_inbg.vcount < VER_PIXELS - 5) // -- second blue left line.
              rgb_nxt = BLUE;
          else if (vga_inbg.hcount == HOR_PIXELS - 1)   // - right edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.hcount == HOR_PIXELS - 5 && vga_inbg.vcount > NULL +5 && vga_inbg.vcount < VER_PIXELS - 5) // -- second blue right line.
-             rgb_nxt = BLUE;
-             // --middle obstacle
-         else if (vga_inbg.hcount > NULL + 460 && vga_inbg.hcount < NULL + 465  && vga_inbg.vcount > NULL + 348 && vga_inbg.vcount < NULL + 420) 
-             rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 560 && vga_inbg.hcount < NULL + 565  && vga_inbg.vcount > NULL + 348 && vga_inbg.vcount < NULL + 420) 
-             rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 460 && vga_inbg.hcount < NULL + 565  && vga_inbg.vcount > NULL + 348 && vga_inbg.vcount < NULL + 353) 
-             rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 460 && vga_inbg.hcount < NULL + 565  && vga_inbg.vcount > NULL + 415 && vga_inbg.vcount < NULL + 420) 
+         else if (vga_inbg.hcount == HOR_PIXELS - 5 && vga_inbg.vcount > 5 && vga_inbg.vcount < VER_PIXELS - 5) // -- second blue right line.
              rgb_nxt = BLUE;
              // -- left top corner
-         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 65  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) 
+         else if (vga_inbg.hcount >  TERRAIN_LTX1 && vga_inbg.hcount <  TERRAIN_LTX1 + 5  && vga_inbg.vcount >  TERRAIN_LTY1 && vga_inbg.vcount <  TERRAIN_LTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 60) 
+         else if (vga_inbg.hcount >  TERRAIN_LTX1 && vga_inbg.hcount <  TERRAIN_LTX2  && vga_inbg.vcount >  TERRAIN_LTY1 && vga_inbg.vcount <  TERRAIN_LTY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 95 && vga_inbg.vcount < NULL + 100) 
+         else if (vga_inbg.hcount >  TERRAIN_LTX1 && vga_inbg.hcount <  TERRAIN_LTX2  && vga_inbg.vcount >  TERRAIN_LTY2 - 5 && vga_inbg.vcount <  TERRAIN_LTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 160 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) 
+         else if (vga_inbg.hcount >  TERRAIN_LTX2 - 5 && vga_inbg.hcount <  TERRAIN_LTX2  && vga_inbg.vcount >  TERRAIN_LTY1 && vga_inbg.vcount <  TERRAIN_LTY2) 
              rgb_nxt = BLUE;
              // -- right top corner
-         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 60) 
+         else if (vga_inbg.hcount >  TERRAIN_RTX1 && vga_inbg.hcount <  TERRAIN_RTX1 + 5  && vga_inbg.vcount >  TERRAIN_RTY1 && vga_inbg.vcount <  TERRAIN_RTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 95 && vga_inbg.vcount < NULL + 100) 
+         else if (vga_inbg.hcount >  TERRAIN_RTX1 && vga_inbg.hcount <  TERRAIN_RTX2  && vga_inbg.vcount >  TERRAIN_RTY1 && vga_inbg.vcount <  TERRAIN_RTY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 864  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) 
+         else if (vga_inbg.hcount >  TERRAIN_RTX1 && vga_inbg.hcount <  TERRAIN_RTX2  && vga_inbg.vcount >  TERRAIN_RTY2 - 5 && vga_inbg.vcount <  TERRAIN_RTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 959 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 55 && vga_inbg.vcount < NULL + 100) 
+         else if (vga_inbg.hcount >  TERRAIN_RTX2 - 5 && vga_inbg.hcount <  TERRAIN_RTX2  && vga_inbg.vcount >  TERRAIN_RTY1 && vga_inbg.vcount <  TERRAIN_RTY2) 
              rgb_nxt = BLUE;
              // -- left bottom corner
-         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 708 && vga_inbg.vcount < NULL + 713) 
+         else if (vga_inbg.hcount >  TERRAIN_LBX1 && vga_inbg.hcount <  TERRAIN_LBX1 + 5  && vga_inbg.vcount >  TERRAIN_LBY1 && vga_inbg.vcount <  TERRAIN_LBY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 673)
+         else if (vga_inbg.hcount >  TERRAIN_LBX1 && vga_inbg.hcount <  TERRAIN_LBX2  && vga_inbg.vcount >  TERRAIN_LBY1 && vga_inbg.vcount <  TERRAIN_LBY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 60 && vga_inbg.hcount < NULL + 65  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 713)
+         else if (vga_inbg.hcount >  TERRAIN_LBX1 && vga_inbg.hcount <  TERRAIN_LBX2  && vga_inbg.vcount >  TERRAIN_LBY2 - 5 && vga_inbg.vcount <  TERRAIN_LBY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 160 && vga_inbg.hcount < NULL + 165  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 713)
+         else if (vga_inbg.hcount >  TERRAIN_LBX2 - 5 && vga_inbg.hcount <  TERRAIN_LBX2  && vga_inbg.vcount >  TERRAIN_LBY1 && vga_inbg.vcount <  TERRAIN_LBY2) 
              rgb_nxt = BLUE;
              // -- right bottom corner
-         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 673) 
-             rgb_nxt = BLUE;    
-         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 708 && vga_inbg.vcount < NULL + 713) 
+         else if (vga_inbg.hcount >  TERRAIN_RBX1 && vga_inbg.hcount <  TERRAIN_RBX1 + 5  && vga_inbg.vcount >  TERRAIN_RBY1 && vga_inbg.vcount <  TERRAIN_RBY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 859 && vga_inbg.hcount < NULL + 864  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 713) 
+         else if (vga_inbg.hcount >  TERRAIN_RBX1 && vga_inbg.hcount <  TERRAIN_RBX2  && vga_inbg.vcount >  TERRAIN_RBY1 && vga_inbg.vcount <  TERRAIN_RBY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 959 && vga_inbg.hcount < NULL + 964  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 713) 
+         else if (vga_inbg.hcount >  TERRAIN_RBX1 && vga_inbg.hcount <  TERRAIN_RBX2  && vga_inbg.vcount >  TERRAIN_RBY2 - 5 && vga_inbg.vcount <  TERRAIN_RBY2) 
+             rgb_nxt = BLUE;
+         else if (vga_inbg.hcount >  TERRAIN_RBX2 - 5 && vga_inbg.hcount <  TERRAIN_RBX2  && vga_inbg.vcount >  TERRAIN_RBY1 && vga_inbg.vcount <  TERRAIN_RBY2) 
              rgb_nxt = BLUE;
              // -- middle top T
-         else if (vga_inbg.hcount > NULL + 215 && vga_inbg.hcount < NULL + 809  && vga_inbg.vcount > NULL + 100 && vga_inbg.vcount < NULL + 105) 
-             rgb_nxt = BLUE;    
-         else if (vga_inbg.hcount > NULL + 215 && vga_inbg.hcount < NULL + 220  && vga_inbg.vcount > NULL + 100 && vga_inbg.vcount < NULL + 161) 
+         else if (vga_inbg.hcount >  TERRAIN_MTTX1 && vga_inbg.hcount <  TERRAIN_MTTX1 + 5  && vga_inbg.vcount >  TERRAIN_MTTY1 && vga_inbg.vcount <  TERRAIN_MTTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 804 && vga_inbg.hcount < NULL + 809  && vga_inbg.vcount > NULL + 100 && vga_inbg.vcount < NULL + 161) 
+         else if (vga_inbg.hcount >  TERRAIN_MTTX1 && vga_inbg.hcount <  TERRAIN_MTTX2  && vga_inbg.vcount >  TERRAIN_MTTY1 && vga_inbg.vcount <  TERRAIN_MTTY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 215 && vga_inbg.hcount < NULL + 482  && vga_inbg.vcount > NULL + 156 && vga_inbg.vcount < NULL + 161) 
+         else if (vga_inbg.hcount >  TERRAIN_MTTX1 && vga_inbg.hcount <  TERRAIN_MTTX2  && vga_inbg.vcount >  TERRAIN_MTTY2 - 5 && vga_inbg.vcount <  TERRAIN_MTTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 537 && vga_inbg.hcount < NULL + 809  && vga_inbg.vcount > NULL + 156 && vga_inbg.vcount < NULL + 161) 
+         else if (vga_inbg.hcount >  TERRAIN_MTTX2 - 5 && vga_inbg.hcount <  TERRAIN_MTTX2  && vga_inbg.vcount >  TERRAIN_MTTY1 && vga_inbg.vcount <  TERRAIN_MTTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 477 && vga_inbg.hcount < NULL + 482  && vga_inbg.vcount > NULL + 156 && vga_inbg.vcount < NULL + 298) 
+         else if (vga_inbg.hcount >  TERRAIN_MTSX1 && vga_inbg.hcount <  TERRAIN_MTSX1 + 5  && vga_inbg.vcount >  TERRAIN_MTSY1 && vga_inbg.vcount <  TERRAIN_MTSY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 537 && vga_inbg.hcount < NULL + 542  && vga_inbg.vcount > NULL + 156 && vga_inbg.vcount < NULL + 298) 
+         else if (vga_inbg.hcount >  TERRAIN_MTSX1 && vga_inbg.hcount <  TERRAIN_MTSX2  && vga_inbg.vcount >  TERRAIN_MTSY1 && vga_inbg.vcount <  TERRAIN_MTSY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 477 && vga_inbg.hcount < NULL + 542  && vga_inbg.vcount > NULL + 293 && vga_inbg.vcount < NULL + 298) 
+         else if (vga_inbg.hcount >  TERRAIN_MTSX1 && vga_inbg.hcount <  TERRAIN_MTSX2  && vga_inbg.vcount >  TERRAIN_MTSY2 - 5 && vga_inbg.vcount <  TERRAIN_MTSY2) 
+             rgb_nxt = BLUE;
+         else if (vga_inbg.hcount >  TERRAIN_MTSX2 - 5 && vga_inbg.hcount <  TERRAIN_MTSX2  && vga_inbg.vcount >  TERRAIN_MTSY1 && vga_inbg.vcount <  TERRAIN_MTSY2) 
              rgb_nxt = BLUE; 
              // -- middle bottom T
-         else if (vga_inbg.hcount > NULL + 215 && vga_inbg.hcount < NULL + 482  && vga_inbg.vcount > NULL + 613 && vga_inbg.vcount < NULL + 618) 
-             rgb_nxt = BLUE;    
-         else if (vga_inbg.hcount > NULL + 215 && vga_inbg.hcount < NULL + 220  && vga_inbg.vcount > NULL + 613 && vga_inbg.vcount < NULL + 673) 
+         else if (vga_inbg.hcount >  TERRAIN_MBTX1 && vga_inbg.hcount <  TERRAIN_MBTX1 + 5  && vga_inbg.vcount >  TERRAIN_MBTY1 && vga_inbg.vcount <  TERRAIN_MBTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 804 && vga_inbg.hcount < NULL + 809  && vga_inbg.vcount > NULL + 613 && vga_inbg.vcount < NULL + 673) 
+         else if (vga_inbg.hcount >  TERRAIN_MBTX1 && vga_inbg.hcount <  TERRAIN_MBTX2  && vga_inbg.vcount >  TERRAIN_MBTY1 && vga_inbg.vcount <  TERRAIN_MBTY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 215 && vga_inbg.hcount < NULL + 809  && vga_inbg.vcount > NULL + 668 && vga_inbg.vcount < NULL + 673) 
+         else if (vga_inbg.hcount >  TERRAIN_MBTX1 && vga_inbg.hcount <  TERRAIN_MBTX2  && vga_inbg.vcount >  TERRAIN_MBTY2 - 5 && vga_inbg.vcount <  TERRAIN_MBTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 537 && vga_inbg.hcount < NULL + 809  && vga_inbg.vcount > NULL + 613 && vga_inbg.vcount < NULL + 618) 
+         else if (vga_inbg.hcount >  TERRAIN_MBTX2 - 5 && vga_inbg.hcount <  TERRAIN_MBTX2  && vga_inbg.vcount >  TERRAIN_MBTY1 && vga_inbg.vcount <  TERRAIN_MBTY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 477 && vga_inbg.hcount < NULL + 482  && vga_inbg.vcount > NULL + 476 && vga_inbg.vcount < NULL + 618) 
+         else if (vga_inbg.hcount >  TERRAIN_MBSX1 && vga_inbg.hcount <  TERRAIN_MBSX1 + 5  && vga_inbg.vcount >  TERRAIN_MBSY1 && vga_inbg.vcount <  TERRAIN_MBSY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 537 && vga_inbg.hcount < NULL + 542  && vga_inbg.vcount > NULL + 476 && vga_inbg.vcount < NULL + 618) 
+         else if (vga_inbg.hcount >  TERRAIN_MBSX1 && vga_inbg.hcount <  TERRAIN_MBSX2  && vga_inbg.vcount >  TERRAIN_MBSY1 && vga_inbg.vcount <  TERRAIN_MBSY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 477 && vga_inbg.hcount < NULL + 542  && vga_inbg.vcount > NULL + 476 && vga_inbg.vcount < NULL + 481) 
+         else if (vga_inbg.hcount >  TERRAIN_MBSX1 && vga_inbg.hcount <  TERRAIN_MBSX2  && vga_inbg.vcount >  TERRAIN_MBSY2 - 5 && vga_inbg.vcount <  TERRAIN_MBSY2) 
+             rgb_nxt = BLUE;
+         else if (vga_inbg.hcount >  TERRAIN_MBSX2 - 5 && vga_inbg.hcount <  TERRAIN_MBSX2  && vga_inbg.vcount >  TERRAIN_MBSY1 && vga_inbg.vcount <  TERRAIN_MBSY2) 
+             rgb_nxt = BLUE;  
+             // --middle obstacle
+         else if (vga_inbg.hcount >  TERRAIN_MMX1 && vga_inbg.hcount <  TERRAIN_MMX1 + 5  && vga_inbg.vcount >  TERRAIN_MMY1 && vga_inbg.vcount <  TERRAIN_MMY2) 
+             rgb_nxt = BLUE;
+         else if (vga_inbg.hcount >  TERRAIN_MMX1 && vga_inbg.hcount <  TERRAIN_MMX2  && vga_inbg.vcount >  TERRAIN_MMY1 && vga_inbg.vcount <  TERRAIN_MMY1 + 5) 
+             rgb_nxt = BLUE;
+         else if (vga_inbg.hcount >  TERRAIN_MMX1 && vga_inbg.hcount <  TERRAIN_MMX2  && vga_inbg.vcount >  TERRAIN_MMY2 - 5 && vga_inbg.vcount <  TERRAIN_MMY2) 
+             rgb_nxt = BLUE;
+         else if (vga_inbg.hcount >  TERRAIN_MMX2 - 5 && vga_inbg.hcount <  TERRAIN_MMX2  && vga_inbg.vcount >  TERRAIN_MMY1 && vga_inbg.vcount <  TERRAIN_MMY2) 
              rgb_nxt = BLUE; 
              // --middle obstacle
-         else if (vga_inbg.hcount > NULL + 110 && vga_inbg.hcount < NULL + 410  && vga_inbg.vcount > NULL + 300 && vga_inbg.vcount < NULL + 305) 
+         else if (vga_inbg.hcount >  TERRAIN_MLX1 && vga_inbg.hcount <  TERRAIN_MLX1 + 5  && vga_inbg.vcount >  TERRAIN_MLY1 && vga_inbg.vcount <  TERRAIN_MLY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 110 && vga_inbg.hcount < NULL + 115  && vga_inbg.vcount > NULL + 300 && vga_inbg.vcount < NULL + 500) 
+         else if (vga_inbg.hcount >  TERRAIN_MLX1 && vga_inbg.hcount <  TERRAIN_MLX2  && vga_inbg.vcount >  TERRAIN_MLY1 && vga_inbg.vcount <  TERRAIN_MLY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 405 && vga_inbg.hcount < NULL + 410  && vga_inbg.vcount > NULL + 300 && vga_inbg.vcount < NULL + 500) 
+         else if (vga_inbg.hcount >  TERRAIN_MLX1 && vga_inbg.hcount <  TERRAIN_MLX2  && vga_inbg.vcount >  TERRAIN_MLY2 - 5 && vga_inbg.vcount <  TERRAIN_MLY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 110 && vga_inbg.hcount < NULL + 410  && vga_inbg.vcount > NULL + 495 && vga_inbg.vcount < NULL + 500) 
+         else if (vga_inbg.hcount >  TERRAIN_MLX2 - 5 && vga_inbg.hcount <  TERRAIN_MLX2  && vga_inbg.vcount >  TERRAIN_MLY1 && vga_inbg.vcount <  TERRAIN_MLY2) 
              rgb_nxt = BLUE;
              // --middle obstacle
-         else if (vga_inbg.hcount > NULL + 609 && vga_inbg.hcount < NULL + 909  && vga_inbg.vcount > NULL + 300 && vga_inbg.vcount < NULL + 305) 
+         else if (vga_inbg.hcount >  TERRAIN_MRX1 && vga_inbg.hcount <  TERRAIN_MRX1 + 5  && vga_inbg.vcount >  TERRAIN_MRY1 && vga_inbg.vcount <  TERRAIN_MRY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 609 && vga_inbg.hcount < NULL + 614  && vga_inbg.vcount > NULL + 300 && vga_inbg.vcount < NULL + 500) 
+         else if (vga_inbg.hcount >  TERRAIN_MRX1 && vga_inbg.hcount <  TERRAIN_MRX2  && vga_inbg.vcount >  TERRAIN_MRY1 && vga_inbg.vcount <  TERRAIN_MRY1 + 5) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 904 && vga_inbg.hcount < NULL + 909  && vga_inbg.vcount > NULL + 300 && vga_inbg.vcount < NULL + 500) 
+         else if (vga_inbg.hcount >  TERRAIN_MRX1 && vga_inbg.hcount <  TERRAIN_MRX2  && vga_inbg.vcount >  TERRAIN_MRY2 - 5 && vga_inbg.vcount <  TERRAIN_MRY2) 
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount > NULL + 609 && vga_inbg.hcount < NULL + 909  && vga_inbg.vcount > NULL + 495 && vga_inbg.vcount < NULL + 500) 
+         else if (vga_inbg.hcount >  TERRAIN_MRX2 - 5 && vga_inbg.hcount <  TERRAIN_MRX2  && vga_inbg.vcount >  TERRAIN_MRY1 && vga_inbg.vcount <  TERRAIN_MRY2) 
              rgb_nxt = BLUE;
-             //kropka
-         else if (vga_inbg.hcount == 512  && vga_inbg.vcount == 384)
-            rgb_nxt =  12'h0_f_f;
-             // postac xd
          else                                    // The rest of active display pixels:
              rgb_nxt = 12'h0_0_0;                // - fill with black.
      end

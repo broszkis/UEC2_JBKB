@@ -30,6 +30,11 @@ collision u_collision (
     .collision_left
 );
 
+initial begin 
+    xpos = 15;
+    ypos = 15;
+end
+
 /**
  * Internal logic
  */
@@ -71,6 +76,10 @@ always_ff @(posedge clk) begin
 end
 
 always_comb begin
+
+    xpos_nxt = xpos;
+    ypos_nxt = ypos;
+
     if (counter == 0) begin
 
         xpos_nxt = xpos;
@@ -91,14 +100,11 @@ always_comb begin
         else if (move_left && !collision_left) begin
             xpos_nxt = (xpos > PLAYER_SIZE) ? (xpos - 1) : xpos;
         end
-    end else begin
-        xpos_nxt = xpos;
-        ypos_nxt = ypos;
     end
 end
 
 always_comb begin : rect_comb_blk
-    if (rect_in.hcount >= xpos - PLAYER_SIZE && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE && rect_in.vcount <= ypos + PLAYER_SIZE)
+    if (rect_in.hcount >= xpos - PLAYER_SIZE + 1 && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE + 1 && rect_in.vcount <= ypos + PLAYER_SIZE)
         rgb_nxt = RECT_COLOR;
     else
         rgb_nxt = rect_in.rgb;
