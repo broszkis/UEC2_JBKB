@@ -102,15 +102,11 @@ top_vga u_top_vga(
     .g(vgaGreen),
     .b(vgaBlue),
     .hs(Hsync),
-<<<<<<< HEAD
-    .vs(Vsync)
-=======
     .vs(Vsync),
     .move_up,
     .move_down,
     .move_right,
     .move_left
->>>>>>> bf5e9b6510cdd95151311c199ac7331dabc0d0bf
 );
 
 endmodule

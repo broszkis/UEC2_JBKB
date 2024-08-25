@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-=======
-`timescale 1 ns / 1 ps
-
-module vga_timing (
-    input  logic clk,
-    input  logic rst,
-    vga_tim.out vga_out
-);
-
-import vga_pkg::*;
-
-
->>>>>>> bf5e9b6510cdd95151311c199ac7331dabc0d0bf
 /**
  * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
@@ -24,7 +10,7 @@ import vga_pkg::*;
  `timescale 1 ns / 1 ps
 
  module vga_timing (
-    vga_if.out tim_out,
+    vga_tim.out tim_out,
     input logic clk,
     input logic rst
  );

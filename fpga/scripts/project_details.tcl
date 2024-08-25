@@ -39,7 +39,6 @@ set sv_files {
     ../rtl/vga/vga_if.sv
     ../rtl/vga/vga_tim.sv
     ../rtl/vga/vga_timing.sv
-    ../rtl/vga/main_menu.sv
     ../rtl/game_logic/collision.sv
     ../rtl/keyboard/controls.sv
     ../rtl/keyboard/top_keyboard.sv
