@@ -32,6 +32,9 @@ always_comb begin
         end
 endcase 
     end
-assign mode = current_screen;
+assign screen = current_screen;
 
 endmodule
+
+
+

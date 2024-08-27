@@ -45,6 +45,7 @@ vga_if bg_out();
  assign vs = wire_rect.vsync;
  assign hs = wire_rect.hsync;
  assign {r,g,b} = wire_rect.rgb;
+ 
 
 state screen;
 

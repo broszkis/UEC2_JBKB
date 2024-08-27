@@ -30,6 +30,16 @@ vga_if rect_in();
 vga_if rect_out();
 vga_if wire_bg();
 vga_if wire_rect();
+
+
+assign wire_bg.vcount = bg_in.vcount;
+assign wire_bg.vsync  = bg_in.vsync;
+assign wire_bg.vblnk  = bg_in.vblnk;
+assign wire_bg.hcount = bg_in.hcount;
+assign wire_bg.hsync  = bg_in.hsync;
+assign wire_bg.hblnk  = bg_in.hblnk;
+assign wire_bg.rgb    = bg_in.rgb;
+
  /**
   * Internal logic
   */
