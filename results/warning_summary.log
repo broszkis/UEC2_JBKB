@@ -1,12 +1,270 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-25 19:41:49
+Created: 2024-08-27 15:18:12
 
 ----SYNTHESIS----
+WARNING: [Synth 8-3848] Net wire_bg\.vcount in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:5]
+WARNING: [Synth 8-3848] Net wire_bg\.vsync in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:6]
+WARNING: [Synth 8-3848] Net wire_bg\.vblnk in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:7]
+WARNING: [Synth 8-3848] Net wire_bg\.hcount in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:8]
+WARNING: [Synth 8-3848] Net wire_bg\.hsync in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:9]
+WARNING: [Synth 8-3848] Net wire_bg\.hblnk in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:10]
+WARNING: [Synth 8-3848] Net wire_bg\.rgb in module/entity draw_bg does not have driver. [rtl/vga/vga_if.sv:11]
+WARNING: [Synth 8-87] always_comb on 'hblnk_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:67]
+WARNING: [Synth 8-87] always_comb on 'hcount_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:68]
+WARNING: [Synth 8-87] always_comb on 'hsync_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:69]
+WARNING: [Synth 8-87] always_comb on 'rgb_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:70]
+WARNING: [Synth 8-87] always_comb on 'vblnk_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:71]
+WARNING: [Synth 8-87] always_comb on 'vcount_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:72]
+WARNING: [Synth 8-87] always_comb on 'vsync_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:73]
+WARNING: [Synth 8-87] always_comb on 'hblnk_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'hcount_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'hsync_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'rgb_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'vblnk_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'vcount_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'vsync_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-87] always_comb on 'hblnk_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-87] always_comb on 'hcount_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-87] always_comb on 'hsync_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-87] always_comb on 'rgb_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-87] always_comb on 'vblnk_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-87] always_comb on 'vcount_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-87] always_comb on 'vsync_reg' did not result in combinational logic [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-3848] Net screen in module/entity screen_control does not have driver. [rtl/game_logic/screen_control.sv:9]
+WARNING: [Synth 8-3848] Net wire_rect\.vsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:6]
+WARNING: [Synth 8-3848] Net wire_rect\.hsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:9]
+WARNING: [Synth 8-3848] Net wire_rect\.rgb in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:11]
+WARNING: [Synth 8-3848] Net bg_in\.vcount in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:5]
+WARNING: [Synth 8-3848] Net bg_in\.vsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:6]
+WARNING: [Synth 8-3848] Net bg_in\.vblnk in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:7]
+WARNING: [Synth 8-3848] Net bg_in\.hcount in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:8]
+WARNING: [Synth 8-3848] Net bg_in\.hsync in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:9]
+WARNING: [Synth 8-3848] Net bg_in\.hblnk in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:10]
+WARNING: [Synth 8-3848] Net bg_in\.rgb in module/entity top_vga does not have driver. [rtl/vga/vga_if.sv:11]
+WARNING: [Synth 8-7129] Port screen[1] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port screen[0] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rst in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[15] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[14] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[13] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[12] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[11] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[10] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[9] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[8] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[7] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[6] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[5] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[4] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[3] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[2] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[1] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port keycode[0] in module screen_control is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[11] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[10] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[9] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[8] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[7] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[6] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[5] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[4] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[3] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[2] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[1] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[0] in module second_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[11] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[10] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[9] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[8] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[7] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[6] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[5] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[4] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[3] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[2] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[1] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[0] in module first_player_won is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[11] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[10] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[9] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[8] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[7] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[6] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[5] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[4] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[3] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[2] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[1] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[0] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[11] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[10] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[9] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[8] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[7] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[6] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[5] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[4] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[3] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[2] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[1] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[0] in module main_menu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[10] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[9] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[8] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[7] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[6] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[5] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[4] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[3] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[2] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[1] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hcount[0] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hsync in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.hblnk in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[10] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[9] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[8] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[7] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[6] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[5] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[4] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[3] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[2] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[1] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vcount[0] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vsync in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.vblnk in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[11] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[10] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[9] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[8] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[7] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bg_in\.rgb[6] in module screen_selector is either unconnected or has no load
+WARNING: [Synth 8-327] inferring latch for variable 'hcount_reg' [rtl/draw/screen_selector.sv:68]
+WARNING: [Synth 8-327] inferring latch for variable 'hsync_reg' [rtl/draw/screen_selector.sv:69]
+WARNING: [Synth 8-327] inferring latch for variable 'hblnk_reg' [rtl/draw/screen_selector.sv:67]
+WARNING: [Synth 8-327] inferring latch for variable 'vcount_reg' [rtl/draw/screen_selector.sv:72]
+WARNING: [Synth 8-327] inferring latch for variable 'vsync_reg' [rtl/draw/screen_selector.sv:73]
+WARNING: [Synth 8-327] inferring latch for variable 'rgb_reg' [rtl/draw/screen_selector.sv:70]
+WARNING: [Synth 8-327] inferring latch for variable 'hcount_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'hsync_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'hblnk_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'vcount_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'vsync_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'rgb_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'hcount_reg' [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-327] inferring latch for variable 'hsync_reg' [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-327] inferring latch for variable 'hblnk_reg' [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-327] inferring latch for variable 'vcount_reg' [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-327] inferring latch for variable 'vsync_reg' [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-327] inferring latch for variable 'rgb_reg' [rtl/draw/screen_selector.sv:27]
+WARNING: [Synth 8-327] inferring latch for variable 'vblnk_reg' [rtl/draw/screen_selector.sv:20]
+WARNING: [Synth 8-327] inferring latch for variable 'vblnk_reg' [rtl/draw/screen_selector.sv:27]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3936] Found unconnected internal register 'u_top_keyboard/uut/keycode_reg' and it is trimmed from '16' to '8' bits. [rtl/keyboard/PS2Receiver.v:76]
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[10]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[9]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[8]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[7]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[6]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[5]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[4]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[3]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[2]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[1]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[0]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hsync_reg) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hblnk_reg) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[10]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[9]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[8]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[7]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[6]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[5]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[4]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[3]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[2]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[1]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[0]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vsync_reg) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[11]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[10]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[9]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[8]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[7]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[6]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[5]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[4]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[3]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[2]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[1]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[0]) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[10]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[9]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[8]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[7]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[6]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[5]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[4]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[3]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[2]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[1]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[0]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hsync_reg__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hblnk_reg__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[10]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[9]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[8]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[7]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[6]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[5]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[4]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[3]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[2]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[1]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[0]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vsync_reg__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[11]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[10]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[9]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[8]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[7]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[6]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[5]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[4]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[3]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[2]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[1]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[0]__0) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[10]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[9]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[8]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[7]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[6]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[5]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[4]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[3]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[2]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[1]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hcount_reg[0]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hsync_reg__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (hblnk_reg__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[10]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[9]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[8]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[7]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[6]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[5]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[4]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[3]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[2]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[1]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vcount_reg[0]__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (vsync_reg__1) is unused and will be removed from module screen_selector.
+WARNING: [Synth 8-3332] Sequential element (rgb_reg[11]__1) is unused and will be removed from module screen_selector.
 
 ----IMPLEMENTATION----
-WARNING: [Route 35-328] Router estimated timing not met.
-CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
 WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
 WARNING: [Device 21-2174] Failed to initialize Virtual grid.

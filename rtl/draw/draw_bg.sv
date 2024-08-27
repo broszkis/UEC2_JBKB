@@ -13,7 +13,8 @@
  module draw_bg (
     input  logic clk,
     input  logic rst,
-    vga_tim.in bg_in,
+    input  logic move_up, move_down, move_right, move_left,
+    vga_if.in bg_in,
     vga_if.out bg_out
 );
  import vga_pkg::*;
@@ -25,11 +26,24 @@
 
  logic [11:0] rgb_nxt;
 
-
+vga_if rect_in();
+vga_if rect_out();
+vga_if wire_bg();
+vga_if wire_rect();
  /**
   * Internal logic
   */
 
+draw_rect u_draw_rect (
+    .clk,
+    .rst,
+    .rect_in(wire_bg),
+    .rect_out(wire_rect),
+    .move_up, 
+    .move_down, 
+    .move_right, 
+    .move_left
+);
   always_ff @(posedge clk) begin : bg_ff_blk
     if (rst) begin
         bg_out.vcount <= '0;

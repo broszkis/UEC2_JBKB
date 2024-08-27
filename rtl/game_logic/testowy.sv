@@ -12,8 +12,8 @@
  module testowy (
      input  logic clk,
      input  logic rst,
-     vga_if.in vga_inbg,
-     vga_if.out vga_outbg
+     vga_if.in bg_in,
+     vga_if.out bg_out
  );
  import vga_pkg::*;
  
@@ -51,30 +51,30 @@
  
  always_ff @(posedge clk) begin : bg_ff_blk
      if (rst) begin
-         vga_outbg.vcount <= '0;
-         vga_outbg.vsync  <= '0;
-         vga_outbg.vblnk  <= '0;
-         vga_outbg.hcount <= '0;
-         vga_outbg.hsync  <= '0;
-         vga_outbg.hblnk  <= '0;
-         vga_outbg.rgb    <= '0;
+         bg_out.vcount <= '0;
+         bg_out.vsync  <= '0;
+         bg_out.vblnk  <= '0;
+         bg_out.hcount <= '0;
+         bg_out.hsync  <= '0;
+         bg_out.hblnk  <= '0;
+         bg_out.rgb    <= '0;
      end else begin
-         vga_outbg.vcount <= vga_inbg.vcount;
-         vga_outbg.vsync  <= vga_inbg.vsync;
-         vga_outbg.vblnk  <= vga_inbg.vblnk;
-         vga_outbg.hcount <= vga_inbg.hcount;
-         vga_outbg.hsync  <= vga_inbg.hsync;
-         vga_outbg.hblnk  <= vga_inbg.hblnk;
-         vga_outbg.rgb    <= rgb_nxt;
+         bg_out.vcount <= bg_in.vcount;
+         bg_out.vsync  <= bg_in.vsync;
+         bg_out.vblnk  <= bg_in.vblnk;
+         bg_out.hcount <= bg_in.hcount;
+         bg_out.hsync  <= bg_in.hsync;
+         bg_out.hblnk  <= bg_in.hblnk;
+         bg_out.rgb    <= rgb_nxt;
      end
  end
  
  always_comb begin : bg_comb_blk
-     if (vga_inbg.vblnk || vga_inbg.hblnk) begin  // Blanking region:
+     if (bg_in.vblnk || bg_in.hblnk) begin  // Blanking region:
          rgb_nxt = 12'h0_0_0;                     // - make it black.
      end else begin                               // Active region:
-         if (vga_inbg.hcount >= square_x && vga_inbg.hcount < square_x + 10 &&
-             vga_inbg.vcount >= square_y && vga_inbg.vcount < square_y + 10) begin
+         if (bg_in.hcount >= square_x && bg_in.hcount < square_x + 10 &&
+             bg_in.vcount >= square_y && bg_in.vcount < square_y + 10) begin
              rgb_nxt = 12'hf_f_0;                 // - Draw the square (yellow color).
          end else begin
              rgb_nxt = 12'h0_0_0;                 // - Background color (black).

@@ -35,7 +35,7 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk91MHz;
 wire pclk_mirror;
-wire [15:0] keycode;
+logic [15:0] keycode;
 wire move_up, move_down, move_right, move_left;
 
 (* KEEP = "TRUE" *)
@@ -106,7 +106,8 @@ top_vga u_top_vga(
     .move_up,
     .move_down,
     .move_right,
-    .move_left
+    .move_left,
+    .keycode
 );
 
 endmodule

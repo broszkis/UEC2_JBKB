@@ -3,8 +3,8 @@
  module first_player_won (
     input  logic clk,
     input  logic rst,
-    vga_if.in vga_inbg,
-    vga_if.out vga_outbg
+    vga_if.in bg_in,
+    vga_if.out bg_out
 );
  import vga_pkg::*;
 
@@ -22,142 +22,142 @@
 
   always_ff @(posedge clk) begin : bg_ff_blk
     if (rst) begin
-        vga_outbg.vcount <= '0;
-        vga_outbg.vsync  <= '0;
-        vga_outbg.vblnk  <= '0;
-        vga_outbg.hcount <= '0;
-        vga_outbg.hsync  <= '0;
-        vga_outbg.hblnk  <= '0;
-        vga_outbg.rgb    <= '0;
+        bg_out.vcount <= '0;
+        bg_out.vsync  <= '0;
+        bg_out.vblnk  <= '0;
+        bg_out.hcount <= '0;
+        bg_out.hsync  <= '0;
+        bg_out.hblnk  <= '0;
+        bg_out.rgb    <= '0;
     end else begin
-        vga_outbg.vcount <= vga_inbg.vcount;
-        vga_outbg.vsync  <= vga_inbg.vsync;
-        vga_outbg.vblnk  <= vga_inbg.vblnk;
-        vga_outbg.hcount <= vga_inbg.hcount;
-        vga_outbg.hsync  <= vga_inbg.hsync;
-        vga_outbg.hblnk  <= vga_inbg.hblnk;
-        vga_outbg.rgb    <= rgb_nxt;
+        bg_out.vcount <= bg_in.vcount;
+        bg_out.vsync  <= bg_in.vsync;
+        bg_out.vblnk  <= bg_in.vblnk;
+        bg_out.hcount <= bg_in.hcount;
+        bg_out.hsync  <= bg_in.hsync;
+        bg_out.hblnk  <= bg_in.hblnk;
+        bg_out.rgb    <= rgb_nxt;
     end
 end
 
 
  always_comb begin : bg_comb_blk
-     if (vga_inbg.vblnk || vga_inbg.hblnk) begin             // Blanking region:
+     if (bg_in.vblnk || bg_in.hblnk) begin             // Blanking region:
          rgb_nxt = 12'h0_0_0;                    // - make it it black.
      end else begin                              // Active region:
-         if (vga_inbg.vcount == NULL)                     // - top edge:
+         if (bg_in.vcount == NULL)                     // - top edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.vcount == NULL + 5 && vga_inbg.hcount > NULL +5 && vga_inbg.hcount < HOR_PIXELS - 5) // -- second blue top line.
+         else if (bg_in.vcount == NULL + 5 && bg_in.hcount > NULL +5 && bg_in.hcount < HOR_PIXELS - 5) // -- second blue top line.
              rgb_nxt = BLUE;
-         else if (vga_inbg.vcount == VER_PIXELS - 1)   // - bottom edge:
+         else if (bg_in.vcount == VER_PIXELS - 1)   // - bottom edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.vcount == VER_PIXELS - 5 && vga_inbg.hcount > NULL +5 && vga_inbg.hcount < HOR_PIXELS - 5) // -- second blue bottom line.
+         else if (bg_in.vcount == VER_PIXELS - 5 && bg_in.hcount > NULL +5 && bg_in.hcount < HOR_PIXELS - 5) // -- second blue bottom line.
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount == NULL)                // - left edge:
+         else if (bg_in.hcount == NULL)                // - left edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.hcount == NULL + 5 && vga_inbg.vcount > NULL +5 && vga_inbg.vcount < VER_PIXELS - 5) // -- second blue left line.
+         else if (bg_in.hcount == NULL + 5 && bg_in.vcount > NULL +5 && bg_in.vcount < VER_PIXELS - 5) // -- second blue left line.
              rgb_nxt = BLUE;
-         else if (vga_inbg.hcount == HOR_PIXELS - 1)   // - right edge:
+         else if (bg_in.hcount == HOR_PIXELS - 1)   // - right edge:
              rgb_nxt = BLUE;                // - - make a blue line.
-         else if (vga_inbg.hcount == HOR_PIXELS - 5 && vga_inbg.vcount > NULL +5 && vga_inbg.vcount < VER_PIXELS - 5) // -- second blue right line.
+         else if (bg_in.hcount == HOR_PIXELS - 5 && bg_in.vcount > NULL +5 && bg_in.vcount < VER_PIXELS - 5) // -- second blue right line.
              rgb_nxt = BLUE;
              //P
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 364 & vga_inbg.hcount > 262 & vga_inbg.hcount < 277)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 364 & bg_in.hcount > 262 & bg_in.hcount < 277)
               rgb_nxt = YELLOW;
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 199 & vga_inbg.hcount > 262 & vga_inbg.hcount < 307)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 199 & bg_in.hcount > 262 & bg_in.hcount < 307)
               rgb_nxt = YELLOW;
-          else if (vga_inbg.vcount > 199 & vga_inbg.vcount < 256 & vga_inbg.hcount > 306 & vga_inbg.hcount < 322)
+          else if (bg_in.vcount > 199 & bg_in.vcount < 256 & bg_in.hcount > 306 & bg_in.hcount < 322)
               rgb_nxt = YELLOW;
-          else if (vga_inbg.vcount > 256 & vga_inbg.vcount < 271 & vga_inbg.hcount > 262 & vga_inbg.hcount < 307)
+          else if (bg_in.vcount > 256 & bg_in.vcount < 271 & bg_in.hcount > 262 & bg_in.hcount < 307)
               rgb_nxt = YELLOW;
              //L
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 364 & vga_inbg.hcount > 332 & vga_inbg.hcount < 347)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 364 & bg_in.hcount > 332 & bg_in.hcount < 347)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 334 & vga_inbg.vcount < 364 & vga_inbg.hcount > 332 & vga_inbg.hcount < 392)
+          else if (bg_in.vcount > 334 & bg_in.vcount < 364 & bg_in.hcount > 332 & bg_in.hcount < 392)
               rgb_nxt = BLUE;
              //A
-          else if (vga_inbg.vcount > 214 & vga_inbg.vcount < 364 & vga_inbg.hcount >  402 & vga_inbg.hcount < 417)
+          else if (bg_in.vcount > 214 & bg_in.vcount < 364 & bg_in.hcount >  402 & bg_in.hcount < 417)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 214 & vga_inbg.vcount < 364 & vga_inbg.hcount >  447 & vga_inbg.hcount < 462)
+          else if (bg_in.vcount > 214 & bg_in.vcount < 364 & bg_in.hcount >  447 & bg_in.hcount < 462)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 214 & vga_inbg.hcount >  417 & vga_inbg.hcount < 447)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 214 & bg_in.hcount >  417 & bg_in.hcount < 447)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 274 & vga_inbg.vcount < 304 & vga_inbg.hcount >  417 & vga_inbg.hcount < 447)
+          else if (bg_in.vcount > 274 & bg_in.vcount < 304 & bg_in.hcount >  417 & bg_in.hcount < 447)
               rgb_nxt = BLUE;
              //Y
-          else if (vga_inbg.vcount > 259 & vga_inbg.vcount < 364 & vga_inbg.hcount >  496 & vga_inbg.hcount < 508)
+          else if (bg_in.vcount > 259 & bg_in.vcount < 364 & bg_in.hcount >  496 & bg_in.hcount < 508)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 244 & vga_inbg.vcount < 259 & vga_inbg.hcount >  484 & vga_inbg.hcount <  496)
+          else if (bg_in.vcount > 244 & bg_in.vcount < 259 & bg_in.hcount >  484 & bg_in.hcount <  496)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 244 & vga_inbg.vcount < 259 & vga_inbg.hcount >  508 & vga_inbg.hcount <  520)
+          else if (bg_in.vcount > 244 & bg_in.vcount < 259 & bg_in.hcount >  508 & bg_in.hcount <  520)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 244 & vga_inbg.hcount >  472 & vga_inbg.hcount <  484)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 244 & bg_in.hcount >  472 & bg_in.hcount <  484)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 244 & vga_inbg.hcount >  520 & vga_inbg.hcount <  532)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 244 & bg_in.hcount >  520 & bg_in.hcount <  532)
               rgb_nxt = BLUE;
              //E
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 364 & vga_inbg.hcount > 542 & vga_inbg.hcount < 557)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 364 & bg_in.hcount > 542 & bg_in.hcount < 557)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 199 & vga_inbg.hcount > 542 & vga_inbg.hcount < 602)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 199 & bg_in.hcount > 542 & bg_in.hcount < 602)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 268 & vga_inbg.vcount < 283 & vga_inbg.hcount > 542 & vga_inbg.hcount < 592)
+          else if (bg_in.vcount > 268 & bg_in.vcount < 283 & bg_in.hcount > 542 & bg_in.hcount < 592)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 349 & vga_inbg.vcount < 364 & vga_inbg.hcount > 542 & vga_inbg.hcount < 602)
+          else if (bg_in.vcount > 349 & bg_in.vcount < 364 & bg_in.hcount > 542 & bg_in.hcount < 602)
               rgb_nxt = BLUE;
              //R
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 364 & vga_inbg.hcount >  612 & vga_inbg.hcount < 627)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 364 & bg_in.hcount >  612 & bg_in.hcount < 627)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 199 & vga_inbg.hcount >  627 & vga_inbg.hcount < 657)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 199 & bg_in.hcount >  627 & bg_in.hcount < 657)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 199 & vga_inbg.vcount < 274 & vga_inbg.hcount >  657 & vga_inbg.hcount < 672)
+          else if (bg_in.vcount > 199 & bg_in.vcount < 274 & bg_in.hcount >  657 & bg_in.hcount < 672)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 274 & vga_inbg.vcount < 299 & vga_inbg.hcount >  627 & vga_inbg.hcount < 657)
+          else if (bg_in.vcount > 274 & bg_in.vcount < 299 & bg_in.hcount >  627 & bg_in.hcount < 657)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 299 & vga_inbg.vcount < 314 & vga_inbg.hcount >  647 & vga_inbg.hcount < 662)
+          else if (bg_in.vcount > 299 & bg_in.vcount < 314 & bg_in.hcount >  647 & bg_in.hcount < 662)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 314 & vga_inbg.vcount < 364 & vga_inbg.hcount >  657 & vga_inbg.hcount < 672)
+          else if (bg_in.vcount > 314 & bg_in.vcount < 364 & bg_in.hcount >  657 & bg_in.hcount < 672)
               rgb_nxt = BLUE;
               //1
-          else if (vga_inbg.vcount > 184 & vga_inbg.vcount < 364 & vga_inbg.hcount >  732 & vga_inbg.hcount < 747)
+          else if (bg_in.vcount > 184 & bg_in.vcount < 364 & bg_in.hcount >  732 & bg_in.hcount < 747)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 199 & vga_inbg.vcount < 214 & vga_inbg.hcount >  717 & vga_inbg.hcount < 732)
+          else if (bg_in.vcount > 199 & bg_in.vcount < 214 & bg_in.hcount >  717 & bg_in.hcount < 732)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 214 & vga_inbg.vcount < 229 & vga_inbg.hcount >  702 & vga_inbg.hcount < 717)
+          else if (bg_in.vcount > 214 & bg_in.vcount < 229 & bg_in.hcount >  702 & bg_in.hcount < 717)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 349 & vga_inbg.vcount < 364 & vga_inbg.hcount >  702 & vga_inbg.hcount < 762)
+          else if (bg_in.vcount > 349 & bg_in.vcount < 364 & bg_in.hcount >  702 & bg_in.hcount < 762)
               rgb_nxt = BLUE;
             //W
-          else if (vga_inbg.vcount > 404 & vga_inbg.vcount < 584 & vga_inbg.hcount > 402 & vga_inbg.hcount < 414)
+          else if (bg_in.vcount > 404 & bg_in.vcount < 584 & bg_in.hcount > 402 & bg_in.hcount < 414)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 539 & vga_inbg.vcount < 554 & vga_inbg.hcount > 414 & vga_inbg.hcount < 426)
+          else if (bg_in.vcount > 539 & bg_in.vcount < 554 & bg_in.hcount > 414 & bg_in.hcount < 426)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 509 & vga_inbg.vcount < 539 & vga_inbg.hcount > 426 & vga_inbg.hcount < 438)
+          else if (bg_in.vcount > 509 & bg_in.vcount < 539 & bg_in.hcount > 426 & bg_in.hcount < 438)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 539 & vga_inbg.vcount < 554 & vga_inbg.hcount > 438 & vga_inbg.hcount < 450)
+          else if (bg_in.vcount > 539 & bg_in.vcount < 554 & bg_in.hcount > 438 & bg_in.hcount < 450)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 404 & vga_inbg.vcount < 584 & vga_inbg.hcount > 450 & vga_inbg.hcount < 462)
+          else if (bg_in.vcount > 404 & bg_in.vcount < 584 & bg_in.hcount > 450 & bg_in.hcount < 462)
               rgb_nxt = BLUE;
                //O
-          else if (vga_inbg.vcount > 419 & vga_inbg.vcount < 569 & vga_inbg.hcount > 472 & vga_inbg.hcount < 487)
+          else if (bg_in.vcount > 419 & bg_in.vcount < 569 & bg_in.hcount > 472 & bg_in.hcount < 487)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 404 & vga_inbg.vcount < 419 & vga_inbg.hcount > 487 & vga_inbg.hcount < 517)
+          else if (bg_in.vcount > 404 & bg_in.vcount < 419 & bg_in.hcount > 487 & bg_in.hcount < 517)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 419 & vga_inbg.vcount < 569 & vga_inbg.hcount > 517 & vga_inbg.hcount < 532)
+          else if (bg_in.vcount > 419 & bg_in.vcount < 569 & bg_in.hcount > 517 & bg_in.hcount < 532)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 569 & vga_inbg.vcount < 584 & vga_inbg.hcount > 487 & vga_inbg.hcount < 517)
+          else if (bg_in.vcount > 569 & bg_in.vcount < 584 & bg_in.hcount > 487 & bg_in.hcount < 517)
               rgb_nxt = BLUE;
               //N
-          else if (vga_inbg.vcount > 404 & vga_inbg.vcount < 584 & vga_inbg.hcount > 542 & vga_inbg.hcount < 552)
+          else if (bg_in.vcount > 404 & bg_in.vcount < 584 & bg_in.hcount > 542 & bg_in.hcount < 552)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 434 & vga_inbg.vcount < 449 & vga_inbg.hcount > 552 & vga_inbg.hcount < 562)
+          else if (bg_in.vcount > 434 & bg_in.vcount < 449 & bg_in.hcount > 552 & bg_in.hcount < 562)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 449 & vga_inbg.vcount < 464 & vga_inbg.hcount > 562 & vga_inbg.hcount < 572)
+          else if (bg_in.vcount > 449 & bg_in.vcount < 464 & bg_in.hcount > 562 & bg_in.hcount < 572)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 464 & vga_inbg.vcount < 479 & vga_inbg.hcount > 572 & vga_inbg.hcount < 582)
+          else if (bg_in.vcount > 464 & bg_in.vcount < 479 & bg_in.hcount > 572 & bg_in.hcount < 582)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 479 & vga_inbg.vcount < 494 & vga_inbg.hcount > 582 & vga_inbg.hcount < 592)
+          else if (bg_in.vcount > 479 & bg_in.vcount < 494 & bg_in.hcount > 582 & bg_in.hcount < 592)
               rgb_nxt = BLUE;
-          else if (vga_inbg.vcount > 404 & vga_inbg.vcount < 584 & vga_inbg.hcount > 592 & vga_inbg.hcount < 602)
+          else if (bg_in.vcount > 404 & bg_in.vcount < 584 & bg_in.hcount > 592 & bg_in.hcount < 602)
               rgb_nxt = BLUE;
           else                                    // The rest of active display pixels:
              rgb_nxt = BLACK;                // - fill with black.

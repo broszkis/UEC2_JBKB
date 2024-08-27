@@ -17,7 +17,8 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
-    input  logic move_up, move_down, move_right, move_left,
+    input logic move_up, move_down, move_right, move_left,
+    input logic [15:0] keycode,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -30,16 +31,22 @@ module top_vga (
  */
 
 vga_tim wire_tim();
+vga_tim tim_out();
 vga_if wire_bg();
 vga_if wire_rect();
+vga_if bg_in();
+vga_if bg_out();
 
 /**
  * Signals assignments
  */
 
+
  assign vs = wire_rect.vsync;
  assign hs = wire_rect.hsync;
  assign {r,g,b} = wire_rect.rgb;
+
+state screen;
 
 
 /**
@@ -52,22 +59,20 @@ vga_timing u_vga_timing (
     .tim_out(wire_tim)
 );
 
-draw_bg u_draw_bg (
+screen_selector u_screen_selector(
     .clk,
     .rst,
-    .bg_out(wire_bg),
-    .bg_in(wire_tim)
+    .screen(screen),
+    .bg_in,
+    .bg_out
 );
 
-draw_rect u_draw_rect (
+screen_control u_screen_control(
     .clk,
     .rst,
-    .rect_in(wire_bg),
-    .rect_out(wire_rect),
-    .move_up, 
-    .move_down, 
-    .move_right, 
-    .move_left
+    .screen(screen),
+    .keycode(keycode)
 );
+
 
 endmodule

@@ -84,4 +84,6 @@ localparam TERRAIN_MRX2 = 960;
 localparam TERRAIN_MRY1 = 256;
 localparam TERRAIN_MRY2 = 512;
 
+typedef enum logic [1:0] {START, GAME, PLAYER_1, PLAYER_2} state;
+
 endpackage

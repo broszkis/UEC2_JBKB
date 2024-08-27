@@ -11,18 +11,17 @@
 
 sv work ../../rtl/vga/vga_pkg.sv \
         ../../rtl/vga/vga_if.sv \
+        ../../rtl/vga/vga_tim.sv \
         ../../rtl/vga/vga_timing.sv \
-        ../../rtl/vga/draw_bg.sv \
-<<<<<<< HEAD
-        ../../rtl/vga/draw_rect.sv \
-=======
-        ../../rtl/vga/main_menu.sv \
->>>>>>> bf5e9b6510cdd95151311c199ac7331dabc0d0bf
+        ../../rtl/draw/screen_selector.sv \
+        ../../rtl/draw/draw_bg.sv \
+        ../../rtl/draw/main_menu.sv \
+        ../../rtl/draw/first_player_won.sv \
+        ../../rtl/draw/second_player_won.sv \
+        ../../rtl/draw/draw_rect.sv \
         ../../rtl/vga/top_vga.sv \
-        ../../rtl/game_logic/spawn.sv \
+        ../../rtl/game_logic/collision.sv \
+        ../../rtl/keyboard/controls.sv \
+        ../../rtl/game_logic/screen_control.sv \
         ../common/tiff_writer.sv \
-<<<<<<< HEAD
-        top_vga_tb.sv
-=======
         top_vga_tb.sv 
->>>>>>> bf5e9b6510cdd95151311c199ac7331dabc0d0bf
