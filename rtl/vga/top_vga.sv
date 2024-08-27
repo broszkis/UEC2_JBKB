@@ -30,21 +30,17 @@ module top_vga (
  * VGA interface wiring
  */
 
-vga_tim wire_tim();
-vga_tim tim_out();
-vga_if wire_bg();
-vga_if wire_rect();
-vga_if bg_in();
-vga_if bg_out();
+vga_if wire_tim();
+vga_if wire_screen();
 
 /**
  * Signals assignments
  */
 
 
- assign vs = wire_rect.vsync;
- assign hs = wire_rect.hsync;
- assign {r,g,b} = wire_rect.rgb;
+ assign vs = wire_screen.vsync;
+ assign hs = wire_screen.hsync;
+ assign {r,g,b} = wire_screen.rgb;
  
 
 state screen;
@@ -64,8 +60,8 @@ screen_selector u_screen_selector(
     .clk,
     .rst,
     .screen(screen),
-    .bg_in,
-    .bg_out
+    .ss_in(wire_tim),
+    .ss_out(wire_screen)
 );
 
 screen_control u_screen_control(

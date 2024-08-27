@@ -10,7 +10,7 @@
  `timescale 1 ns / 1 ps
 
  module vga_timing (
-    vga_tim.out tim_out,
+    vga_if.out tim_out,
     input logic clk,
     input logic rst
  );
