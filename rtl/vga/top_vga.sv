@@ -59,6 +59,7 @@ vga_timing u_vga_timing (
 screen_selector u_screen_selector(
     .clk,
     .rst,
+    .move_up,.move_down,.move_right,.move_left,
     .screen(screen),
     .ss_in(wire_tim),
     .ss_out(wire_screen)

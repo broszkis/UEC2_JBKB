@@ -1,10 +1,10 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-28 00:31:27
+Created: 2024-08-28 21:55:53
 
 ----SYNTHESIS----
 WARNING: [Synth 8-3848] Net tim_out\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:13]
-WARNING: [Synth 8-6014] Unused sequential element ss_out\.vblnk_reg was removed.  [rtl/draw/screen_selector.sv:50]
+WARNING: [Synth 8-6014] Unused sequential element ss_out\.vblnk_reg was removed.  [rtl/draw/screen_selector.sv:55]
 WARNING: [Synth 8-7129] Port sp_in\.rgb[11] in module second_player_won is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sp_in\.rgb[10] in module second_player_won is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sp_in\.rgb[9] in module second_player_won is either unconnected or has no load
@@ -53,10 +53,6 @@ WARNING: [Synth 8-7129] Port tim_out\.rgb[3] in module vga_timing is either unco
 WARNING: [Synth 8-7129] Port tim_out\.rgb[2] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port tim_out\.rgb[1] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port tim_out\.rgb[0] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port move_up in module top_vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port move_down in module top_vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port move_right in module top_vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port move_left in module top_vga is either unconnected or has no load
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 WARNING: [Synth 8-7129] Port sp_in\.rgb[11] in module second_player_won is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sp_in\.rgb[10] in module second_player_won is either unconnected or has no load

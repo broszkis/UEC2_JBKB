@@ -2,6 +2,7 @@ import vga_pkg::*;
 
 module screen_selector(
     input logic clk, rst,
+    input logic move_up, move_down, move_right, move_left,
     input state screen,
     vga_if.in ss_in,
     vga_if.out ss_out
@@ -24,7 +25,11 @@ draw_bg u_draw_bg(
     .clk(clk),
     .rst(rst),
     .bg_in(ss_in),
-    .bg_out(vga_game)
+    .bg_out(vga_game),
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left
 );
 
 first_player_won u_first_player_won(
