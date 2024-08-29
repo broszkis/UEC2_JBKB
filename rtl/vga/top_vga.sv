@@ -30,7 +30,7 @@ module top_vga (
  * VGA interface wiring
  */
 
-vga_if wire_tim();
+vga_tim wire_tim();
 vga_if wire_screen();
 
 /**

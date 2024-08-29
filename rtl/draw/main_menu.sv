@@ -13,7 +13,7 @@
  module main_menu(
      input  logic clk,
      input  logic rst,
-     vga_if.in mm_in,
+     vga_tim.in mm_in,
      vga_if.out mm_out
  );
  

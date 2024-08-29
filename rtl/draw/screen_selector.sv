@@ -4,7 +4,7 @@ module screen_selector(
     input logic clk, rst,
     input logic move_up, move_down, move_right, move_left,
     input state screen,
-    vga_if.in ss_in,
+    vga_tim.in ss_in,
     vga_if.out ss_out
 );
 
@@ -21,11 +21,11 @@ main_menu u_main_menu(
     .mm_out(vga_start)
 );
 
-draw_bg u_draw_bg(
+draw_game u_draw_game(
     .clk(clk),
     .rst(rst),
-    .bg_in(ss_in),
-    .bg_out(vga_game),
+    .game_in(ss_in),
+    .game_out(ss_out),
     .move_up,
     .move_down,
     .move_right,

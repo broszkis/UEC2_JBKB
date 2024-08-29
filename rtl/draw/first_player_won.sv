@@ -3,7 +3,7 @@
  module first_player_won (
     input  logic clk,
     input  logic rst,
-    vga_if.in fp_in,
+    vga_tim.in fp_in,
     vga_if.out fp_out
 );
  import vga_pkg::*;

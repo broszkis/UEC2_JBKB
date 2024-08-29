@@ -1,0 +1,61 @@
+ `timescale 1 ns / 1 ps
+
+ module draw_game (
+    input  logic clk,
+    input  logic rst,
+    input logic move_up, move_down, move_right, move_left,
+    vga_tim.in game_in,
+    vga_if.out game_out
+);
+ import vga_pkg::*;
+
+vga_if wire_bg();
+vga_if wire_rect();
+
+logic [11:0] rgb_nxt;
+
+ draw_bg u_draw_bg (
+    .clk,
+    .rst,
+    .bg_in(game_in),
+    .bg_out(wire_bg)
+ );
+
+ draw_rect u_draw_rect (
+    .clk,
+    .rst,
+    .rect_in(wire_bg),
+    .rect_out(wire_rect),
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left
+ );
+
+ /**
+  * Internal logic
+  */
+
+  always_ff @(posedge clk) begin : bg_ff_blk
+    if (rst) begin
+        game_out.vcount <= '0;
+        game_out.vsync  <= '0;
+        game_out.vblnk  <= '0;
+        game_out.hcount <= '0;
+        game_out.hsync  <= '0;
+        game_out.hblnk  <= '0;
+        game_out.rgb    <= '0;
+    end else begin
+        game_out.vcount <= game_in.vcount;
+        game_out.vsync  <= game_in.vsync;
+        game_out.vblnk  <= game_in.vblnk;
+        game_out.hcount <= game_in.hcount;
+        game_out.hsync  <= game_in.hsync;
+        game_out.hblnk  <= game_in.hblnk;
+        game_out.rgb    <= rgb_nxt;
+    end
+end
+
+assign game_out = wire_rect;
+
+ endmodule

@@ -3,7 +3,7 @@
  module second_player_won(
     input  logic clk,
     input  logic rst,
-    vga_if.in sp_in,
+    vga_tim.in sp_in,
     vga_if.out sp_out
 );
  import vga_pkg::*;
