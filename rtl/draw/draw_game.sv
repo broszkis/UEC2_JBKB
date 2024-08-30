@@ -46,16 +46,14 @@ logic [11:0] rgb_nxt;
         game_out.hblnk  <= '0;
         game_out.rgb    <= '0;
     end else begin
-        game_out.vcount <= game_in.vcount;
-        game_out.vsync  <= game_in.vsync;
-        game_out.vblnk  <= game_in.vblnk;
-        game_out.hcount <= game_in.hcount;
-        game_out.hsync  <= game_in.hsync;
-        game_out.hblnk  <= game_in.hblnk;
-        game_out.rgb    <= rgb_nxt;
+        game_out.vcount <= wire_rect.vcount;
+        game_out.vsync  <= wire_rect.vsync;
+        game_out.vblnk  <= wire_rect.vblnk;
+        game_out.hcount <= wire_rect.hcount;
+        game_out.hsync  <= wire_rect.hsync;
+        game_out.hblnk  <= wire_rect.hblnk;
+        game_out.rgb    <= wire_rect.rgb;
     end
 end
-
-assign game_out = wire_rect;
 
  endmodule

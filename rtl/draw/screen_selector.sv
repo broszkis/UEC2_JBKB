@@ -25,7 +25,7 @@ draw_game u_draw_game(
     .clk(clk),
     .rst(rst),
     .game_in(ss_in),
-    .game_out(ss_out),
+    .game_out(vga_game),
     .move_up,
     .move_down,
     .move_right,
