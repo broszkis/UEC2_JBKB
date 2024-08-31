@@ -17,8 +17,11 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
-    input logic move_up, move_down, move_right, move_left,
     input logic [15:0] keycode,
+    input logic move_up,
+    input logic move_down,
+    input logic move_right,
+    input logic move_left, 
     output logic vs,
     output logic hs,
     output logic [3:0] r,
@@ -59,7 +62,10 @@ vga_timing u_vga_timing (
 screen_selector u_screen_selector(
     .clk,
     .rst,
-    .move_up,.move_down,.move_right,.move_left,
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left,
     .screen(screen),
     .ss_in(wire_tim),
     .ss_out(wire_screen)

@@ -10,48 +10,48 @@ module random_generate (
 
     import vga_pkg::*;
 
-    logic [9:0] point_x_nxt, point_y_nxt, point_x_temp, point_y_temp, point_x_temp_nxt, point_y_temp_nxt;
+    logic [9:0] point_x_nxt, point_y_nxt;
+    logic [9:0] point_x_temp, point_y_temp;
 
-    initial begin 
-        point_active = 1;
-    end
+    logic [9:0] point_xpos[31] = '{32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800, 832, 864, 896, 928, 960, 992}; 
+    logic [9:0] point_ypos[23] = '{32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 480, 512, 544, 576, 608, 640, 672, 704, 736};
 
-    always_ff @(posedge clk) begin
+    // Linear Feedback Shift Register (LFSR) for generating random indices
+    logic [4:0] lfsr_x = 5'd1; // 5-bit LFSR for x-axis
+    logic [4:0] lfsr_y = 5'd1; // 5-bit LFSR for y-axis
+
+    always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             point_x <= '0;
             point_y <= '0;
-            point_x_temp <= '0;
-
-            point_y_temp <= '0;
+            lfsr_x <= 5'd1;
+            lfsr_y <= 5'd1;
         end else begin
             point_x <= point_x_nxt;
             point_y <= point_y_nxt;
-            point_x_temp <= point_x_temp_nxt;
-
-            point_y_temp <= point_y_temp_nxt;
+            lfsr_x <= {lfsr_x[3:0], lfsr_x[4] ^ lfsr_x[3]}; // Update LFSR for x
+            lfsr_y <= {lfsr_y[3:0], lfsr_y[4] ^ lfsr_y[3]}; // Update LFSR for y
         end
     end
 
     always_comb begin
-        if (point_x_temp < 1024)
-            point_x_temp_nxt = point_x_temp + 32;
-        else
-            point_x_temp_nxt = '0;
-        if (point_y_temp < 768)
-            point_y_temp_nxt = point_y_temp + 32;
-        else
-            point_y_temp_nxt = '0;
-        if (point_x + POINT_SIZE >= player_x - PLAYER_SIZE + 1 && point_x - POINT_SIZE <= player_x + PLAYER_SIZE && point_y + POINT_SIZE >= player_y - PLAYER_SIZE + 1 && point_y + POINT_SIZE <= player_y + PLAYER_SIZE)
-            point_active = 0;
-        else
-            point_active = 1;
-        if (point_active == 0) begin
+        // Use LFSR to select next position
+        point_x_temp = point_xpos[lfsr_x % 32];
+        point_y_temp = point_ypos[lfsr_y % 24];
+
+        // Check if the point is active or not
+        if ((point_x_temp + POINT_SIZE < player_x - PLAYER_SIZE) || (point_x_temp - POINT_SIZE > player_x + PLAYER_SIZE) || (point_y_temp + POINT_SIZE < player_y - PLAYER_SIZE) || (point_y_temp - POINT_SIZE > player_y + PLAYER_SIZE)) 
+            point_active = 1'b1; // Point is active
+         else
+            point_active = 1'b0; // Point is not active
+        
+
+        if (point_active) begin
             point_x_nxt = point_x_temp;
             point_y_nxt = point_y_temp;
-            point_active = 1;
-        end else begin 
-            point_x_nxt = point_x;
-            point_y_nxt = point_y;
+        end else begin
+            point_x_nxt = point_x; // Retain previous position
+            point_y_nxt = point_y; // Retain previous position
         end
     end
 

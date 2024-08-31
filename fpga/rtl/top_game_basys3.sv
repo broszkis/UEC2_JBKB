@@ -35,8 +35,8 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk91MHz;
 wire pclk_mirror;
-logic [15:0] keycode;
-wire move_up, move_down, move_right, move_left;
+logic [15:0] keycode, keycode_ff;
+wire move_up, move_down, move_right, move_left, move_up_ff, move_down_ff, move_right_ff, move_left_ff;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -95,6 +95,21 @@ controls u_controls(
     .move_left
 );
 
+hold u_hold (
+    .clk(clk65MHz),
+    .rst(btnC),
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left,
+    .keycode,
+    .move_up_ff,
+    .move_down_ff,
+    .move_right_ff,
+    .move_left_ff,
+    .keycode_ff
+);
+
 top_vga u_top_vga(
     .clk(clk65MHz),
     .rst(btnC),
@@ -103,11 +118,11 @@ top_vga u_top_vga(
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
-    .move_up,
-    .move_down,
-    .move_right,
-    .move_left,
-    .keycode
+    .move_up(move_up_ff),
+    .move_down(move_down_ff),
+    .move_right(move_right_ff),
+    .move_left(move_left_ff),
+    .keycode(keycode_ff)
 );
 
 endmodule

@@ -1,6 +1,6 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-31 14:40:49
+Created: 2024-08-31 16:59:33
 
 ----SYNTHESIS----
 WARNING: [Synth 8-6014] Unused sequential element ss_out\.vblnk_reg was removed.  [rtl/draw/screen_selector.sv:54]
