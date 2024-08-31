@@ -15,7 +15,7 @@ import vga_pkg::*;
 logic [11:0] rgb_nxt;
 logic [9:0] xpos, ypos, xpos_nxt, ypos_nxt, point_x, point_y;
 logic [19:0] counter;
-wire collision_up, collision_down, collision_right, collision_left, point_active;
+wire collision_up, collision_down, collision_right, collision_left;
 
 /*
  * Submodules
@@ -36,13 +36,12 @@ random_generate u_random_generate (
     .player_x(xpos),
     .player_y(ypos),
     .point_x,
-    .point_y,
-    .point_active
+    .point_y
 );
 
 initial begin 
-    xpos = 160;
-    ypos = 192;
+    xpos = 32;
+    ypos = 32;
 end
 
 /**

@@ -4,8 +4,7 @@ module random_generate (
     input logic [9:0] player_x,
     input logic [9:0] player_y,
     output logic [9:0] point_x,
-    output logic [9:0] point_y,
-    output logic point_active
+    output logic [9:0] point_y
 );
 
     import vga_pkg::*;
@@ -35,7 +34,12 @@ module random_generate (
         .collision_left
     );
 
-    always_ff @(posedge clk or posedge rst) begin
+    initial begin
+        point_x = 512;
+        point_y = 64;
+    end
+
+    always_ff @(posedge clk) begin
         if (rst) begin
             point_x <= '0;
             point_y <= '0;
@@ -50,20 +54,23 @@ module random_generate (
     end
 
     always_comb begin
-        // Use LFSR to select next position
         point_x_temp = point_xpos[lfsr_x % 32];
         point_y_temp = point_ypos[lfsr_y % 24];
-
-        if ((point_x + POINT_SIZE < player_x - PLAYER_SIZE) && (point_x - POINT_SIZE > player_x + PLAYER_SIZE) && (point_y + POINT_SIZE < player_y - PLAYER_SIZE) && (point_y - POINT_SIZE > player_y + PLAYER_SIZE)) 
-            point_active = 1'b1; // Point is active
-         else
-            point_active = 1'b0; // Point is not active
-        if (~(collision_up || collision_down || collision_right || collision_left)) begin
-            point_x_nxt = point_x_temp;
-            point_y_nxt = point_x_temp;
-        end else begin
+        point_x_nxt = point_x;
+        point_y_nxt = point_y;
+        // Sprawdzamy czy gracz wszedl w punkt
+        if (((point_x + POINT_SIZE < player_x - PLAYER_SIZE) || (point_x - POINT_SIZE > player_x + PLAYER_SIZE)) || ((point_y + POINT_SIZE < player_y - PLAYER_SIZE) || (point_y - POINT_SIZE > player_y + PLAYER_SIZE))) begin
             point_x_nxt = point_x;
             point_y_nxt = point_y;
+        end else begin
+        // Sprawdzamy czy nowo wygenerowany punkt nie koliduje z terenem / pojawia sie na wspolrzednych startowych graczy
+        if ((!(collision_up || collision_down || collision_right || collision_left)) && (!((point_x_temp == 32 && point_y_temp == 32) || (point_x_temp == 992 && point_y_temp == 736)))) begin
+            point_x_nxt = point_x_temp;
+            point_y_nxt = point_y_temp;
+        end else begin 
+            point_x_nxt = point_x_nxt;
+            point_y_nxt = point_y_nxt;
+        end
         end
     end
 

@@ -55,7 +55,7 @@ always_ff@(posedge clk) begin
         ss_out.vcount <= '0;
         ss_out.vsync  <= '0;
         ss_out.rgb    <= '0;
-    end else
+    end else begin
         ss_out.hcount <= vga_nxt.hcount;
         ss_out.hblnk  <= vga_nxt.hblnk;
         ss_out.hsync  <= vga_nxt.hsync;
@@ -63,6 +63,7 @@ always_ff@(posedge clk) begin
         ss_out.vblnk  <= vga_nxt.vblnk;
         ss_out.vcount <= vga_nxt.vcount;
         ss_out.vsync  <= vga_nxt.vsync;
+    end
 end
 
 always_comb begin
