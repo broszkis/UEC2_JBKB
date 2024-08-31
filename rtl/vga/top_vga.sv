@@ -35,6 +35,7 @@ module top_vga (
 
 vga_tim wire_tim();
 vga_if wire_screen();
+wire [3:0] points;
 
 /**
  * Signals assignments
@@ -68,12 +69,14 @@ screen_selector u_screen_selector(
     .move_left,
     .screen(screen),
     .ss_in(wire_tim),
-    .ss_out(wire_screen)
+    .ss_out(wire_screen),
+    .points
 );
 
 screen_control u_screen_control(
     .clk,
     .rst,
+    .points,
     .screen(screen),
     .keycode(keycode)
 );

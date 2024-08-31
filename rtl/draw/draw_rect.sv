@@ -3,7 +3,8 @@ module draw_rect (
     vga_if.out rect_out,
     input logic clk,
     input logic rst,
-    input logic move_up, move_down, move_right, move_left
+    input logic move_up, move_down, move_right, move_left,
+    output logic [3:0] point_collected
 );
 
 import vga_pkg::*;
@@ -16,6 +17,7 @@ logic [11:0] rgb_nxt;
 logic [9:0] xpos, ypos, xpos_nxt, ypos_nxt, point_x, point_y;
 logic [19:0] counter;
 wire collision_up, collision_down, collision_right, collision_left;
+logic [3:0] point_collected_nxt;
 
 /*
  * Submodules
@@ -59,6 +61,7 @@ always_ff @(posedge clk) begin : rect_ff_blk
         rect_out.rgb <= '0;
         xpos <= '0;
         ypos <= '0;
+        point_collected <= 0;
     end else begin
         rect_out.vcount <= rect_in.vcount;
         rect_out.vsync <= rect_in.vsync;
@@ -69,6 +72,7 @@ always_ff @(posedge clk) begin : rect_ff_blk
         rect_out.rgb <= rgb_nxt;
         xpos <= xpos_nxt;
         ypos <= ypos_nxt;
+        point_collected <= point_collected_nxt;
     end
 end
 
@@ -115,10 +119,12 @@ end
 always_comb begin : rect_comb_blk
     if (rect_in.hcount >= xpos - PLAYER_SIZE + 1 && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE + 1 && rect_in.vcount <= ypos + PLAYER_SIZE)
         rgb_nxt = RECT_COLOR;
-    else if (rect_in.hcount >= point_x - POINT_SIZE + 1 && rect_in.hcount <= point_x + POINT_SIZE && rect_in.vcount >= point_y - POINT_SIZE + 1 && rect_in.vcount <= point_y + POINT_SIZE)
+    else if (rect_in.hcount >= point_x - POINT_SIZE + 1 && rect_in.hcount <= point_x + POINT_SIZE && rect_in.vcount >= point_y - POINT_SIZE + 1 && rect_in.vcount <= point_y + POINT_SIZE) begin
         rgb_nxt = POINT_COLOR;
-    else
+        point_collected_nxt++;
+    end
+    else 
         rgb_nxt = rect_in.rgb;
-end
+    end
 
 endmodule

@@ -4,6 +4,7 @@ module screen_selector(
     input logic clk, rst,
     input logic move_up, move_down, move_right, move_left,
     input state screen,
+    output logic [3:0] points,
     vga_tim.in ss_in,
     vga_if.out ss_out
 );
@@ -13,6 +14,8 @@ vga_if vga_start();
 vga_if vga_game();
 vga_if vga_player_1();
 vga_if vga_player_2();
+wire [3:0] player_points;
+assign points = player_points;
 
 main_menu u_main_menu(
     .clk(clk),
@@ -29,7 +32,8 @@ draw_game u_draw_game(
     .move_up,
     .move_down,
     .move_right,
-    .move_left
+    .move_left,
+    .points(player_points)
 );
 
 first_player_won u_first_player_won(
@@ -74,7 +78,7 @@ always_comb begin
         vga_nxt.hcount = vga_start.hcount;
         vga_nxt.hsync  = vga_start.hsync;
         vga_nxt.rgb    = vga_start.rgb;
-        vga_nxt.vblnk  = vga_start.hblnk;
+        vga_nxt.vblnk  = vga_start.vblnk;
         vga_nxt.vcount = vga_start.vcount;
         vga_nxt.vsync  = vga_start.vsync;
         end
@@ -84,7 +88,7 @@ always_comb begin
         vga_nxt.hcount = vga_game.hcount;
         vga_nxt.hsync  = vga_game.hsync;
         vga_nxt.rgb    = vga_game.rgb;
-        vga_nxt.vblnk  = vga_game.hblnk;
+        vga_nxt.vblnk  = vga_game.vblnk;
         vga_nxt.vcount = vga_game.vcount;
         vga_nxt.vsync  = vga_game.vsync;
         end
@@ -94,7 +98,7 @@ always_comb begin
         vga_nxt.hcount = vga_player_1.hcount;
         vga_nxt.hsync  = vga_player_1.hsync;
         vga_nxt.rgb    = vga_player_1.rgb;
-        vga_nxt.vblnk  = vga_player_1.hblnk;
+        vga_nxt.vblnk  = vga_player_1.vblnk;
         vga_nxt.vcount = vga_player_1.vcount;
         vga_nxt.vsync  = vga_player_1.vsync;
         end
@@ -104,7 +108,7 @@ always_comb begin
         vga_nxt.hcount = vga_player_2.hcount;
         vga_nxt.hsync  = vga_player_2.hsync;
         vga_nxt.rgb    = vga_player_2.rgb;
-        vga_nxt.vblnk  = vga_player_2.hblnk;
+        vga_nxt.vblnk  = vga_player_2.vblnk;
         vga_nxt.vcount = vga_player_2.vcount;
         vga_nxt.vsync  = vga_player_2.vsync;
         end

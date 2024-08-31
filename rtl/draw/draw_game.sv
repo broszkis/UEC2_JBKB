@@ -4,6 +4,7 @@
     input  logic clk,
     input  logic rst,
     input logic move_up, move_down, move_right, move_left,
+    output logic [3:0] points,
     vga_tim.in game_in,
     vga_if.out game_out
 );
@@ -29,7 +30,8 @@ logic [11:0] rgb_nxt;
     .move_up,
     .move_down,
     .move_right,
-    .move_left
+    .move_left,
+    .points()
  );
 
  /**
@@ -45,6 +47,7 @@ logic [11:0] rgb_nxt;
         game_out.hsync  <= '0;
         game_out.hblnk  <= '0;
         game_out.rgb    <= '0;
+        points <= '0;
     end else begin
         game_out.vcount <= wire_rect.vcount;
         game_out.vsync  <= wire_rect.vsync;
@@ -53,6 +56,7 @@ logic [11:0] rgb_nxt;
         game_out.hsync  <= wire_rect.hsync;
         game_out.hblnk  <= wire_rect.hblnk;
         game_out.rgb    <= wire_rect.rgb;
+        points <= u_draw_rect.points;
     end
 end
 

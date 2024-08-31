@@ -5,11 +5,12 @@ import vga_pkg::*;
 module screen_control (
     input logic  clk,
     input logic  rst,
+    input logic [3:0] points,
     input logic [15:0] keycode, 
-    output state screen
+    output state [1:0] current_screen
 );
 
-state current_screen, screen_nxt;
+logic [1:0] screen_nxt;
 
 always_ff @(posedge clk) begin
     if (rst) begin
@@ -20,19 +21,25 @@ always_ff @(posedge clk) begin
 end
 
 always_comb begin
-    screen_nxt = current_screen; 
-    
     case (current_screen)
         START: begin
-            if (keycode[15:8] != 8'hf0) begin
-                case (keycode[7:0])
-                8'h5A: screen_nxt = GAME;
-                endcase
+            if ((keycode[15:8] != 8'hf0) && (keycode[7:0] == 8'h5A))
+                    screen_nxt = GAME;
             end
+        GAME: begin
+            if (points >= 4'd5)
+                screen_nxt = PLAYER_1;
+            else
+                screen_nxt = GAME;
         end
-endcase 
-    end
-assign screen = current_screen;
+        PLAYER_1: begin
+            if ((keycode[15:8] != 8'hf0) && (keycode[7:0] == 8'h5A))
+                    screen_nxt = GAME;
+        end
+        default:
+            screen_nxt = START;
+    endcase
+end
 
 endmodule
 

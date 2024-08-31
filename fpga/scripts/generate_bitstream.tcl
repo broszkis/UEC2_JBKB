@@ -40,6 +40,7 @@ proc generate_bitstream {} {
     wait_on_run impl_1
 }
 
+set_msg_config -id {[Synth 8-7080]} -severity WARNING -new_severity INFO
 
 # MAIN
 create_new_project $project_name $target $top_module
