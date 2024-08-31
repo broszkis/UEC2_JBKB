@@ -51,10 +51,10 @@ always_ff@(posedge clk) begin
         ss_out.hcount <= '0;
         ss_out.hblnk  <= '0;
         ss_out.hsync  <= '0;
-        ss_out.rgb    <= '0;
         ss_out.vblnk  <= '0;
         ss_out.vcount <= '0;
         ss_out.vsync  <= '0;
+        ss_out.rgb    <= '0;
     end else
         ss_out.hcount <= vga_nxt.hcount;
         ss_out.hblnk  <= vga_nxt.hblnk;

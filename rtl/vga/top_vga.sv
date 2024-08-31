@@ -72,5 +72,4 @@ screen_control u_screen_control(
     .keycode(keycode)
 );
 
-
 endmodule

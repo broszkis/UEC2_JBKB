@@ -1,9 +1,9 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-30 12:30:34
+Created: 2024-08-31 14:40:49
 
 ----SYNTHESIS----
-WARNING: [Synth 8-6014] Unused sequential element ss_out\.vblnk_reg was removed.  [rtl/draw/screen_selector.sv:55]
+WARNING: [Synth 8-6014] Unused sequential element ss_out\.vblnk_reg was removed.  [rtl/draw/screen_selector.sv:54]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 
 ----IMPLEMENTATION----

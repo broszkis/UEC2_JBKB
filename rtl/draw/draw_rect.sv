@@ -13,9 +13,9 @@ import vga_pkg::*;
  */
 
 logic [11:0] rgb_nxt;
-logic [10:0] xpos, ypos, xpos_nxt, ypos_nxt;
+logic [9:0] xpos, ypos, xpos_nxt, ypos_nxt, point_x, point_y;
 logic [19:0] counter;
-wire collision_up, collision_down, collision_right, collision_left;
+wire collision_up, collision_down, collision_right, collision_left, point_active;
 
 /*
  * Submodules
@@ -28,6 +28,16 @@ collision u_collision (
     .collision_down,
     .collision_right,
     .collision_left
+);
+
+random_generate u_random_generate (
+    .clk,
+    .rst,
+    .player_x(xpos),
+    .player_y(ypos),
+    .point_x,
+    .point_y,
+    .point_active
 );
 
 initial begin 
@@ -106,6 +116,8 @@ end
 always_comb begin : rect_comb_blk
     if (rect_in.hcount >= xpos - PLAYER_SIZE + 1 && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE + 1 && rect_in.vcount <= ypos + PLAYER_SIZE)
         rgb_nxt = RECT_COLOR;
+    else if (rect_in.hcount >= point_x - POINT_SIZE + 1 && rect_in.hcount <= point_x + POINT_SIZE && rect_in.vcount >= point_y - POINT_SIZE + 1 && rect_in.vcount <= point_y + POINT_SIZE)
+        rgb_nxt = POINT_COLOR;
     else
         rgb_nxt = rect_in.rgb;
 end

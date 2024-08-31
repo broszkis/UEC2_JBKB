@@ -31,13 +31,17 @@ localparam BLUE = 12'h0_0_f;
 localparam YELLOW = 12'hf_f_0;
 localparam BLACK = 12'h0_0_0;
 localparam RECT_COLOR = 12'hf_f_f;
+localparam POINT_COLOR = 12'h0_f_f;
+
 localparam RECT_X = 60;
 localparam RECT_Y = 60;
 localparam RECT_HEIGHT = 30;
 localparam RECT_WIDTH = 30;
 localparam SCREEN_WIDTH = 1024;
 localparam SCREEN_HEIGHT = 768;
-localparam PLAYER_SIZE = 8;
+localparam PLAYER_SIZE = 16;
+localparam POINT_SIZE = 8;
+
 localparam TERRAIN_NUM = 11;
 localparam TERRAIN_LTX1 = 64;
 localparam TERRAIN_LTX2 = 192;
@@ -80,7 +84,7 @@ localparam TERRAIN_MLX2 = 352;
 localparam TERRAIN_MLY1 = 256;
 localparam TERRAIN_MLY2 = 512;
 localparam TERRAIN_MRX1 = 672;
-localparam TERRAIN_MRX2 = 960;
+localparam TERRAIN_MRX2 = 928;
 localparam TERRAIN_MRY1 = 256;
 localparam TERRAIN_MRY2 = 512;
 

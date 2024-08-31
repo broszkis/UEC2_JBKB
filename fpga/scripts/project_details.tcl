@@ -48,6 +48,7 @@ set sv_files {
 
     ../rtl/game_logic/collision.sv
     ../rtl/game_logic/screen_control.sv
+    ../rtl/game_logic/random_generate.sv
 
     ../rtl/keyboard/controls.sv
     ../rtl/keyboard/top_keyboard.sv
