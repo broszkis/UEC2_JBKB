@@ -1,4 +1,8 @@
-module collision (
+module collision 
+#(  parameter
+    SIZE = 16
+)
+(
     input logic [9:0] xpos, ypos,
     output logic collision_up, collision_down, collision_right, collision_left
 );
@@ -33,25 +37,25 @@ always_comb begin
     collision_left = 0;
 
     for (i = 0; i < TERRAIN_NUM; i++) begin
-        collision_up_tmp = ((xpos + PLAYER_SIZE > terrain_xpos1[i]) && 
-                            (xpos - PLAYER_SIZE < terrain_xpos2[i]) && 
-                            (ypos - PLAYER_SIZE < terrain_ypos2[i]) && 
-                            (ypos - PLAYER_SIZE > terrain_ypos1[i]));
+        collision_up_tmp = ((xpos + SIZE > terrain_xpos1[i]) && 
+                            (xpos - SIZE < terrain_xpos2[i]) && 
+                            (ypos - SIZE < terrain_ypos2[i]) && 
+                            (ypos - SIZE > terrain_ypos1[i]));
 
-        collision_down_tmp = ((xpos + PLAYER_SIZE > terrain_xpos1[i]) && 
-                              (xpos - PLAYER_SIZE < terrain_xpos2[i]) && 
-                              (ypos + PLAYER_SIZE > terrain_ypos1[i]) && 
-                              (ypos + PLAYER_SIZE < terrain_ypos2[i]));
+        collision_down_tmp = ((xpos + SIZE > terrain_xpos1[i]) && 
+                              (xpos - SIZE < terrain_xpos2[i]) && 
+                              (ypos + SIZE > terrain_ypos1[i]) && 
+                              (ypos + SIZE < terrain_ypos2[i]));
 
-        collision_right_tmp = ((xpos + PLAYER_SIZE > terrain_xpos1[i]) && 
-                               (xpos + PLAYER_SIZE < terrain_xpos2[i]) && 
-                               (ypos + PLAYER_SIZE > terrain_ypos1[i]) && 
-                               (ypos - PLAYER_SIZE < terrain_ypos2[i]));
+        collision_right_tmp = ((xpos + SIZE > terrain_xpos1[i]) && 
+                               (xpos + SIZE < terrain_xpos2[i]) && 
+                               (ypos + SIZE > terrain_ypos1[i]) && 
+                               (ypos - SIZE < terrain_ypos2[i]));
 
-        collision_left_tmp = ((xpos - PLAYER_SIZE < terrain_xpos2[i]) && 
-                              (xpos - PLAYER_SIZE > terrain_xpos1[i]) && 
-                              (ypos + PLAYER_SIZE > terrain_ypos1[i]) && 
-                              (ypos - PLAYER_SIZE < terrain_ypos2[i]));
+        collision_left_tmp = ((xpos - SIZE < terrain_xpos2[i]) && 
+                              (xpos - SIZE > terrain_xpos1[i]) && 
+                              (ypos + SIZE > terrain_ypos1[i]) && 
+                              (ypos - SIZE < terrain_ypos2[i]));
 
         collision_up = collision_up || collision_up_tmp;
         collision_down = collision_down || collision_down_tmp;

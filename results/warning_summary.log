@@ -1,13 +1,11 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-31 16:59:33
+Created: 2024-08-31 18:32:45
 
 ----SYNTHESIS----
 WARNING: [Synth 8-6014] Unused sequential element ss_out\.vblnk_reg was removed.  [rtl/draw/screen_selector.sv:54]
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 
 ----IMPLEMENTATION----
-WARNING: [Route 35-328] Router estimated timing not met.
-CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
 WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
 WARNING: [Device 21-2174] Failed to initialize Virtual grid.

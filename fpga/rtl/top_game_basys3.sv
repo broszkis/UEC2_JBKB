@@ -71,7 +71,7 @@ ODDR pclk_oddr (
 
 clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
     .clk,
-    .clk91MHz,
+    .clk97MHz,
     .clk65MHz,
     .locked()
  );
@@ -79,14 +79,14 @@ clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
 
 
 top_keyboard u_top_keyboard(
-    .clk(clk91MHz),
+    .clk(clk97MHz),
     .PS2Clk(PS2Clk),
     .PS2Data(PS2Data),
     .keycode
  );
 
 controls u_controls(
-    .clk(clk91MHz),
+    .clk(clk97MHz),
     .rst(btnC),
     .keycode,
     .move_up,

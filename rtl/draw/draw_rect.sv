@@ -41,8 +41,8 @@ random_generate u_random_generate (
 );
 
 initial begin 
-    xpos = 15;
-    ypos = 15;
+    xpos = 160;
+    ypos = 192;
 end
 
 /**

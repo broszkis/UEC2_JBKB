@@ -10,6 +10,8 @@ module random_generate (
 
     import vga_pkg::*;
 
+    wire collision_up, collision_down, collision_right, collision_left;
+
     logic [9:0] point_x_nxt, point_y_nxt;
     logic [9:0] point_x_temp, point_y_temp;
 
@@ -19,6 +21,19 @@ module random_generate (
     // Linear Feedback Shift Register (LFSR) for generating random indices
     logic [4:0] lfsr_x = 5'd1; // 5-bit LFSR for x-axis
     logic [4:0] lfsr_y = 5'd1; // 5-bit LFSR for y-axis
+
+    collision 
+    #(
+        .SIZE(8)
+    ) 
+    u_point_collision (
+        .xpos(point_x_temp),
+        .ypos(point_y_temp),
+        .collision_up,
+        .collision_down,
+        .collision_right,
+        .collision_left
+    );
 
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
@@ -39,19 +54,16 @@ module random_generate (
         point_x_temp = point_xpos[lfsr_x % 32];
         point_y_temp = point_ypos[lfsr_y % 24];
 
-        // Check if the point is active or not
-        if ((point_x_temp + POINT_SIZE < player_x - PLAYER_SIZE) || (point_x_temp - POINT_SIZE > player_x + PLAYER_SIZE) || (point_y_temp + POINT_SIZE < player_y - PLAYER_SIZE) || (point_y_temp - POINT_SIZE > player_y + PLAYER_SIZE)) 
+        if ((point_x + POINT_SIZE < player_x - PLAYER_SIZE) && (point_x - POINT_SIZE > player_x + PLAYER_SIZE) && (point_y + POINT_SIZE < player_y - PLAYER_SIZE) && (point_y - POINT_SIZE > player_y + PLAYER_SIZE)) 
             point_active = 1'b1; // Point is active
          else
             point_active = 1'b0; // Point is not active
-        
-
-        if (point_active) begin
+        if (~(collision_up || collision_down || collision_right || collision_left)) begin
             point_x_nxt = point_x_temp;
-            point_y_nxt = point_y_temp;
+            point_y_nxt = point_x_temp;
         end else begin
-            point_x_nxt = point_x; // Retain previous position
-            point_y_nxt = point_y; // Retain previous position
+            point_x_nxt = point_x;
+            point_y_nxt = point_y;
         end
     end
 
