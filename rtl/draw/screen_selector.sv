@@ -3,7 +3,7 @@ import vga_pkg::*;
 module screen_selector(
     input logic clk, rst,
     input logic move_up, move_down, move_right, move_left,
-    input state screen,
+    input logic [1:0] screen,
     output logic [3:0] points,
     vga_tim.in ss_in,
     vga_if.out ss_out
@@ -14,8 +14,6 @@ vga_if vga_start();
 vga_if vga_game();
 vga_if vga_player_1();
 vga_if vga_player_2();
-wire [3:0] player_points;
-assign points = player_points;
 
 main_menu u_main_menu(
     .clk(clk),
@@ -33,7 +31,7 @@ draw_game u_draw_game(
     .move_down,
     .move_right,
     .move_left,
-    .points(player_points)
+    .points
 );
 
 first_player_won u_first_player_won(

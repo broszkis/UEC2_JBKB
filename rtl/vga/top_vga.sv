@@ -36,6 +36,7 @@ module top_vga (
 vga_tim wire_tim();
 vga_if wire_screen();
 wire [3:0] points;
+wire state screen;
 
 /**
  * Signals assignments
@@ -45,10 +46,6 @@ wire [3:0] points;
  assign vs = wire_screen.vsync;
  assign hs = wire_screen.hsync;
  assign {r,g,b} = wire_screen.rgb;
- 
-
-state screen;
-
 
 /**
  * Submodules instances
@@ -67,7 +64,7 @@ screen_selector u_screen_selector(
     .move_down,
     .move_right,
     .move_left,
-    .screen(screen),
+    .screen,
     .ss_in(wire_tim),
     .ss_out(wire_screen),
     .points
@@ -77,7 +74,7 @@ screen_control u_screen_control(
     .clk,
     .rst,
     .points,
-    .screen(screen),
+    .screen,
     .keycode(keycode)
 );
 

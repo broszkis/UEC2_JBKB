@@ -4,7 +4,7 @@ module draw_rect (
     input logic clk,
     input logic rst,
     input logic move_up, move_down, move_right, move_left,
-    output logic [3:0] point_collected
+    output logic [3:0] points
 );
 
 import vga_pkg::*;
@@ -17,7 +17,6 @@ logic [11:0] rgb_nxt;
 logic [9:0] xpos, ypos, xpos_nxt, ypos_nxt, point_x, point_y;
 logic [19:0] counter;
 wire collision_up, collision_down, collision_right, collision_left;
-logic [3:0] point_collected_nxt;
 
 /*
  * Submodules
@@ -38,7 +37,8 @@ random_generate u_random_generate (
     .player_x(xpos),
     .player_y(ypos),
     .point_x,
-    .point_y
+    .point_y,
+    .points
 );
 
 initial begin 
@@ -59,9 +59,8 @@ always_ff @(posedge clk) begin : rect_ff_blk
         rect_out.hsync <= '0;
         rect_out.hblnk <= '0;
         rect_out.rgb <= '0;
-        xpos <= '0;
-        ypos <= '0;
-        point_collected <= 0;
+        xpos <= 32;
+        ypos <= 32;
     end else begin
         rect_out.vcount <= rect_in.vcount;
         rect_out.vsync <= rect_in.vsync;
@@ -72,7 +71,6 @@ always_ff @(posedge clk) begin : rect_ff_blk
         rect_out.rgb <= rgb_nxt;
         xpos <= xpos_nxt;
         ypos <= ypos_nxt;
-        point_collected <= point_collected_nxt;
     end
 end
 
@@ -117,14 +115,15 @@ always_comb begin
 end
 
 always_comb begin : rect_comb_blk
-    if (rect_in.hcount >= xpos - PLAYER_SIZE + 1 && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE + 1 && rect_in.vcount <= ypos + PLAYER_SIZE)
+    if (rect_in.hcount >= xpos - PLAYER_SIZE + 1 && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE + 1 && rect_in.vcount <= ypos + PLAYER_SIZE) begin
         rgb_nxt = RECT_COLOR;
+    end
     else if (rect_in.hcount >= point_x - POINT_SIZE + 1 && rect_in.hcount <= point_x + POINT_SIZE && rect_in.vcount >= point_y - POINT_SIZE + 1 && rect_in.vcount <= point_y + POINT_SIZE) begin
         rgb_nxt = POINT_COLOR;
-        point_collected_nxt++;
     end
-    else 
+    else begin 
         rgb_nxt = rect_in.rgb;
     end
+end
 
 endmodule

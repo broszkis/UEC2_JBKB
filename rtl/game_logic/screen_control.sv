@@ -1,47 +1,54 @@
-`timescale 1ns/1ps
-
-import vga_pkg::*;
-
 module screen_control (
-    input logic  clk,
-    input logic  rst,
-    input logic [3:0] points,
-    input logic [15:0] keycode, 
-    output state [1:0] current_screen
+    input  wire  clk,
+    input  wire  rst,
+    input  wire  [3:0] points,
+    input  wire  [15:0] keycode,
+    output logic [1:0] screen
 );
+
+enum logic [1:0] {
+    START = 2'b00,
+    GAME  = 2'b01,
+    PLAYER_1 = 2'b11,
+    PLAYER_2 = 2'b10
+} state, state_nxt;
 
 logic [1:0] screen_nxt;
 
 always_ff @(posedge clk) begin
     if (rst) begin
-        current_screen <= START;
+        state <= START;
     end else begin
-        current_screen <= screen_nxt;
+        state <= state_nxt;
+    end
+end
+always_comb begin : state_comb_blk
+    case(state)
+        START: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h5A) ? GAME : START;
+        GAME: state_nxt = (points == 5) ? PLAYER_1 : GAME;
+        PLAYER_1: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h2D) ? START : PLAYER_1;
+        PLAYER_2: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h2D) ? START : PLAYER_1;
+        default: state_nxt = START;
+    endcase
+end
+
+always_ff @(posedge clk) begin
+    if(rst) begin
+        screen <= 2'b0;
+    end
+    else begin
+        screen <= screen_nxt;
     end
 end
 
-always_comb begin
-    case (current_screen)
-        START: begin
-            if ((keycode[15:8] != 8'hf0) && (keycode[7:0] == 8'h5A))
-                    screen_nxt = GAME;
-            end
-        GAME: begin
-            if (points >= 4'd5)
-                screen_nxt = PLAYER_1;
-            else
-                screen_nxt = GAME;
-        end
-        PLAYER_1: begin
-            if ((keycode[15:8] != 8'hf0) && (keycode[7:0] == 8'h5A))
-                    screen_nxt = GAME;
-        end
-        default:
-            screen_nxt = START;
+always_comb begin : out_comb_blk
+    case(state_nxt)
+        START: screen_nxt = 2'b00;
+        GAME: screen_nxt = 2'b01;
+        PLAYER_1: screen_nxt = 2'b11;
+        PLAYER_2: screen_nxt = 2'b10;
+        default: screen_nxt = 2'b0;
     endcase
 end
 
 endmodule
-
-
-

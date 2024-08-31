@@ -1,15 +1,10 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-31 22:06:07
+Created: 2024-09-01 00:59:08
 
 ----SYNTHESIS----
-ERROR: [Synth 8-11365] for the instance 'u_draw_rect' of module 'draw_rect' declared at 'rtl/draw/draw_rect.sv:1', named port connection 'points' does not exist [/home/jbartnik/Desktop/UEC2_JBKB/rtl/draw/draw_game.sv:34]
-ERROR: [Synth 8-26] lhs assignment pattern not implemented [rtl/draw/draw_game.sv:43]
-ERROR: [Synth 8-6156] failed synthesizing module 'draw_game' [rtl/draw/draw_game.sv:3]
-ERROR: [Synth 8-6156] failed synthesizing module 'screen_selector' [rtl/draw/screen_selector.sv:3]
-ERROR: [Synth 8-6156] failed synthesizing module 'top_vga' [rtl/vga/top_vga.sv:17]
-ERROR: [Synth 8-6156] failed synthesizing module 'top_game_basys3' [fpga/rtl/top_game_basys3.sv:17]
-ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+CLEAR :)
 
 ----IMPLEMENTATION----
-No implementation log file found!
+WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
+WARNING: [Device 21-2174] Failed to initialize Virtual grid.

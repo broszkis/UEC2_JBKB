@@ -33,7 +33,7 @@ module top_game_basys3 (
  */
 
 wire clk65MHz;
-wire clk91MHz;
+wire clk97MHz;
 wire pclk_mirror;
 logic [15:0] keycode, keycode_ff;
 wire move_up, move_down, move_right, move_left, move_up_ff, move_down_ff, move_right_ff, move_left_ff;
