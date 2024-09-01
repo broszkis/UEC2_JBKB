@@ -33,14 +33,6 @@ set xdc_files {
 set sv_files {
     ../rtl/vga/vga_pkg.sv
     ../rtl/vga/vga_if.sv
-<<<<<<< HEAD
-    ../rtl/vga/vga_timing.sv
-    ../rtl/vga/main_menu.sv
-    ../rtl/game_logic/spawn.sv
-    ../rtl/game_logic/random_generate.sv
-    ../rtl/keyboard/controls.sv
- 
-=======
     ../rtl/vga/vga_tim.sv
 
     rtl/top_game_basys3.sv
@@ -55,7 +47,6 @@ set sv_files {
     ../rtl/draw/screen_selector.sv
 
     ../rtl/vga/top_vga.sv
->>>>>>> multiplayer
     
     ../rtl/vga/vga_timing.sv
 

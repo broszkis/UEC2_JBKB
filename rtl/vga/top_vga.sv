@@ -45,27 +45,10 @@ module top_vga (
  * VGA interface wiring
  */
 
-<<<<<<< HEAD
-// VGA signals from timing
- vga_if vga_timing();
-
- // VGA signals from background
- vga_if vga_bg();
-
-  // VGA signals from drawing rectangle
- vga_if vga_rect();
- logic [14:0][31:0]position_x;
- logic [14:0][31:0]position_y;
- wire [11:0] xpos;
- wire [11:0] ypos;
- wire [11:0] xpos_nxt;
- wire [11:0] ypos_nxt;
-=======
 vga_tim wire_tim();
 vga_if wire_screen();
 wire [4:0] points_1, points_2;
 wire [1:0] screen;
->>>>>>> multiplayer
 
 /**
  * Signals assignments
@@ -124,15 +107,5 @@ disp_hex_mux u_disp_hex_mux (
     .an(an),
     .sseg({dp,seg[0],seg[1],seg[2],seg[3],seg[4],seg[5],seg[6]})
 );
-<<<<<<< HEAD
-*/
-random_generate u_random_generate(
-    .clk,
-    .position_x,
-    .position_y,
-    .rst
-);
-=======
->>>>>>> multiplayer
 
 endmodule
