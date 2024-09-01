@@ -1,109 +1,13 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-08-21 23:10:35
+Created: 2024-09-01 16:17:24
 
 ----SYNTHESIS----
-WARNING: [Synth 8-3848] Net vga_out\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:6]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:35]
-WARNING: [Synth 8-639] system function call 'urandom_range' not supported [rtl/game_logic/random_generate.sv:36]
-WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [rtl/game_logic/random_generate.sv:14]
-WARNING: [Synth 8-6014] Unused sequential element generate_point_reg was removed.  [rtl/game_logic/random_generate.sv:15]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[13] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[12] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[11] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[10] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[9] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[8] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[7] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[6] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[5] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[4] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[3] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[2] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[1] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_x_reg[0] was removed.  [rtl/game_logic/random_generate.sv:30]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[14] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[13] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[12] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[11] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[10] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[9] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[8] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[7] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[6] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[5] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[4] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[3] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[2] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[1] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-6014] Unused sequential element position_y_reg[0] was removed.  [rtl/game_logic/random_generate.sv:31]
-WARNING: [Synth 8-7129] Port rst in module random_generate is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[8] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[7] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[6] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[5] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[4] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[11] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[10] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[9] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[8] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[7] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[6] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[5] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[4] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[3] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[2] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[1] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_out\.rgb[0] in module vga_timing is either unconnected or has no load
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[11] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[10] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[9] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[8] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[7] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[6] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[5] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[4] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[3] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[2] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[1] in module draw_bg is either unconnected or has no load
-WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-689] width (1) of port connection 'hex1' does not match port width (4) of module 'disp_hex_mux' [rtl/vga/top_vga.sv:89]
+WARNING: [Synth 8-324] index 7 out of range [fpga/rtl/top_game_basys3.sv:140]
+WARNING: [Synth 8-3917] design top_game_basys3 has port dp driven by constant 0
+WARNING: [Synth 8-3917] design top_game_basys3 has port dp driven by constant 0
 
 ----IMPLEMENTATION----
-WARNING: [Route 35-328] Router estimated timing not met.
-CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
+WARNING: [Device 21-2174] Failed to initialize Virtual grid.

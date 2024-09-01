@@ -1,15 +1,10 @@
 /**
- * San Jose State University
- * EE178 Lab #4
- * Author: prof. Eric Crabilla
- *
- * Modified by:
- * 2023  AGH University of Science and Technology
+ * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
- * Piotr Kaczmarczyk
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
  *
  * Description:
- * The project top module.
+ * 
  */
 
 `timescale 1 ns / 1 ps
@@ -17,81 +12,80 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
-    input  logic key_pressed,
+    input logic [15:0] keycode,
+    input logic move_up,
+    input logic move_down,
+    input logic move_right,
+    input logic move_left, 
     output logic vs,
     output logic hs,
+    output logic [6:0] seg,
+    output logic dp,
+    output logic [3:0] an,
     output logic [3:0] r,
     output logic [3:0] g,
     output logic [3:0] b
 );
 
-
 /**
- * Local variables and signals
+ * VGA interface wiring
  */
 
-// VGA signals from timing
- vga_if vga_timing();
-
- // VGA signals from background
- vga_if vga_bg();
-
-  // VGA signals from drawing rectangle
- vga_if vga_rect();
- logic [14:0][31:0]position_x;
- logic [14:0][31:0]position_y;
- wire [11:0] xpos;
- wire [11:0] ypos;
- wire [11:0] xpos_nxt;
- wire [11:0] ypos_nxt;
+vga_tim wire_tim();
+vga_if wire_screen();
+wire [4:0] points;
+wire [1:0] screen;
 
 /**
  * Signals assignments
  */
 
- assign vs = vga_rect.vsync;
- assign hs = vga_rect.hsync;
- assign {r,g,b} = vga_rect.rgb;
- 
+
+ assign vs = wire_screen.vsync;
+ assign hs = wire_screen.hsync;
+ assign {r,g,b} = wire_screen.rgb;
 
 /**
  * Submodules instances
  */
 
- vga_timing u_vga_timing (
+vga_timing u_vga_timing (
     .clk,
     .rst,
-    .vga_out (vga_timing)
+    .tim_out(wire_tim)
 );
 
-draw_bg u_draw_bg (
+screen_selector u_screen_selector(
     .clk,
     .rst,
-    .vga_outbg(vga_bg),
-    .vga_inbg(vga_timing)
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left,
+    .screen,
+    .ss_in(wire_tim),
+    .ss_out(wire_screen),
+    .points
 );
 
-draw_rect u_draw_rect (
+screen_control u_screen_control(
     .clk,
     .rst,
-    .rect_in(vga_bg),
-    .rect_out(vga_rect),
-    .key_pressed
+    .points,
+    .screen(screen),
+    .keycode(keycode)
 );
 
-/*
-main_menu u_main_menu (
+disp_hex_mux u_disp_hex_mux (
     .clk,
-    .rst,
-    .vga_inbg (vga_timing),
-    .vga_outbg (vga_bg)
-);
-*/
-random_generate u_random_generate(
-    .clk,
-    .position_x,
-    .position_y,
-    .rst
+    .reset(rst),
+    .dp_in('0),
+    .hex0(points[3:0]),
+    .hex1(points[4]),
+    .hex2('0),
+    .hex3('0),
+    .an(an),
+    .sseg({dp,seg[0],seg[1],seg[2],seg[3],seg[4],seg[5],seg[6]})
 );
 
 endmodule

@@ -17,13 +17,21 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
+    
     input wire PS2Clk,
     input wire PS2Data,
+   
+    output wire [6:0] seg,
+    output wire [3:0] an,
+    output wire dp,
+
     output wire Vsync,
     output wire Hsync,
+    
     output wire [3:0] vgaRed,
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
+
     output wire JA1
 );
 
@@ -33,10 +41,10 @@ module top_game_basys3 (
  */
 
 wire clk65MHz;
-wire clk91MHz;
+wire clk97MHz;
 wire pclk_mirror;
-wire [15:0] keycode;
-wire move_up;
+logic [15:0] keycode, keycode_ff;
+wire move_up, move_down, move_right, move_left, move_up_ff, move_down_ff, move_right_ff, move_left_ff;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -71,7 +79,7 @@ ODDR pclk_oddr (
 
 clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
     .clk,
-    .clk91MHz,
+    .clk97MHz,
     .clk65MHz,
     .locked()
  );
@@ -79,20 +87,35 @@ clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
 
 
 top_keyboard u_top_keyboard(
-    .clk(clk91MHz),
+    .clk(clk97MHz),
     .PS2Clk(PS2Clk),
     .PS2Data(PS2Data),
     .keycode
  );
 
 controls u_controls(
-    .clk(clk91MHz),
+    .clk(clk97MHz),
     .rst(btnC),
     .keycode,
-    .move_up(move_up),
-    .move_down(),
-    .move_right(),
-    .move_left()
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left
+);
+
+hold u_hold (
+    .clk(clk65MHz),
+    .rst(btnC),
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left,
+    .keycode,
+    .move_up_ff,
+    .move_down_ff,
+    .move_right_ff,
+    .move_left_ff,
+    .keycode_ff
 );
 
 top_vga u_top_vga(
@@ -103,7 +126,17 @@ top_vga u_top_vga(
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
-    .key_pressed(move_up)
+    .seg(),
+    .dp(),
+    .an,
+    .move_up(move_up_ff),
+    .move_down(move_down_ff),
+    .move_right(move_right_ff),
+    .move_left(move_left_ff),
+    .keycode(keycode_ff)
 );
+
+assign seg = u_top_vga.seg[6:0];
+assign dp = u_top_vga.seg[7];
 
 endmodule

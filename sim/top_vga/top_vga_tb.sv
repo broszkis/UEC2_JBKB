@@ -57,10 +57,8 @@ end
  */
 
 top_vga dut (
-    .clk(clk),
-    .clk100MHz(clk100MHz),
-    .din(din),
-    .rst(rst),
+    .clk,
+    .rst,
     .vs(vs),
     .hs(),
     .r(r),
