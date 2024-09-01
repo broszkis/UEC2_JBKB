@@ -17,13 +17,24 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
+    
     input wire PS2Clk,
     input wire PS2Data,
+   
+    output wire [6:0] seg,
+    output wire [3:0] an,
+    output wire dp,
+
     output wire Vsync,
     output wire Hsync,
+    
     output wire [3:0] vgaRed,
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
+
+    input wire JC1, JC2, JC3, JC4,
+    output wire JC7, JC8, JC9, JC10,
+
     output wire JA1
 );
 
@@ -33,10 +44,9 @@ module top_game_basys3 (
  */
 
 wire clk65MHz;
-wire clk91MHz;
+wire clk97MHz;
 wire pclk_mirror;
-wire [15:0] keycode;
-wire move_up;
+logic [15:0] keycode;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -49,7 +59,8 @@ logic [7:0] safe_start = 0;
  * Signals assignments
  */
 
-assign JA1 = pclk_mirror;
+
+ assign JA1 = pclk_mirror;
 
 /**
  * FPGA submodules placement
@@ -71,7 +82,7 @@ ODDR pclk_oddr (
 
 clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
     .clk,
-    .clk91MHz,
+    .clk97MHz,
     .clk65MHz,
     .locked()
  );
@@ -79,22 +90,28 @@ clk_wiz_0_clk_wiz u_clk_wiz_0_clk_wiz(
 
 
 top_keyboard u_top_keyboard(
-    .clk(clk91MHz),
+    .clk(clk97MHz),
     .PS2Clk(PS2Clk),
     .PS2Data(PS2Data),
     .keycode
  );
 
-controls u_controls(
-    .clk(clk91MHz),
+/*
+hold u_hold (
+    .clk(clk65MHz),
     .rst(btnC),
+    .move_up,
+    .move_down,
+    .move_right,
+    .move_left,
     .keycode,
-    .move_up(move_up),
-    .move_down(),
-    .move_right(),
-    .move_left()
+    .move_up_ff,
+    .move_down_ff,
+    .move_right_ff,
+    .move_left_ff,
+    .keycode_ff
 );
-
+*/
 top_vga u_top_vga(
     .clk(clk65MHz),
     .rst(btnC),
@@ -103,7 +120,20 @@ top_vga u_top_vga(
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
-    .key_pressed(move_up)
+    .seg(),
+    .dp,
+    .an,
+    .up_in(JC1),
+    .down_in(JC2),
+    .right_in(JC3),
+    .left_in(JC4),
+    .up_out(JC7),
+    .down_out(JC8),
+    .right_out(JC9),
+    .left_out(JC10),
+    .keycode
 );
+
+assign seg = u_top_vga.seg[6:0];
 
 endmodule

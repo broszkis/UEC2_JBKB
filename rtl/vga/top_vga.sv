@@ -17,19 +17,35 @@
 module top_vga (
     input  logic clk,
     input  logic rst,
-    input  logic key_pressed,
+    
+    input wire [15:0] keycode,
+
+    input logic up_in,
+    input logic down_in,
+    input logic right_in,
+    input logic left_in,
+    output logic up_out,
+    output logic down_out,
+    output logic right_out,
+    output logic left_out,
+
     output logic vs,
     output logic hs,
+    
+    output logic [6:0] seg,
+    output logic dp,
+    output logic [3:0] an,
+
     output logic [3:0] r,
     output logic [3:0] g,
     output logic [3:0] b
 );
 
-
 /**
- * Local variables and signals
+ * VGA interface wiring
  */
 
+<<<<<<< HEAD
 // VGA signals from timing
  vga_if vga_timing();
 
@@ -44,48 +60,71 @@ module top_vga (
  wire [11:0] ypos;
  wire [11:0] xpos_nxt;
  wire [11:0] ypos_nxt;
+=======
+vga_tim wire_tim();
+vga_if wire_screen();
+wire [4:0] points_1, points_2;
+wire [1:0] screen;
+>>>>>>> multiplayer
 
 /**
  * Signals assignments
  */
 
- assign vs = vga_rect.vsync;
- assign hs = vga_rect.hsync;
- assign {r,g,b} = vga_rect.rgb;
- 
+assign vs = wire_screen.vsync;
+assign hs = wire_screen.hsync;
+assign {r,g,b} = wire_screen.rgb;
 
 /**
  * Submodules instances
  */
 
- vga_timing u_vga_timing (
+vga_timing u_vga_timing (
     .clk,
     .rst,
-    .vga_out (vga_timing)
+    .tim_out(wire_tim)
 );
 
-draw_bg u_draw_bg (
+screen_selector u_screen_selector(
     .clk,
     .rst,
-    .vga_outbg(vga_bg),
-    .vga_inbg(vga_timing)
+    .move_up(up_in),
+    .move_down(down_in),
+    .move_right(right_in),
+    .move_left(left_in),
+    .move_up_2(up_out),
+    .move_down_2(down_out),
+    .move_right_2(right_out),
+    .move_left_2(left_out),
+    .screen,
+    .keycode,
+    .ss_in(wire_tim),
+    .ss_out(wire_screen),
+    .points_1,
+    .points_2
 );
 
-draw_rect u_draw_rect (
+screen_control u_screen_control(
     .clk,
     .rst,
-    .rect_in(vga_bg),
-    .rect_out(vga_rect),
-    .key_pressed
+    .points_1,
+    .points_2,
+    .screen(screen),
+    .keycode(keycode)
 );
 
-/*
-main_menu u_main_menu (
+disp_hex_mux u_disp_hex_mux (
     .clk,
-    .rst,
-    .vga_inbg (vga_timing),
-    .vga_outbg (vga_bg)
+    .reset(rst),
+    .dp_in('1),
+    .hex0(points_2[3:0]),
+    .hex1({3'b0,points_2[4]}),
+    .hex2(points_1[3:0]),
+    .hex3({3'b0,points_1[4]}),
+    .an(an),
+    .sseg({dp,seg[0],seg[1],seg[2],seg[3],seg[4],seg[5],seg[6]})
 );
+<<<<<<< HEAD
 */
 random_generate u_random_generate(
     .clk,
@@ -93,5 +132,7 @@ random_generate u_random_generate(
     .position_y,
     .rst
 );
+=======
+>>>>>>> multiplayer
 
 endmodule

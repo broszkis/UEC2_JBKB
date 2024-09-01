@@ -1,5 +1,6 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
+<<<<<<< HEAD
 Created: 2024-08-21 23:10:35
 
 ----SYNTHESIS----
@@ -107,3 +108,13 @@ WARNING: [Synth 8-7129] Port vga_inbg\.rgb[0] in module draw_bg is either unconn
 ----IMPLEMENTATION----
 WARNING: [Route 35-328] Router estimated timing not met.
 CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+=======
+Created: 2024-09-02 00:17:10
+
+----SYNTHESIS----
+CLEAR :)
+
+----IMPLEMENTATION----
+WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
+WARNING: [Device 21-2174] Failed to initialize Virtual grid.
+>>>>>>> multiplayer
