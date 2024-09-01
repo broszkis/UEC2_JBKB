@@ -1,10 +1,12 @@
 module screen_control (
     input  wire  clk,
     input  wire  rst,
-    input  wire  [4:0] points,
+    input  wire  [4:0] points_1, points_2,
     input  wire  [15:0] keycode,
     output logic [1:0] screen
 );
+
+import vga_pkg::*;
 
 enum logic [1:0] {
     START = 2'b00,
@@ -25,9 +27,16 @@ end
 always_comb begin : state_comb_blk
     case(state)
         START: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h5A) ? GAME : START;
-        GAME: state_nxt = (points == 5) ? PLAYER_1 : GAME;
+        GAME: begin
+        if (points_1 >= TEN)
+            state_nxt = PLAYER_1;
+        else if (points_2 >= TEN)
+            state_nxt = PLAYER_2;
+        else
+            state_nxt = GAME;
+        end
         PLAYER_1: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h2D) ? START : PLAYER_1;
-        PLAYER_2: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h2D) ? START : PLAYER_1;
+        PLAYER_2: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h2D) ? START : PLAYER_2;
         default: state_nxt = START;
     endcase
 end

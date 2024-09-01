@@ -18,7 +18,7 @@ sv work ../../rtl/vga/vga_pkg.sv \
         ../../rtl/draw/main_menu.sv \
         ../../rtl/draw/first_player_won.sv \
         ../../rtl/draw/second_player_won.sv \
-        ../../rtl/draw/draw_rect.sv \
+        ../../rtl/draw/draw_point.sv \
         ../../rtl/vga/top_vga.sv \
         ../../rtl/game_logic/collision.sv \
         ../../rtl/keyboard/controls.sv \

@@ -96,15 +96,6 @@ top_keyboard u_top_keyboard(
     .keycode
  );
 
-controls u_controls(
-    .clk(clk97MHz),
-    .rst(btnC),
-    .keycode,
-    .move_up(JC7),
-    .move_down(JC8),
-    .move_right(JC9),
-    .move_left(JC10)
-);
 /*
 hold u_hold (
     .clk(clk65MHz),
@@ -136,6 +127,10 @@ top_vga u_top_vga(
     .down_in(JC2),
     .right_in(JC3),
     .left_in(JC4),
+    .up_out(JC7),
+    .down_out(JC8),
+    .right_out(JC9),
+    .left_out(JC10),
     .keycode
 );
 

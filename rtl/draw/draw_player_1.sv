@@ -1,10 +1,10 @@
-module draw_rect (
-    vga_if.in rect_in,
-    vga_if.out rect_out,
+module draw_player_1 (
+    vga_if.in p1_in,
+    vga_if.out p1_out,
     input logic clk,
     input logic rst,
     input logic move_up, move_down, move_right, move_left,
-    output logic [4:0] points
+    output logic [9:0] xpos, ypos
 );
 
 import vga_pkg::*;
@@ -14,9 +14,10 @@ import vga_pkg::*;
  */
 
 logic [11:0] rgb_nxt;
-logic [9:0] xpos, ypos, xpos_nxt, ypos_nxt, point_x, point_y;
+logic [9:0] xpos_nxt, ypos_nxt;
 logic [19:0] counter;
 wire collision_up, collision_down, collision_right, collision_left;
+
 
 /*
  * Submodules
@@ -31,16 +32,6 @@ collision u_collision (
     .collision_left
 );
 
-random_generate u_random_generate (
-    .clk,
-    .rst,
-    .player_x(xpos),
-    .player_y(ypos),
-    .point_x,
-    .point_y,
-    .points
-);
-
 initial begin 
     xpos = 32;
     ypos = 32;
@@ -52,23 +43,23 @@ end
 
 always_ff @(posedge clk) begin : rect_ff_blk
     if (rst) begin
-        rect_out.vcount <= '0;
-        rect_out.vsync <= '0;
-        rect_out.vblnk <= '0;
-        rect_out.hcount <= '0;
-        rect_out.hsync <= '0;
-        rect_out.hblnk <= '0;
-        rect_out.rgb <= '0;
+        p1_out.vcount <= '0;
+        p1_out.vsync <= '0;
+        p1_out.vblnk <= '0;
+        p1_out.hcount <= '0;
+        p1_out.hsync <= '0;
+        p1_out.hblnk <= '0;
+        p1_out.rgb <= '0;
         xpos <= 32;
         ypos <= 32;
     end else begin
-        rect_out.vcount <= rect_in.vcount;
-        rect_out.vsync <= rect_in.vsync;
-        rect_out.vblnk <= rect_in.vblnk;
-        rect_out.hcount <= rect_in.hcount;
-        rect_out.hsync <= rect_in.hsync;
-        rect_out.hblnk <= rect_in.hblnk;
-        rect_out.rgb <= rgb_nxt;
+        p1_out.vcount <= p1_in.vcount;
+        p1_out.vsync <= p1_in.vsync;
+        p1_out.vblnk <= p1_in.vblnk;
+        p1_out.hcount <= p1_in.hcount;
+        p1_out.hsync <= p1_in.hsync;
+        p1_out.hblnk <= p1_in.hblnk;
+        p1_out.rgb <= rgb_nxt;
         xpos <= xpos_nxt;
         ypos <= ypos_nxt;
     end
@@ -115,14 +106,10 @@ always_comb begin
 end
 
 always_comb begin : rect_comb_blk
-    if (rect_in.hcount >= xpos - PLAYER_SIZE + 1 && rect_in.hcount <= xpos + PLAYER_SIZE && rect_in.vcount >= ypos - PLAYER_SIZE + 1 && rect_in.vcount <= ypos + PLAYER_SIZE) begin
+    if (p1_in.hcount >= xpos - PLAYER_SIZE + 1 && p1_in.hcount <= xpos + PLAYER_SIZE && p1_in.vcount >= ypos - PLAYER_SIZE + 1 && p1_in.vcount <= ypos + PLAYER_SIZE) begin
         rgb_nxt = RECT_COLOR;
-    end
-    else if (rect_in.hcount >= point_x - POINT_SIZE + 1 && rect_in.hcount <= point_x + POINT_SIZE && rect_in.vcount >= point_y - POINT_SIZE + 1 && rect_in.vcount <= point_y + POINT_SIZE) begin
-        rgb_nxt = POINT_COLOR;
-    end
-    else begin 
-        rgb_nxt = rect_in.rgb;
+    end else begin 
+        rgb_nxt = p1_in.rgb;
     end
 end
 

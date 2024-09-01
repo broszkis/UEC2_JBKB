@@ -37,7 +37,9 @@ set sv_files {
 
     rtl/top_game_basys3.sv
     ../rtl/draw/draw_bg.sv
-    ../rtl/draw/draw_rect.sv
+    ../rtl/draw/draw_point.sv
+    ../rtl/draw/draw_player_1.sv
+    ../rtl/draw/draw_player_2.sv
     ../rtl/draw/draw_game.sv
     ../rtl/draw/main_menu.sv
     ../rtl/draw/first_player_won.sv
