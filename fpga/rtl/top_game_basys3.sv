@@ -32,6 +32,9 @@ module top_game_basys3 (
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
 
+    input wire JC1, JC2, JC3, JC4,
+    output wire JC7, JC8, JC9, JC10,
+
     output wire JA1
 );
 
@@ -43,8 +46,7 @@ module top_game_basys3 (
 wire clk65MHz;
 wire clk97MHz;
 wire pclk_mirror;
-logic [15:0] keycode, keycode_ff;
-wire move_up, move_down, move_right, move_left, move_up_ff, move_down_ff, move_right_ff, move_left_ff;
+logic [15:0] keycode;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
@@ -57,7 +59,8 @@ logic [7:0] safe_start = 0;
  * Signals assignments
  */
 
-assign JA1 = pclk_mirror;
+
+ assign JA1 = pclk_mirror;
 
 /**
  * FPGA submodules placement
@@ -97,12 +100,12 @@ controls u_controls(
     .clk(clk97MHz),
     .rst(btnC),
     .keycode,
-    .move_up,
-    .move_down,
-    .move_right,
-    .move_left
+    .move_up(JC7),
+    .move_down(JC8),
+    .move_right(JC9),
+    .move_left(JC10)
 );
-
+/*
 hold u_hold (
     .clk(clk65MHz),
     .rst(btnC),
@@ -117,7 +120,7 @@ hold u_hold (
     .move_left_ff,
     .keycode_ff
 );
-
+*/
 top_vga u_top_vga(
     .clk(clk65MHz),
     .rst(btnC),
@@ -127,16 +130,15 @@ top_vga u_top_vga(
     .hs(Hsync),
     .vs(Vsync),
     .seg(),
-    .dp(),
+    .dp,
     .an,
-    .move_up(move_up_ff),
-    .move_down(move_down_ff),
-    .move_right(move_right_ff),
-    .move_left(move_left_ff),
-    .keycode(keycode_ff)
+    .up_in(JC1),
+    .down_in(JC2),
+    .right_in(JC3),
+    .left_in(JC4),
+    .keycode
 );
 
 assign seg = u_top_vga.seg[6:0];
-assign dp = u_top_vga.seg[7];
 
 endmodule
