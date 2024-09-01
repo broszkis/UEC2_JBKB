@@ -17,13 +17,21 @@
 module top_game_basys3 (
     input  wire clk,
     input  wire btnC,
+    
     input wire PS2Clk,
     input wire PS2Data,
+   
+    output wire [6:0] seg,
+    output wire [3:0] an,
+    output wire dp,
+
     output wire Vsync,
     output wire Hsync,
+    
     output wire [3:0] vgaRed,
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
+
     output wire JA1
 );
 
@@ -118,11 +126,17 @@ top_vga u_top_vga(
     .b(vgaBlue),
     .hs(Hsync),
     .vs(Vsync),
+    .seg(),
+    .dp(),
+    .an,
     .move_up(move_up_ff),
     .move_down(move_down_ff),
     .move_right(move_right_ff),
     .move_left(move_left_ff),
     .keycode(keycode_ff)
 );
+
+assign seg = u_top_vga.seg[6:0];
+assign dp = u_top_vga.seg[7];
 
 endmodule

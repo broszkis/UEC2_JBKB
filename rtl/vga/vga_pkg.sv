@@ -61,6 +61,7 @@ localparam TERRAIN_RBY1 = 640;
 localparam TERRAIN_RBY2 = 704;
 localparam TERRAIN_MTTX1 = 256;
 localparam TERRAIN_MTTX2 = 768;
+localparam TEN           = 16;
 localparam TERRAIN_MTTY1 = 128;
 localparam TERRAIN_MTTY2 = 192;
 localparam TERRAIN_MTSX1 = 480;

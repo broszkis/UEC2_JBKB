@@ -24,6 +24,9 @@ module top_vga (
     input logic move_left, 
     output logic vs,
     output logic hs,
+    output logic [6:0] seg,
+    output logic dp,
+    output logic [3:0] an,
     output logic [3:0] r,
     output logic [3:0] g,
     output logic [3:0] b
@@ -35,8 +38,8 @@ module top_vga (
 
 vga_tim wire_tim();
 vga_if wire_screen();
-wire [3:0] points;
-wire state screen;
+wire [4:0] points;
+wire [1:0] screen;
 
 /**
  * Signals assignments
@@ -74,8 +77,20 @@ screen_control u_screen_control(
     .clk,
     .rst,
     .points,
-    .screen,
+    .screen(screen),
     .keycode(keycode)
+);
+
+disp_hex_mux u_disp_hex_mux (
+    .clk,
+    .reset(rst),
+    .dp_in('0),
+    .hex0(points[3:0]),
+    .hex1(points[4]),
+    .hex2('0),
+    .hex3('0),
+    .an(an),
+    .sseg({dp,seg[0],seg[1],seg[2],seg[3],seg[4],seg[5],seg[6]})
 );
 
 endmodule

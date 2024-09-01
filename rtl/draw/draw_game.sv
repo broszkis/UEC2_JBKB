@@ -4,7 +4,7 @@
     input  logic clk,
     input  logic rst,
     input logic move_up, move_down, move_right, move_left,
-    output logic [3:0] points,
+    output logic [4:0] points,
     vga_tim.in game_in,
     vga_if.out game_out
 );

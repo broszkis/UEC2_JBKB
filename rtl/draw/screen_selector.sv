@@ -4,7 +4,7 @@ module screen_selector(
     input logic clk, rst,
     input logic move_up, move_down, move_right, move_left,
     input logic [1:0] screen,
-    output logic [3:0] points,
+    output logic [4:0] points,
     vga_tim.in ss_in,
     vga_if.out ss_out
 );

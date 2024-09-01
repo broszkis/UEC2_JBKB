@@ -4,7 +4,7 @@ module draw_rect (
     input logic clk,
     input logic rst,
     input logic move_up, move_down, move_right, move_left,
-    output logic [3:0] points
+    output logic [4:0] points
 );
 
 import vga_pkg::*;

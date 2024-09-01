@@ -1,9 +1,12 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-09-01 00:59:08
+Created: 2024-09-01 16:17:24
 
 ----SYNTHESIS----
-CLEAR :)
+WARNING: [Synth 8-689] width (1) of port connection 'hex1' does not match port width (4) of module 'disp_hex_mux' [rtl/vga/top_vga.sv:89]
+WARNING: [Synth 8-324] index 7 out of range [fpga/rtl/top_game_basys3.sv:140]
+WARNING: [Synth 8-3917] design top_game_basys3 has port dp driven by constant 0
+WARNING: [Synth 8-3917] design top_game_basys3 has port dp driven by constant 0
 
 ----IMPLEMENTATION----
 WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.

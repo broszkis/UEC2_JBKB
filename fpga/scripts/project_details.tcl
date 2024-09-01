@@ -55,6 +55,7 @@ set sv_files {
     ../rtl/keyboard/controls.sv
     ../rtl/keyboard/top_keyboard.sv
     ../rtl/keyboard/hold.sv
+
 }
 
 # Specify Verilog design files location         -- EDIT
@@ -64,6 +65,7 @@ set verilog_files {
     ../rtl/keyboard/bin2ascii.v
     ../rtl/keyboard/debouncer.v
     ../rtl/keyboard/PS2Receiver.v
+    ../rtl/keyboard/disp_hex_mux.v
  }
 
 # Specify VHDL design files location            -- EDIT

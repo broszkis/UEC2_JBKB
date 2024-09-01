@@ -1,7 +1,7 @@
 module screen_control (
     input  wire  clk,
     input  wire  rst,
-    input  wire  [3:0] points,
+    input  wire  [4:0] points,
     input  wire  [15:0] keycode,
     output logic [1:0] screen
 );
