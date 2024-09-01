@@ -13,7 +13,6 @@
  
  import vga_pkg::*;
  
- 
  /**
   *  Local parameters
   */
@@ -28,7 +27,7 @@
  logic clk;
  logic rst;
 
- vga_if wire_tim();
+ vga_tim wire_tim();
  
  /**
   * Clock generation
