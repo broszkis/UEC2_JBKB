@@ -1,17 +1,11 @@
 /**
- * San Jose State University
- * EE178 Lab #4
- * Author: prof. Eric Crabilla
- *
- * Modified by:
- * 2023  AGH University of Science and Technology
+ * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
- * Piotr Kaczmarczyk
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
  *
  * Description:
- * The project top module.
+ * 
  */
-
 `timescale 1 ns / 1 ps
 
 module top_vga (
@@ -47,9 +41,8 @@ module top_vga (
 
 vga_tim wire_tim();
 vga_if wire_screen();
-wire [4:0] points_1, points_2;
 wire [1:0] screen;
-
+wire [4:0] p1points_1, p1points_2, p2points_1, p2points_2;
 /**
  * Signals assignments
  */
@@ -83,27 +76,42 @@ screen_selector u_screen_selector(
     .keycode,
     .ss_in(wire_tim),
     .ss_out(wire_screen),
-    .points_1,
-    .points_2
+    .p1points_1,
+    .p1points_2,
+    .p2points_1,
+    .p2points_2
 );
 
 screen_control u_screen_control(
     .clk,
     .rst,
-    .points_1,
-    .points_2,
+    .p1points_1,
+    .p1points_2,
+    .p2points_1,
+    .p2points_2,
     .screen(screen),
     .keycode(keycode)
 );
+
+logic [4:0] player1_score, player2_score;
+logic [3:0] player1_score_unit, player2_score_unit; 
+logic  player1_score_decimal, player2_score_decimal;
+assign player1_score = p1points_1 + p1points_2;
+assign player2_score = p2points_1 + p2points_2;
+assign player1_score_decimal = player1_score / 10;
+assign player2_score_decimal = player2_score / 10;
+assign player1_score_unit = player1_score % 10;
+assign player2_score_unit = player2_score % 10;
+
 
 disp_hex_mux u_disp_hex_mux (
     .clk,
     .reset(rst),
     .dp_in('1),
-    .hex0(points_2[3:0]),
-    .hex1({3'b0,points_2[4]}),
-    .hex2(points_1[3:0]),
-    .hex3({3'b0,points_1[4]}),
+    .hex0(player2_score_unit),
+    .hex1({3'b0,player2_score_decimal}),
+    .hex2(player1_score_unit),
+    .hex3({3'b0,player1_score_decimal}),
     .an(an),
     .sseg({dp,seg[0],seg[1],seg[2],seg[3],seg[4],seg[5],seg[6]})
 );

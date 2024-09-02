@@ -1,3 +1,11 @@
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
 `timescale 1 ns / 1 ps
 
  module second_player_won(
@@ -63,17 +71,17 @@ end
              rgb_nxt = BLUE;
              //P
           else if (sp_in.vcount > 184 & sp_in.vcount < 364 & sp_in.hcount > 262 & sp_in.hcount < 277)
-              rgb_nxt = YELLOW;
+              rgb_nxt = BLUE;
           else if (sp_in.vcount > 184 & sp_in.vcount < 199 & sp_in.hcount > 262 & sp_in.hcount < 307)
-              rgb_nxt = YELLOW;
+              rgb_nxt = BLUE;
           else if (sp_in.vcount > 199 & sp_in.vcount < 256 & sp_in.hcount > 306 & sp_in.hcount < 322)
-              rgb_nxt = YELLOW;
+              rgb_nxt = BLUE;
           else if (sp_in.vcount > 256 & sp_in.vcount < 271 & sp_in.hcount > 262 & sp_in.hcount < 307)
-              rgb_nxt = YELLOW;
+              rgb_nxt = BLUE;
              //L
           else if (sp_in.vcount > 184 & sp_in.vcount < 364 & sp_in.hcount > 332 & sp_in.hcount < 347)
               rgb_nxt = BLUE;
-          else if (sp_in.vcount > 334 & sp_in.vcount < 364 & sp_in.hcount > 332 & sp_in.hcount < 392)
+          else if (sp_in.vcount > 349 & sp_in.vcount < 364 & sp_in.hcount > 332 & sp_in.hcount < 392)
               rgb_nxt = BLUE;
              //A
           else if (sp_in.vcount > 214 & sp_in.vcount < 364 & sp_in.hcount >  402 & sp_in.hcount < 417)
@@ -119,15 +127,15 @@ end
               rgb_nxt = BLUE;
               //2
           else if (sp_in.vcount > 184 & sp_in.vcount <199 & sp_in.hcount > 702 & sp_in.hcount < 762)
-              rgb_nxt = BLUE;
-          else if (sp_in.vcount > 199 & sp_in.vcount <244 & sp_in.hcount > 747 & sp_in.hcount < 762)
-              rgb_nxt = BLUE;
-          else if (sp_in.vcount > 244 & sp_in.vcount <259 & sp_in.hcount > 702 & sp_in.hcount < 762)
-              rgb_nxt = BLUE;
-          else if (sp_in.vcount > 304 & sp_in.vcount <319 & sp_in.hcount > 702 & sp_in.hcount < 717)
-              rgb_nxt = BLUE;
-          else if (sp_in.vcount > 319 & sp_in.vcount <364 & sp_in.hcount > 702 & sp_in.hcount < 762)
-              rgb_nxt = BLUE;
+              rgb_nxt = YELLOW;
+          else if (sp_in.vcount > 199 & sp_in.vcount <259 & sp_in.hcount > 747 & sp_in.hcount < 762)
+              rgb_nxt = YELLOW;
+          else if (sp_in.vcount > 259 & sp_in.vcount <274 & sp_in.hcount > 702 & sp_in.hcount < 762)
+              rgb_nxt = YELLOW;
+          else if (sp_in.vcount > 274 & sp_in.vcount <349 & sp_in.hcount > 702 & sp_in.hcount < 717)
+              rgb_nxt = YELLOW;
+          else if (sp_in.vcount > 349 & sp_in.vcount <364 & sp_in.hcount > 702 & sp_in.hcount < 762)
+              rgb_nxt = YELLOW;
             //W
               else if (sp_in.vcount > 404 & sp_in.vcount < 584 & sp_in.hcount > 402 & sp_in.hcount < 414)
               rgb_nxt = BLUE;

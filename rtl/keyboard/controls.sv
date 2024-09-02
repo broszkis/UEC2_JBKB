@@ -45,6 +45,12 @@ always_comb begin
             8'h1B: mvd_nxt = 1;
             8'h23: mvr_nxt = 1;
             8'h1C: mvl_nxt = 1;
+            default: begin 
+                mvr_nxt = move_right;
+                mvl_nxt = move_left;
+                mvu_nxt = move_up;
+                mvd_nxt = move_down;
+            end
         endcase
     end
     else if(ctr >= 10_000) begin
@@ -54,6 +60,12 @@ always_comb begin
             8'h1B: mvd_nxt = 0;
             8'h23: mvr_nxt = 0;
             8'h1C: mvl_nxt = 0;
+            default: begin 
+                mvu_nxt = 0;
+                mvd_nxt = 0;
+                mvr_nxt = 0;
+                mvl_nxt = 0;
+            end
         endcase
     end
     else begin

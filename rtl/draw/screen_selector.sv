@@ -1,4 +1,12 @@
-import vga_pkg::*;
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
+`timescale 1 ns / 1 ps
 
 module screen_selector(
     input logic clk, rst,
@@ -6,10 +14,12 @@ module screen_selector(
     output logic move_up_2, move_down_2, move_right_2, move_left_2,
     input logic [1:0] screen,
     input wire [15:0] keycode,
-    output logic [4:0] points_1, points_2,
+    output logic [4:0] p1points_1, p1points_2, p2points_1, p2points_2,  
     vga_tim.in ss_in,
     vga_if.out ss_out
 );
+
+import vga_pkg::*;
 
 vga_if vga_nxt();
 vga_if vga_start();
@@ -37,8 +47,10 @@ draw_game u_draw_game(
     .move_down_2,
     .move_right_2,
     .move_left_2,
-    .points_1,
-    .points_2,
+    .p1points_1,
+    .p1points_2,
+    .p2points_1,
+    .p2points_2,
     .keycode
 );
 

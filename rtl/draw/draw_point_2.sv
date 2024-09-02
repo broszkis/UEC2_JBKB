@@ -8,12 +8,12 @@
  */
 `timescale 1 ns / 1 ps
 
-module draw_point (
+module draw_point_2 (
     vga_if.in point_in,
     vga_if.out point_out,
     input logic clk,
     input logic rst,
-    input logic [9:0] point_x, point_y
+    input logic [9:0] point_x_2, point_y_2
 );
 
 import vga_pkg::*;
@@ -49,7 +49,7 @@ always_ff @(posedge clk) begin : rect_ff_blk
 end
 
 always_comb begin
-    if (point_in.hcount >= point_x - POINT_SIZE + 1 && point_in.hcount <= point_x + POINT_SIZE && point_in.vcount >= point_y - POINT_SIZE + 1 && point_in.vcount <= point_y + POINT_SIZE) begin
+    if (point_in.hcount >= point_x_2 - POINT_SIZE + 1 && point_in.hcount <= point_x_2 + POINT_SIZE && point_in.vcount >= point_y_2 - POINT_SIZE + 1 && point_in.vcount <= point_y_2 + POINT_SIZE) begin
         rgb_nxt = MAGENTA;
     end else begin 
         rgb_nxt = point_in.rgb;

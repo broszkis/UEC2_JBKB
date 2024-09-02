@@ -1,13 +1,11 @@
 /**
  * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
- * Author: Piotr Kaczmarczyk
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
  *
  * Description:
- * Draw background.
+ * 
  */
-
-
  `timescale 1 ns / 1 ps
 
  module main_menu(
@@ -194,96 +192,97 @@
           else if (mm_in.vcount >  188 & mm_in.vcount < 198 & mm_in.hcount > 684 & mm_in.hcount < 704)
               rgb_nxt = BLUE;
               //BASYSFIELD
-          else if (mm_in.vcount > 50 & mm_in.vcount < 150 & mm_in.hcount > 255 & mm_in.hcount < 265)
+              //B
+          else if (mm_in.vcount > 50 & mm_in.vcount < 150 & mm_in.hcount > 290 & mm_in.hcount < 300)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 50 & mm_in.vcount < 60 & mm_in.hcount > 255 & mm_in.hcount < 295)
+          else if (mm_in.vcount > 50 & mm_in.vcount < 60 & mm_in.hcount > 290 & mm_in.hcount < 330)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 140 & mm_in.vcount < 150 & mm_in.hcount > 255 & mm_in.hcount < 295)
+          else if (mm_in.vcount > 140 & mm_in.vcount < 150 & mm_in.hcount > 290 & mm_in.hcount < 330)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 95 & mm_in.vcount < 105 & mm_in.hcount > 255 & mm_in.hcount < 295)
+          else if (mm_in.vcount > 95 & mm_in.vcount < 105 & mm_in.hcount > 290 & mm_in.hcount < 330)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 59 & mm_in.vcount < 96 & mm_in.hcount > 294 & mm_in.hcount < 305)
+          else if (mm_in.vcount > 59 & mm_in.vcount < 96 & mm_in.hcount > 329 & mm_in.hcount < 340)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 104 & mm_in.vcount < 141 & mm_in.hcount > 294 & mm_in.hcount < 305)
+          else if (mm_in.vcount > 104 & mm_in.vcount < 141 & mm_in.hcount > 329 & mm_in.hcount < 340)
               rgb_nxt = YELLOW;
               //A
-          else if (mm_in.vcount >  110 & mm_in.vcount <  150 & mm_in.hcount > 310 & mm_in.hcount < 320)
+          else if (mm_in.vcount >  110 & mm_in.vcount <  150 & mm_in.hcount > 345 & mm_in.hcount < 355)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  110 & mm_in.vcount <  150 & mm_in.hcount > 350 & mm_in.hcount < 360)
+          else if (mm_in.vcount >  110 & mm_in.vcount <  150 & mm_in.hcount > 385 & mm_in.hcount < 395)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  100 & mm_in.vcount <  111 & mm_in.hcount > 315 & mm_in.hcount < 355)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  111 & mm_in.hcount > 350 & mm_in.hcount < 390)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  120 & mm_in.vcount <  130 & mm_in.hcount > 310 & mm_in.hcount < 360)
+          else if (mm_in.vcount >  120 & mm_in.vcount <  130 & mm_in.hcount > 345 & mm_in.hcount < 395)
               rgb_nxt = YELLOW;
               //S
-          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 375 & mm_in.hcount < 415)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 410 & mm_in.hcount < 450)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  109 & mm_in.vcount <  122 & mm_in.hcount > 365 & mm_in.hcount < 375)
+          else if (mm_in.vcount >  109 & mm_in.vcount <  122 & mm_in.hcount > 400 & mm_in.hcount < 410)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  120 & mm_in.vcount <  129 & mm_in.hcount > 375 & mm_in.hcount < 405)
+          else if (mm_in.vcount >  120 & mm_in.vcount <  129 & mm_in.hcount > 410 & mm_in.hcount < 440)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  127 & mm_in.vcount <  140 & mm_in.hcount > 405 & mm_in.hcount < 415)
+          else if (mm_in.vcount >  127 & mm_in.vcount <  140 & mm_in.hcount > 440 & mm_in.hcount < 450)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  139 & mm_in.vcount <  150 & mm_in.hcount > 365 & mm_in.hcount < 405)
+          else if (mm_in.vcount >  139 & mm_in.vcount <  150 & mm_in.hcount > 400 & mm_in.hcount < 440)
               rgb_nxt = YELLOW;
               //Y
-          else if (mm_in.vcount > 120 & mm_in.vcount < 150 & mm_in.hcount >  430 & mm_in.hcount < 445)
+          else if (mm_in.vcount > 120 & mm_in.vcount < 150 & mm_in.hcount >  465 & mm_in.hcount < 480)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 115 & mm_in.vcount < 125 & mm_in.hcount >  425 & mm_in.hcount < 435)
+          else if (mm_in.vcount > 115 & mm_in.vcount < 125 & mm_in.hcount >  460 & mm_in.hcount < 470)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 115 & mm_in.vcount < 125 & mm_in.hcount >  440 & mm_in.hcount < 450)
+          else if (mm_in.vcount > 115 & mm_in.vcount < 125 & mm_in.hcount >  475 & mm_in.hcount < 485)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 100 & mm_in.vcount < 120 & mm_in.hcount >  420 & mm_in.hcount < 430)
+          else if (mm_in.vcount > 100 & mm_in.vcount < 120 & mm_in.hcount >  455 & mm_in.hcount < 465)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount > 100 & mm_in.vcount < 120 & mm_in.hcount >  445 & mm_in.hcount < 455)
+          else if (mm_in.vcount > 100 & mm_in.vcount < 120 & mm_in.hcount >  480 & mm_in.hcount < 490)
               rgb_nxt = YELLOW;
                  //S
-          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 470 & mm_in.hcount < 510)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 505 & mm_in.hcount < 545)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  109 & mm_in.vcount <  122 & mm_in.hcount > 460 & mm_in.hcount < 470)
+          else if (mm_in.vcount >  109 & mm_in.vcount <  122 & mm_in.hcount > 495 & mm_in.hcount < 505)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  120 & mm_in.vcount <  129 & mm_in.hcount > 470 & mm_in.hcount < 500)
+          else if (mm_in.vcount >  120 & mm_in.vcount <  129 & mm_in.hcount > 505 & mm_in.hcount < 535)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  127 & mm_in.vcount <  140 & mm_in.hcount > 500 & mm_in.hcount < 510)
+          else if (mm_in.vcount >  127 & mm_in.vcount <  140 & mm_in.hcount > 535 & mm_in.hcount < 545)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  139 & mm_in.vcount <  150 & mm_in.hcount > 460 & mm_in.hcount < 500)
+          else if (mm_in.vcount >  139 & mm_in.vcount <  150 & mm_in.hcount > 495 & mm_in.hcount < 535)
               rgb_nxt = YELLOW;
                  //F
-          else if (mm_in.vcount >  100 & mm_in.vcount <  150 & mm_in.hcount > 515 & mm_in.hcount < 525)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  150 & mm_in.hcount > 550 & mm_in.hcount < 560)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 515 & mm_in.hcount < 550)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 550 & mm_in.hcount < 585)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  120 & mm_in.vcount <  130 & mm_in.hcount > 515 & mm_in.hcount < 545)
+          else if (mm_in.vcount >  120 & mm_in.vcount <  130 & mm_in.hcount > 550 & mm_in.hcount < 580)
               rgb_nxt = YELLOW;
                   //I
-          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 555 & mm_in.hcount < 585)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  110 & mm_in.hcount > 590 & mm_in.hcount < 620)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  100 & mm_in.vcount <  150 & mm_in.hcount > 565 & mm_in.hcount < 575)
+          else if (mm_in.vcount >  100 & mm_in.vcount <  150 & mm_in.hcount > 600 & mm_in.hcount < 610)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  140 & mm_in.vcount <  150 & mm_in.hcount > 555 & mm_in.hcount < 585)
+          else if (mm_in.vcount >  140 & mm_in.vcount <  150 & mm_in.hcount > 590 & mm_in.hcount < 620)
               rgb_nxt = YELLOW;
            //E
-          else if (mm_in.vcount >  100 & mm_in.vcount < 150 & mm_in.hcount > 590 & mm_in.hcount < 600)
+          else if (mm_in.vcount >  100 & mm_in.vcount < 150 & mm_in.hcount > 625 & mm_in.hcount < 635)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  100 & mm_in.vcount < 110 & mm_in.hcount > 590 & mm_in.hcount < 625)
+          else if (mm_in.vcount >  100 & mm_in.vcount < 110 & mm_in.hcount > 625 & mm_in.hcount < 660)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  140 & mm_in.vcount < 150 & mm_in.hcount > 590 & mm_in.hcount < 625)
+          else if (mm_in.vcount >  140 & mm_in.vcount < 150 & mm_in.hcount > 625 & mm_in.hcount < 660)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  120 & mm_in.vcount < 130 & mm_in.hcount > 590 & mm_in.hcount < 620)
+          else if (mm_in.vcount >  120 & mm_in.vcount < 130 & mm_in.hcount > 625 & mm_in.hcount < 655)
               rgb_nxt = YELLOW;
               //L
-          else if (mm_in.vcount >  100 & mm_in.vcount < 150 & mm_in.hcount > 630 & mm_in.hcount < 640)
-              rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  140 & mm_in.vcount < 150 & mm_in.hcount > 630 & mm_in.hcount < 660)
-              rgb_nxt = YELLOW;
-              //D
           else if (mm_in.vcount >  100 & mm_in.vcount < 150 & mm_in.hcount > 665 & mm_in.hcount < 675)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  100 & mm_in.vcount < 110 & mm_in.hcount > 665 & mm_in.hcount < 690)
+          else if (mm_in.vcount >  140 & mm_in.vcount < 150 & mm_in.hcount > 665 & mm_in.hcount < 695)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  140 & mm_in.vcount < 150 & mm_in.hcount > 665 & mm_in.hcount < 690)
+              //D
+          else if (mm_in.vcount >  100 & mm_in.vcount < 150 & mm_in.hcount > 700 & mm_in.hcount < 710)
               rgb_nxt = YELLOW;
-          else if (mm_in.vcount >  109 & mm_in.vcount < 141 & mm_in.hcount > 689 & mm_in.hcount < 700)
+          else if (mm_in.vcount >  100 & mm_in.vcount < 110 & mm_in.hcount > 700 & mm_in.hcount < 725)
+              rgb_nxt = YELLOW;
+          else if (mm_in.vcount >  140 & mm_in.vcount < 150 & mm_in.hcount > 700 & mm_in.hcount < 725)
+              rgb_nxt = YELLOW;
+          else if (mm_in.vcount >  109 & mm_in.vcount < 141 & mm_in.hcount > 724 & mm_in.hcount < 735)
               rgb_nxt = YELLOW;
               //PLAY
               //P

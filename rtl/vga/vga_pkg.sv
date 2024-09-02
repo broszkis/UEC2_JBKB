@@ -1,12 +1,11 @@
 /**
  * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
- * Author: Piotr Kaczmarczyk
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
  *
  * Description:
- * Package with vga related constants.
+ * 
  */
-
 package vga_pkg;
 
 // Parameters for VGA Display 1024 x 768 @ 60fps using a 65 MHz clock;
@@ -29,9 +28,9 @@ localparam WIDTH = 48;
 localparam LENGHT = 63;
 localparam BLUE = 12'h0_0_f;
 localparam YELLOW = 12'hf_f_0;
+localparam MAGENTA = 12'hf_0_f;
+localparam CYAN = 12'h0_f_f;
 localparam BLACK = 12'h0_0_0;
-localparam RECT_COLOR = 12'hf_f_f;
-localparam POINT_COLOR = 12'h0_f_f;
 
 localparam RECT_X = 60;
 localparam RECT_Y = 60;
@@ -41,7 +40,9 @@ localparam SCREEN_WIDTH = 1024;
 localparam SCREEN_HEIGHT = 768;
 localparam PLAYER_SIZE = 16;
 localparam POINT_SIZE = 8;
+localparam TEN           = 10;
 
+localparam BORDER = 5;
 localparam TERRAIN_NUM = 11;
 localparam TERRAIN_LTX1 = 64;
 localparam TERRAIN_LTX2 = 192;
@@ -61,7 +62,6 @@ localparam TERRAIN_RBY1 = 640;
 localparam TERRAIN_RBY2 = 704;
 localparam TERRAIN_MTTX1 = 256;
 localparam TERRAIN_MTTX2 = 768;
-localparam TEN           = 10;
 localparam TERRAIN_MTTY1 = 128;
 localparam TERRAIN_MTTY2 = 192;
 localparam TERRAIN_MTSX1 = 480;

@@ -1,7 +1,17 @@
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
+`timescale 1 ns / 1 ps
+
 module screen_control (
     input  wire  clk,
     input  wire  rst,
-    input  wire  [4:0] points_1, points_2,
+    input  logic [4:0] p1points_1, p1points_2, p2points_1, p2points_2,  
     input  wire  [15:0] keycode,
     output logic [1:0] screen
 );
@@ -28,9 +38,9 @@ always_comb begin : state_comb_blk
     case(state)
         START: state_nxt = (keycode[15:8] != 8'hf0 && keycode[7:0] == 8'h5A) ? GAME : START;
         GAME: begin
-        if (points_1 >= TEN)
+        if (p1points_1 + p1points_2 >= TEN)
             state_nxt = PLAYER_1;
-        else if (points_2 >= TEN)
+        else if (p2points_1 + p2points_2 >= TEN)
             state_nxt = PLAYER_2;
         else
             state_nxt = GAME;

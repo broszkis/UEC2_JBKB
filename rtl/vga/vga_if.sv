@@ -1,3 +1,11 @@
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
 `timescale 1 ns / 1 ps
 
 interface vga_if;

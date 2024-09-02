@@ -1,3 +1,11 @@
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
 `timescale 1 ns / 1 ps
 
  module first_player_won (
@@ -63,17 +71,17 @@ end
              rgb_nxt = BLUE;
              //P
           else if (fp_in.vcount > 184 & fp_in.vcount < 364 & fp_in.hcount > 262 & fp_in.hcount < 277)
-              rgb_nxt = YELLOW;
+              rgb_nxt = BLUE;
           else if (fp_in.vcount > 184 & fp_in.vcount < 199 & fp_in.hcount > 262 & fp_in.hcount < 307)
-              rgb_nxt = YELLOW;
+              rgb_nxt = BLUE;
           else if (fp_in.vcount > 199 & fp_in.vcount < 256 & fp_in.hcount > 306 & fp_in.hcount < 322)
-              rgb_nxt = YELLOW;
+              rgb_nxt =  BLUE;
           else if (fp_in.vcount > 256 & fp_in.vcount < 271 & fp_in.hcount > 262 & fp_in.hcount < 307)
-              rgb_nxt = YELLOW;
+              rgb_nxt =  BLUE;
              //L
           else if (fp_in.vcount > 184 & fp_in.vcount < 364 & fp_in.hcount > 332 & fp_in.hcount < 347)
               rgb_nxt = BLUE;
-          else if (fp_in.vcount > 334 & fp_in.vcount < 364 & fp_in.hcount > 332 & fp_in.hcount < 392)
+          else if (fp_in.vcount > 349 & fp_in.vcount < 364 & fp_in.hcount > 332 & fp_in.hcount < 392)
               rgb_nxt = BLUE;
              //A
           else if (fp_in.vcount > 214 & fp_in.vcount < 364 & fp_in.hcount >  402 & fp_in.hcount < 417)
@@ -119,13 +127,13 @@ end
               rgb_nxt = BLUE;
               //1
           else if (fp_in.vcount > 184 & fp_in.vcount < 364 & fp_in.hcount >  732 & fp_in.hcount < 747)
-              rgb_nxt = BLUE;
+              rgb_nxt = CYAN;
           else if (fp_in.vcount > 199 & fp_in.vcount < 214 & fp_in.hcount >  717 & fp_in.hcount < 732)
-              rgb_nxt = BLUE;
+              rgb_nxt = CYAN;
           else if (fp_in.vcount > 214 & fp_in.vcount < 229 & fp_in.hcount >  702 & fp_in.hcount < 717)
-              rgb_nxt = BLUE;
-          else if (fp_in.vcount > 349 & fp_in.vcount < 364 & fp_in.hcount >  702 & fp_in.hcount < 762)
-              rgb_nxt = BLUE;
+              rgb_nxt = CYAN;
+          else if (fp_in.vcount > 349 & fp_in.vcount < 364 & fp_in.hcount >  717 & fp_in.hcount < 762)
+              rgb_nxt = CYAN;
             //W
           else if (fp_in.vcount > 404 & fp_in.vcount < 584 & fp_in.hcount > 402 & fp_in.hcount < 414)
               rgb_nxt = BLUE;

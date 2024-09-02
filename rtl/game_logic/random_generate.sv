@@ -1,4 +1,19 @@
-module random_generate (
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
+`timescale 1 ns / 1 ps
+
+module random_generate 
+#( 
+    parameter LFSR_X = 0,
+    parameter LFSR_Y = 0
+)
+(
     input logic clk,
     input logic rst,
     input logic [9:0] player1_x,
@@ -18,8 +33,8 @@ logic [9:0] point_x_temp, point_y_temp;
 logic [4:0] points_1_nxt, points_2_nxt;;
 logic [9:0] point_xpos[31] = '{32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800, 832, 864, 896, 928, 960, 992}; 
 logic [9:0] point_ypos[23] = '{32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 480, 512, 544, 576, 608, 640, 672, 704, 736};
-logic [4:0] lfsr_x = 5'h1F; // 5-bit LFSR for x-axis
-logic [4:0] lfsr_y = 5'h1B; // 5-bit LFSR for y-axis
+logic [4:0] lfsr_x = LFSR_X; // 5-bit LFSR for x-axis
+logic [4:0] lfsr_y = LFSR_Y; // 5-bit LFSR for y-axis
 logic point_collected; // Nowy sygnał wskazujący, że punkt został już zebrany
 logic [13:0] ctr, ctr_2, ctr_nxt, ctr_2_nxt;
 
@@ -42,12 +57,12 @@ end
 
 always_ff @(posedge clk) begin
     if (rst) begin
-        point_x <= 512;
-        point_y <= 64;
+        point_x <= 32;
+        point_y <= 32;
         points_1 <= '0;
         points_2 <= '0;
-        lfsr_x <= 5'h1F;
-        lfsr_y <= 5'h1A;
+        lfsr_x <= LFSR_X;
+        lfsr_y <= LFSR_Y;
         ctr <= '0;
         ctr_2 <= '0;
         point_collected <= '0; // Resetowanie sygnału

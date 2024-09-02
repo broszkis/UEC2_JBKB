@@ -38,6 +38,7 @@ set sv_files {
     rtl/top_game_basys3.sv
     ../rtl/draw/draw_bg.sv
     ../rtl/draw/draw_point.sv
+    ../rtl/draw/draw_point_2.sv
     ../rtl/draw/draw_player_1.sv
     ../rtl/draw/draw_player_2.sv
     ../rtl/draw/draw_game.sv
@@ -56,7 +57,6 @@ set sv_files {
 
     ../rtl/keyboard/controls.sv
     ../rtl/keyboard/top_keyboard.sv
-    ../rtl/keyboard/hold.sv
 
 }
 

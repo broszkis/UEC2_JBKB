@@ -1,3 +1,13 @@
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
+`timescale 1 ns / 1 ps
+
 module draw_player_1 (
     vga_if.in p1_in,
     vga_if.out p1_out,
@@ -69,7 +79,7 @@ always_ff @(posedge clk) begin
     if (rst) begin 
         counter <= '0;
     end
-    else if (counter == 500000) begin 
+    else if (counter == 300000) begin 
         counter <= '0;
     end
     else begin 
@@ -88,26 +98,26 @@ always_comb begin
         ypos_nxt = ypos;
 
         if (move_up && !collision_up) begin
-            ypos_nxt = (ypos > PLAYER_SIZE) ? (ypos - 1) : ypos;
+            ypos_nxt = (ypos > PLAYER_SIZE + BORDER) ? (ypos - 1) : ypos;
         end
 
         else if (move_down && !collision_down) begin
-            ypos_nxt = (ypos + 1 < SCREEN_HEIGHT - PLAYER_SIZE) ? (ypos + 1) : ypos;
+            ypos_nxt = (ypos + 1 < SCREEN_HEIGHT - BORDER - PLAYER_SIZE) ? (ypos + 1) : ypos;
         end
 
         else if (move_right && !collision_right) begin
-            xpos_nxt = (xpos + 1 < SCREEN_WIDTH - PLAYER_SIZE) ? (xpos + 1) : xpos;
+            xpos_nxt = (xpos + 1 < SCREEN_WIDTH - BORDER - PLAYER_SIZE) ? (xpos + 1) : xpos;
         end
 
         else if (move_left && !collision_left) begin
-            xpos_nxt = (xpos > PLAYER_SIZE) ? (xpos - 1) : xpos;
+            xpos_nxt = (xpos > PLAYER_SIZE + BORDER) ? (xpos - 1) : xpos;
         end
     end
 end
 
 always_comb begin : rect_comb_blk
     if (p1_in.hcount >= xpos - PLAYER_SIZE + 1 && p1_in.hcount <= xpos + PLAYER_SIZE && p1_in.vcount >= ypos - PLAYER_SIZE + 1 && p1_in.vcount <= ypos + PLAYER_SIZE) begin
-        rgb_nxt = RECT_COLOR;
+        rgb_nxt = CYAN;
     end else begin 
         rgb_nxt = p1_in.rgb;
     end

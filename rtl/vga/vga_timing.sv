@@ -1,13 +1,12 @@
 /**
  * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
- * Author: Piotr Kaczmarczyk
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
  *
  * Description:
- * Vga timing controller.
+ * 
  */
-
- `timescale 1 ns / 1 ps
+`timescale 1 ns / 1 ps
 
  module vga_timing (
     vga_tim.out tim_out,

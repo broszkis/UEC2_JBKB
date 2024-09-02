@@ -1,14 +1,13 @@
 /**
  * Copyright (C) 2023  AGH University of Science and Technology
  * MTM UEC2
- * Author: Piotr Kaczmarczyk
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
  *
  * Description:
- * Draw background.
+ * 
  */
-
-
- `timescale 1 ns / 1 ps
+ 
+`timescale 1 ns / 1 ps
 
  module draw_bg (
     input  logic clk,
@@ -117,8 +116,6 @@ end
              rgb_nxt = BLUE;
          else if (bg_in.hcount >  TERRAIN_MTSX1 && bg_in.hcount <  TERRAIN_MTSX1 + 5  && bg_in.vcount >  TERRAIN_MTSY1 && bg_in.vcount <  TERRAIN_MTSY2) 
              rgb_nxt = BLUE;
-         else if (bg_in.hcount >  TERRAIN_MTSX1 && bg_in.hcount <  TERRAIN_MTSX2  && bg_in.vcount >  TERRAIN_MTSY1 && bg_in.vcount <  TERRAIN_MTSY1 + 5) 
-             rgb_nxt = BLUE;
          else if (bg_in.hcount >  TERRAIN_MTSX1 && bg_in.hcount <  TERRAIN_MTSX2  && bg_in.vcount >  TERRAIN_MTSY2 - 5 && bg_in.vcount <  TERRAIN_MTSY2) 
              rgb_nxt = BLUE;
          else if (bg_in.hcount >  TERRAIN_MTSX2 - 5 && bg_in.hcount <  TERRAIN_MTSX2  && bg_in.vcount >  TERRAIN_MTSY1 && bg_in.vcount <  TERRAIN_MTSY2) 
@@ -134,9 +131,7 @@ end
              rgb_nxt = BLUE;
          else if (bg_in.hcount >  TERRAIN_MBSX1 && bg_in.hcount <  TERRAIN_MBSX1 + 5  && bg_in.vcount >  TERRAIN_MBSY1 && bg_in.vcount <  TERRAIN_MBSY2) 
              rgb_nxt = BLUE;
-         else if (bg_in.hcount >  TERRAIN_MBSX1 && bg_in.hcount <  TERRAIN_MBSX2  && bg_in.vcount >  TERRAIN_MBSY1 && bg_in.vcount <  TERRAIN_MBSY1 + 5) 
-             rgb_nxt = BLUE;
-         else if (bg_in.hcount >  TERRAIN_MBSX1 && bg_in.hcount <  TERRAIN_MBSX2  && bg_in.vcount >  TERRAIN_MBSY2 - 5 && bg_in.vcount <  TERRAIN_MBSY2) 
+         else if (bg_in.hcount >  TERRAIN_MBSX1 && bg_in.hcount <  TERRAIN_MBSX2  && bg_in.vcount >  TERRAIN_MBSY1 - 5 && bg_in.vcount <  TERRAIN_MBSY1) 
              rgb_nxt = BLUE;
          else if (bg_in.hcount >  TERRAIN_MBSX2 - 5 && bg_in.hcount <  TERRAIN_MBSX2  && bg_in.vcount >  TERRAIN_MBSY1 && bg_in.vcount <  TERRAIN_MBSY2) 
              rgb_nxt = BLUE;  

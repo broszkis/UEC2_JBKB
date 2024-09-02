@@ -1,3 +1,11 @@
+/**
+ * Copyright (C) 2023  AGH University of Science and Technology
+ * MTM UEC2
+ * Author: Ksawery Broszkiewicz, Jan Bartnik
+ *
+ * Description:
+ * 
+ */
 `timescale 1 ns / 1 ps
 
 module draw_game (
@@ -6,18 +14,19 @@ module draw_game (
     input wire [15:0] keycode,
     input logic move_up, move_down, move_right, move_left,
     output logic move_up_2, move_down_2, move_right_2, move_left_2,
-    output logic [4:0] points_1, points_2,
+    output logic [4:0] p1points_1, p1points_2, p2points_1, p2points_2, 
     vga_tim.in game_in,
     vga_if.out game_out
 );
 import vga_pkg::*;
 
 vga_if wire_bg();
+vga_if wire_dp();
 vga_if wire_point();
 vga_if wire_p1();
 vga_if wire_p2();
 
-wire [9:0] p1x, p1y, p2x, p2y, point_x, point_y;
+wire [9:0] p1x, p1y, p2x, p2y, point_x, point_y, point_x_2, point_y_2;
 
 controls u_controls(
     .clk,
@@ -67,12 +76,25 @@ draw_point u_draw_point (
    .clk,
    .rst,
    .point_in(wire_p2),
-   .point_out(wire_point),
+   .point_out(wire_dp),
    .point_x,
    .point_y
 );
 
-random_generate u_random_generate (
+draw_point_2 u_draw_point_2 (
+   .clk,
+   .rst,
+   .point_in(wire_dp),
+   .point_out(wire_point),
+   .point_x_2,
+   .point_y_2
+);
+
+
+random_generate #(
+    .LFSR_X(5'h10),
+    .LFSR_Y(5'h8)
+)u_random_generate (
     .clk,   
     .rst,  
     .player1_x(p1x),
@@ -81,8 +103,24 @@ random_generate u_random_generate (
     .player2_y(p2y),
     .point_x,
     .point_y,
-    .points_1,
-    .points_2
+    .points_1(p1points_1),
+    .points_2(p2points_1)
+);
+
+random_generate #(
+    .LFSR_X(5'h7),
+    .LFSR_Y(5'h5)
+)u_random_generate_2 (
+    .clk,   
+    .rst,  
+    .player1_x(p1x),
+    .player1_y(p1y),
+    .player2_x(p2x),
+    .player2_y(p2y),
+    .point_x(point_x_2),
+    .point_y(point_y_2),
+    .points_1(p1points_2),
+    .points_2(p2points_2)
 );
 
  /**
